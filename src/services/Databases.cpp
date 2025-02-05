@@ -760,15 +760,17 @@ std::string Databases::createIndexes(const std::string& databaseId, const std::s
 
     std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/indexes";
 
-    json payloadJson = {
-        {"databaseId", databaseId},
-        {"collectionId", collectionId},
-        {"key", key},
-        {"type", type},
-        {"attributes", attributes}
-    };
-
-    std::string payload = payloadJson.dump();
+    std::string attributesStr = "[";
+    for(auto attribute : attributes) {
+        attributesStr += "\"" + attribute + "\",";
+    }
+    attributesStr.pop_back();
+    attributesStr += "]";
+    std::string payload = R"({"databaseId":")" + databaseId 
+                            + R"(","collectionId":")" + collectionId 
+                            + R"(","key":")" + key 
+                            + R"(","type":")" + type 
+                            + R"(","attributes":)" + attributesStr + R"(})";
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
     

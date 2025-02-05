@@ -2,6 +2,7 @@
 #include "classes/Storage.hpp"
 #include "Validator.hpp"
 #include <json.hpp>
+#include <sstream>
 #include "Utils.hpp"
 #include "config/Config.hpp"
 #include "enums/HttpStatus.hpp"
