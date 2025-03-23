@@ -52,6 +52,7 @@ public:
     std::string listDocument(const std::string& databaseId, const std::string& collectionId);
     std::string deleteDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
     std::string getDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
+    std::string updateDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
 
     //indexes
     std::string listIndexes(const std::string& databaseId, const std::string& collectionId);

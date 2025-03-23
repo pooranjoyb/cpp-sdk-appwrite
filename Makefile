@@ -33,6 +33,7 @@ BINS = \
 	listDocument \
 	getDocument \
 	deleteDocument \
+	updateDocument \
 	listAttributes \
 	createBooleanAttribute \
 	createEmailAttribute \
@@ -125,6 +126,8 @@ deleteDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/deleteDocum
 	$(CXX) $(CXXFLAGS) -o ./tests/document/deleteDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/deleteDocument.cpp $(LDFLAGS)
 getDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/getDocument.cpp
 	$(CXX) $(CXXFLAGS) -o ./tests/document/getDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/getDocument.cpp $(LDFLAGS)
+updateDocument: $(SRCS) $(EXAMPLES_DIR)/database/collection/document/updateDocument.cpp
+	$(CXX) $(CXXFLAGS) -o ./tests/document/updateDocument $(SRCS) $(EXAMPLES_DIR)/database/collection/document/updateDocument.cpp $(LDFLAGS)
 
 #Collection-Attribute
 listAttributes: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/listAttributes.cpp
