@@ -731,6 +731,42 @@ std::string Databases::getDocument(const std::string& databaseId, const std::str
 
 }
 
+std::string Databases::updateDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data) {
+
+    if (databaseId.empty()) {
+        throw AppwriteException("Missing required parameter: 'databaseId'");
+    }
+    if (collectionId.empty()) {
+        throw AppwriteException("Missing required parameter: 'collectionId'");
+    }
+    if (documentId.empty()) {
+        throw AppwriteException("Missing required parameter: 'documentId'");
+    }
+    if (data.is_null()) {
+        throw AppwriteException("Missing required parameter: 'data'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents/" + documentId;
+
+    json payloadJson = {
+        {"data", data}
+    };
+
+    std::string payload = payloadJson.dump();
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    
+    std::string response;
+
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating document. Status code: " + std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 //idexes
 std::string Databases::listIndexes(const std::string& databaseId, const std::string& collectionId){
     Validator::validateDatabaseParams(databaseId, collectionId);
