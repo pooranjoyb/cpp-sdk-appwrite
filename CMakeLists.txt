@@ -11,6 +11,7 @@ find_package(CURL REQUIRED)
 set(SRCS
     src/Appwrite.cpp
     src/services/Account.cpp
+    src/services/Query.cpp
     src/services/Databases.cpp
     src/services/Storage.cpp
     src/services/Health.cpp
@@ -31,6 +32,7 @@ set_target_properties(AppwriteSDK PROPERTIES
 set(HEADERS
     include/Appwrite.hpp
     include/classes/Account.hpp
+    include/classes/Query.hpp
     include/classes/Databases.hpp
     include/classes/Storage.hpp
     include/classes/Health.hpp

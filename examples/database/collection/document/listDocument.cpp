@@ -10,7 +10,9 @@ int main() {
     Appwrite appwrite(projectId, apiKey);
 
     try {
-        std::string response = appwrite.getDatabases().listDocument(databaseId, collectionId);
+        Queries queries;
+		queries.queryLimit(50);
+        std::string response = appwrite.getDatabases().listDocument(databaseId, collectionId, queries);
         std::cout << "Documents listed successfully! \nResponse: " << response << std::endl;
     } catch (const AppwriteException& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

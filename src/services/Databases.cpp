@@ -672,10 +672,10 @@ std::string Databases::createDocument(const std::string& databaseId, const std::
     }
 }
 
-std::string Databases::listDocument(const std::string& databaseId, const std::string& collectionId){
+std::string Databases::listDocument(const std::string& databaseId, const std::string& collectionId, Queries &queries){
     Validator::validateDatabaseParams(databaseId, collectionId);
     
-    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents";
+    std::string url = Config::API_BASE_URL + "/databases/" + databaseId + "/collections/" + collectionId + "/documents" + queries.to_string();
 
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);

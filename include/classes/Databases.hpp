@@ -4,6 +4,7 @@
 #include <string>
 #include "Utils.hpp"
 #include "json.hpp"
+#include "classes/Query.hpp"
 #include "exceptions/AppwriteException.hpp"
 #include "enums/HttpStatus.hpp"
 
@@ -49,7 +50,7 @@ public:
  
     // document
     std::string createDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId, const json& data);
-    std::string listDocument(const std::string& databaseId, const std::string& collectionId);
+    std::string listDocument(const std::string& databaseId, const std::string& collectionId, Queries &queries);
     std::string deleteDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
     std::string getDocument(const std::string& databaseId, const std::string& collectionId, const std::string& documentId);
 

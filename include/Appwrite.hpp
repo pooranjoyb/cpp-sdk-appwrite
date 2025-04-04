@@ -2,6 +2,7 @@
 #define APPWRITE_HPP
 
 #include "classes/Account.hpp"
+#include "classes/Query.hpp"
 #include "classes/Databases.hpp"
 #include "classes/Storage.hpp"
 #include "classes/Health.hpp"
