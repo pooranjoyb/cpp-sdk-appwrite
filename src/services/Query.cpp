@@ -4,6 +4,64 @@ Queries::Queries(){
 	reset();
 }
 
+void Queries::queryStartsWith(const std::string attributeId, const std::string &value){
+	std::string query = "{\"method\":\"startsWith\",\"attribute\":\""+attributeId+"\",\"values\":[\""+url_encode(value)+"\"]}";
+	
+	if(starts_iter == queries.end()){
+		queries.push_back(query);
+		starts_iter = std::prev(queries.end());
+		return;
+	}
+	*starts_iter = query;
+}
+
+void Queries::queryEndsWith(const std::string attributeId, const std::string &value){
+	std::string query = "{\"method\":\"endsWith\",\"attribute\":\""+attributeId+"\",\"values\":[\""+url_encode(value)+"\"]}";
+	
+	if(ends_iter == queries.end()){
+		queries.push_back(query);
+		ends_iter = std::prev(queries.end());
+		return;
+	}
+	*ends_iter = query;
+}
+void Queries::queryContains(const std::string attributeId, const std::string &value){
+	std::string query = "{\"method\":\"contains\",\"attribute\":\""+attributeId+"\",\"values\":[\""+url_encode(value)+"\"]}";
+	if(contains_iter == queries.end()){
+		queries.push_back(query);
+		contains_iter = std::prev(queries.end());
+		return;
+	}
+	*contains_iter = query;
+}
+
+/*
+ * method got from: https://stackoverflow.com/questions/154536/encode-decode-urls-in-c
+ * author: xperroni
+ * thanks, who am I without you stack overflow?
+*/
+std::string Queries::url_encode(const std::string &value){
+	std::ostringstream escaped;
+    escaped.fill('0');
+    escaped << std::hex;
+
+    for (std::string::const_iterator i = value.begin(), n = value.end(); i != n; ++i) {
+        std::string::value_type c = (*i);
+
+        // Keep alphanumeric and other accepted characters intact
+        if (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~' ) {
+            escaped << c;
+            continue;
+        }
+
+        // Any other characters are percent-encoded
+        escaped << std::uppercase;
+        escaped << '%' << std::setw(2) << int((unsigned char) c);
+        escaped << std::nouppercase;
+    }
+    return escaped.str();
+}
+
 void Queries::queryCursorAfter(const std::string documentId){
 	std::string query = "{\"method\":\"cursorAfter\",\"values\":[\""+documentId+"\"]}";
 	
@@ -30,7 +88,7 @@ void Queries::queryLimit(int limit){
 
 
 void Queries::querySelect(std::list<std::string> &values){
-	std::string query = "{\"method\":\"select\",\"values\":["+listToString(values)+"]}";
+	std::string query = "{\"method\":\"select\",\"values\":["+listToStringNoEncode(values)+"]}";
 	if(sel_iter == queries.end()){
 		queries.push_back(query);
 		sel_iter = std::prev(queries.end());
@@ -75,9 +133,13 @@ void Queries::reset(){
 	between_iter = queries.end();
 	is_null_iter = queries.end();
 	is_not_null_iter = queries.end();
+	
+	starts_iter = queries.end();
+	ends_iter = queries.end();
+	contains_iter = queries.end();
 }
 
-void Queries::addComplexQuery(std::string jsonQuery){
+void Queries::addComplexQuery(const std::string jsonQuery){
 	queries.push_back(jsonQuery);
 }
 
@@ -112,7 +174,13 @@ bool Queries::removeJsonQuery(int index){
 			is_null_iter = queries.end();
 		else if(iter == is_not_null_iter)
 			is_not_null_iter = queries.end();
-		
+		else if(iter == starts_iter)
+			starts_iter = queries.end();
+		else if(iter == ends_iter)
+			ends_iter = queries.end();
+		else if(iter == contains_iter)
+			contains_iter = queries.end();
+			
 		queries.erase(iter);
 	}	
 	return true;

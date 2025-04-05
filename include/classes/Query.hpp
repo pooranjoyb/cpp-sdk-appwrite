@@ -1,6 +1,9 @@
 #ifndef QUERY_HPP_INCLUDED
 #define QUERY_HPP_INCLUDED
 
+#include <type_traits>
+#include <cctype>
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -9,7 +12,7 @@
 class Queries{
 	public:
 		Queries();
-		void addComplexQuery(std::string jsonQuery);
+		void addComplexQuery(const std::string jsonQuery);
 		bool removeJsonQuery(int index);
 		
 		void queryCursorAfter(const std::string documentId);
@@ -17,13 +20,28 @@ class Queries{
 		
 		void queryIsNull(const std::string attributeId);
 		void queryIsNotNull(const std::string attributeId);
+		
+		void queryStartsWith(const std::string attributeId, const std::string &value);
+		void queryEndsWith(const std::string attributeId, const std::string &value);
+		void queryContains(const std::string attributeId, const std::string &value);
 		void reset();
 		
 		template<typename T>
-		void queryBetween(const std::string attributeId, T &value1, T &value2){
+		void queryContains(const std::string attributeId, std::list<T> &value){
+			std::string query = "{\"method\":\"contains\",\"attribute\":\""+attributeId+"\",\"values\":["+listToString(value)+"]}";
+			if(contains_iter == queries.end()){
+				queries.push_back(query);
+				contains_iter = std::prev(queries.end());
+				return;
+			}
+			*contains_iter = query;
+		}
+		
+		template<typename T>
+		void queryBetween(const std::string attributeId, const T &value1, const T &value2){
 			std::ostringstream oss;
 			if(std::is_same<T, std::string>::value)
-				oss << "\"" << value1 <<"\",\""<<value2<<"\"";
+				oss << "\"" << url_encode(value1) <<"\",\""<< url_encode(value2) <<"\"";
 			else
 				oss << value1<< "," <<value2;
 			
@@ -37,10 +55,10 @@ class Queries{
 		}
 		
 		template<typename T>
-		void queryGreaterThanEqual(const std::string attributeId, T &value){
+		void queryGreaterThanEqual(const std::string attributeId, const T &value){
 			std::ostringstream oss;
 			if(std::is_same<T, std::string>::value)
-				oss << "\""<< value << "\"";
+				oss << "\""<< url_encode(value) << "\"";
 			else
 				oss << value;
 			std::string query = "{\"method\":\"greaterThanEqual\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
@@ -53,10 +71,10 @@ class Queries{
 		}
 		
 		template<typename T>
-		void queryGreaterThan(const std::string attributeId, T &value){
+		void queryGreaterThan(const std::string attributeId, const T &value){
 			std::ostringstream oss;
 			if(std::is_same<T, std::string>::value)
-				oss << "\""<< value << "\"";
+				oss << "\""<< url_encode(value) << "\"";
 			else
 				oss << value;
 			std::string query = "{\"method\":\"greaterThan\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
@@ -69,10 +87,10 @@ class Queries{
 		}
 		
 		template<typename T>
-		void queryLessThanEqual(const std::string attributeId, T &value){
+		void queryLessThanEqual(const std::string attributeId, const T &value){
 			std::ostringstream oss;
 			if(std::is_same<T, std::string>::value)
-				oss << "\""<< value << "\"";
+				oss << "\""<< url_encode(value) << "\"";
 			else
 				oss << value;
 			std::string query = "{\"method\":\"lessThanEqual\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
@@ -85,10 +103,10 @@ class Queries{
 		}
 		
 		template<typename T>
-		void queryLessThan(const std::string attributeId, T &value){
+		void queryLessThan(const std::string attributeId, const T &value){
 			std::ostringstream oss;
 			if(std::is_same<T, std::string>::value)
-				oss << "\""<< value << "\"";
+				oss << "\""<< url_encode(value) << "\"";
 			else
 				oss << value;
 			std::string query = "{\"method\":\"lessThan\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
@@ -121,12 +139,39 @@ class Queries{
 			}
 			*not_equal_iter = query;
 		}
-		
 		void querySelect(std::list<std::string> &values);
 		std::string to_string();
 		
 		
 	private:
+		
+		std::string url_encode(const std::string &value);
+		
+		template<typename T>
+		typename std::enable_if<std::is_same<T, std::string>::value, void>::type
+		append_encoded(std::ostringstream &oss, T& iter){
+			oss<< "\"" <<url_encode(iter) <<"\"";
+		}
+		
+		template<typename T>
+		typename std::enable_if<!std::is_same<T, std::string>::value, void>::type
+		append_encoded(std::ostringstream &oss, T& iter){
+			oss<< iter;
+		}
+		
+		template<typename T>
+		std::string listToStringNoEncode(std::list<T> &ls){
+			int size = ls.size(), count = 0;
+			std::ostringstream oss;
+			for(auto iter:ls){
+				oss << "\"" << iter <<"\"";
+				if(count < size -1)
+					oss <<",";
+				count ++;
+			}
+			return oss.str();
+		}
+		
 		template<typename T>
 		std::string listToString(std::list<T> &ls){
 			int size = ls.size(), count = 0;
@@ -134,11 +179,7 @@ class Queries{
 			oss << std::boolalpha;
 			
 			for(auto iter = ls.begin(); iter != ls.end(); iter++){
-				if(std::is_same<T, std::string>::value) {
-					oss << "\"" << *iter << "\"";  // Add escaped quotes for strings
-				}else
-					oss << (*iter);
-				 
+				append_encoded(oss, *iter);
 				if(count < size-1){
 					oss << ",";
 				}
@@ -150,7 +191,8 @@ class Queries{
 										not_equal_iter, sel_iter, less_than_iter,
 										less_than_equal_iter, greater_than_iter, 
 										greater_than_equal_iter, between_iter,
-										is_null_iter, is_not_null_iter;
+										is_null_iter, is_not_null_iter,
+										starts_iter,ends_iter, contains_iter;
 		std::list<std::string> queries;
 };
 
