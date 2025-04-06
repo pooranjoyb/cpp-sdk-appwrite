@@ -40,11 +40,11 @@ class Queries{
 		template<typename T>
 		void queryBetween(const std::string attributeId, const T &value1, const T &value2){
 			std::ostringstream oss;
-			if(std::is_same<T, std::string>::value)
-				oss << "\"" << url_encode(value1) <<"\",\""<< url_encode(value2) <<"\"";
-			else
-				oss << value1<< "," <<value2;
-			
+
+			oss << append_encoded(oss,value1);
+			oss << ",";
+			oss << append_encoded(oss,value2);
+
 			std::string query = "{\"method\":\"between\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
 			if(between_iter == queries.end()){
 				queries.push_back(query);
@@ -57,10 +57,7 @@ class Queries{
 		template<typename T>
 		void queryGreaterThanEqual(const std::string attributeId, const T &value){
 			std::ostringstream oss;
-			if(std::is_same<T, std::string>::value)
-				oss << "\""<< url_encode(value) << "\"";
-			else
-				oss << value;
+			oss<< append_encoded(oss,value);
 			std::string query = "{\"method\":\"greaterThanEqual\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
 			if(greater_than_equal_iter == queries.end()){
 				queries.push_back(query);
@@ -73,10 +70,7 @@ class Queries{
 		template<typename T>
 		void queryGreaterThan(const std::string attributeId, const T &value){
 			std::ostringstream oss;
-			if(std::is_same<T, std::string>::value)
-				oss << "\""<< url_encode(value) << "\"";
-			else
-				oss << value;
+			append_encoded(oss,value);
 			std::string query = "{\"method\":\"greaterThan\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
 			if(greater_than_iter == queries.end()){
 				queries.push_back(query);
@@ -89,10 +83,7 @@ class Queries{
 		template<typename T>
 		void queryLessThanEqual(const std::string attributeId, const T &value){
 			std::ostringstream oss;
-			if(std::is_same<T, std::string>::value)
-				oss << "\""<< url_encode(value) << "\"";
-			else
-				oss << value;
+			append_encoded(oss, value);
 			std::string query = "{\"method\":\"lessThanEqual\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
 			if(less_than_equal_iter == queries.end()){
 				queries.push_back(query);
@@ -105,10 +96,7 @@ class Queries{
 		template<typename T>
 		void queryLessThan(const std::string attributeId, const T &value){
 			std::ostringstream oss;
-			if(std::is_same<T, std::string>::value)
-				oss << "\""<< url_encode(value) << "\"";
-			else
-				oss << value;
+			append_encoded(oss,value);
 			std::string query = "{\"method\":\"lessThan\",\"attribute\":\""+attributeId+"\",\"values\":["+oss.str()+"]}";
 			if(less_than_iter == queries.end()){
 				queries.push_back(query);
