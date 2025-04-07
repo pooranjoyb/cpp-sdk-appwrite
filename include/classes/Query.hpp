@@ -137,16 +137,21 @@ class Queries{
 		
 		template<typename T>
 		typename std::enable_if<std::is_same<T, std::string>::value, void>::type
-		append_encoded(std::ostringstream &oss, T& iter){
+		append_encoded(std::ostringstream &oss, const T& iter){
 			oss<< "\"" <<url_encode(iter) <<"\"";
 		}
 		
 		template<typename T>
 		typename std::enable_if<!std::is_same<T, std::string>::value, void>::type
-		append_encoded(std::ostringstream &oss, T& iter){
+		append_encoded(std::ostringstream &oss, const T& iter){
 			oss<< iter;
 		}
-		
+
+		// Finally handles string literals
+		inline void append_encoded(std::ostringstream &oss, const char *iter){
+			oss<< "\"" <<url_encode(iter) <<"\"";
+		}
+
 		template<typename T>
 		std::string listToStringNoEncode(std::list<T> &ls){
 			int size = ls.size(), count = 0;
