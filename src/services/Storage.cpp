@@ -60,19 +60,37 @@ std::string Storage::updateBucket(const std::string& bucketId, const std::string
 
     std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId;
 
-    json payloadJson = {
-            {"name", name},
-            {"permissions", permissions},
-            {"fileSecurity", fileSecurity},
-            {"enabled", enabled},
-            {"maximumFileSize", maximumFileSize},
-            {"allowedFileExtensions", allowedFileExtensions},
-            {"compression", compression},
-            {"encryption", encryption},
-            {"antivirus", antivirus}
-        };
+    auto boolToString = [](bool value) { 
+        return value ? "true" : "false";
+    };
 
-    std::string payload = payloadJson.dump();
+    std::string permissionsStr = "[";
+    for (const auto &perm : permissions) {
+        permissionsStr += "\"" + Utils::escapeJsonString(perm) + "\",";
+    }
+
+    if (!permissions.empty()) permissionsStr.pop_back();
+    permissionsStr += "]";
+
+    std::string extensionsStr = "[";
+    for (const auto &ext : allowedFileExtensions) {
+        extensionsStr += "\"" + Utils::escapeJsonString(ext) + "\",";
+    }
+
+    if (!allowedFileExtensions.empty()) extensionsStr.pop_back();
+    extensionsStr += "]";
+
+    std::string payload = R"({"name":")" 
+        + Utils::escapeJsonString(name) + R"(",)" 
+        + R"("permissions":)" + permissionsStr + "," 
+        + R"("fileSecurity":)" + boolToString(fileSecurity) + "," 
+        + R"("enabled":)" + boolToString(enabled) + "," 
+        + R"("maximumFileSize":)" + std::to_string(maximumFileSize) + "," 
+        + R"("allowedFileExtensions":)" + extensionsStr + "," 
+        + R"("compression":")" + Utils::escapeJsonString(compression) + R"(",)" 
+        + R"("encryption":)" + boolToString(encryption) + "," 
+        + R"("antivirus":)" + boolToString(antivirus) + "}";
+
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
 

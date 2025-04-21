@@ -226,18 +226,66 @@ namespace Utils
         return static_cast<int>(httpCode);
     }
 
-    std::string urlEncode(const std::string& value) {
+    std::string urlEncode(const std::string &value)
+    {
         std::ostringstream escaped;
         escaped << std::hex << std::setfill('0');
-        
-        for (char c : value) {
-            if (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~') {
+
+        for (char c : value)
+        {
+            if (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~')
+            {
                 escaped << c;
-            } else {
+            }
+            else
+            {
                 escaped << '%' << std::setw(2) << (static_cast<int>(c) & 0xFF);
             }
         }
-        
+
         return escaped.str();
+    }
+
+    std::string escapeJsonString(const std::string &input)
+    {
+        std::ostringstream ss;
+        for (auto c : input)
+        {
+            switch (c)
+            {
+            case '\"':
+                ss << "\\\"";
+                break;
+            case '\\':
+                ss << "\\\\";
+                break;
+            case '\b':
+                ss << "\\b";
+                break;
+            case '\f':
+                ss << "\\f";
+                break;
+            case '\n':
+                ss << "\\n";
+                break;
+            case '\r':
+                ss << "\\r";
+                break;
+            case '\t':
+                ss << "\\t";
+                break;
+            default:
+                if ('\x00' <= c && c <= '\x1f')
+                {
+                    ss << "\\u"
+                       << std::hex << std::setw(4) << std::setfill('0') << static_cast<int>(c);
+                }
+                else
+                {
+                    ss << c;
+                }
+            }
+        }
+        return ss.str();
     }
 }
