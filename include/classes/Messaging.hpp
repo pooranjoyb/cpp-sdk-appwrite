@@ -1,18 +1,20 @@
 #ifndef MESSAGING_HPP
 #define MESSAGING_HPP
 
-#include <string>
 #include "Utils.hpp"
-#include "exceptions/AppwriteException.hpp"
 #include "enums/HttpStatus.hpp"
+#include "exceptions/AppwriteException.hpp"
+#include <string>
 
 class Messaging {
-public:
-    Messaging(const std::string& projectId, const std::string& apiKey);
+  public:
+    Messaging(const std::string &projectId, const std::string &apiKey);
 
-    std::string getTopic(const std::string& topicId);
+    std::string getTopic(const std::string &topicId);
+    std::string createTopic(const std::string &topicId, const std::string &name,
+                            const std::vector<std::string> &subscribe);
 
-private:
+  private:
     std::string projectId;
     std::string apiKey;
 };

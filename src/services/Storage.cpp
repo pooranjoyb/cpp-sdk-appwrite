@@ -61,8 +61,6 @@ Storage::updateBucket(const std::string &bucketId, const std::string &name,
 
     std::string url = Config::API_BASE_URL + "/storage/buckets/" + bucketId;
 
-    auto boolToString = [](bool value) { return value ? "true" : "false"; };
-
     std::string permissionsStr = "[";
     for (const auto &perm : permissions) {
         permissionsStr += "\"" + Utils::escapeJsonString(perm) + "\",";
@@ -84,13 +82,13 @@ Storage::updateBucket(const std::string &bucketId, const std::string &name,
     std::string payload =
         R"({"name":")" + Utils::escapeJsonString(name) + R"(",)" +
         R"("permissions":)" + permissionsStr + "," + R"("fileSecurity":)" +
-        boolToString(fileSecurity) + "," + R"("enabled":)" +
-        boolToString(enabled) + "," + R"("maximumFileSize":)" +
+        Utils::boolToString(fileSecurity) + "," + R"("enabled":)" +
+        Utils::boolToString(enabled) + "," + R"("maximumFileSize":)" +
         std::to_string(maximumFileSize) + "," + R"("allowedFileExtensions":)" +
         extensionsStr + "," + R"("compression":")" +
         Utils::escapeJsonString(compression) + R"(",)" + R"("encryption":)" +
-        boolToString(encryption) + "," + R"("antivirus":)" +
-        boolToString(antivirus) + "}";
+        Utils::boolToString(encryption) + "," + R"("antivirus":)" +
+        Utils::boolToString(antivirus) + "}";
 
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);

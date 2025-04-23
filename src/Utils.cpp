@@ -288,4 +288,6 @@ namespace Utils
         }
         return ss.str();
     }
+
+    std::string boolToString(bool value) { return value ? "true" : "false"; };
 }
