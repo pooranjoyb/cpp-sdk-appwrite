@@ -1,6 +1,7 @@
 #include "classes/Messaging.hpp"
 #include "Utils.hpp"
 #include "Validator.hpp"
+#include "classes/Query.hpp"
 #include "config/Config.hpp"
 #include "enums/HttpStatus.hpp"
 #include "exceptions/AppwriteException.hpp"
@@ -23,14 +24,13 @@ std::string Messaging::getTopic(const std::string &topicId) {
     std::string response;
 
     int statusCode = Utils::getRequest(url, headers, response);
-    std::cout << response;
 
     if (statusCode == HttpStatus::OK) {
         return response;
     } else {
-        throw AppwriteException("Error fetching health. Status code: " +
-                                std::to_string(statusCode) +
-                                "\n\nResponse: " + response);
+        throw AppwriteException(
+            "Error fetching topic. Status code: " + std::to_string(statusCode) +
+            "\n\nResponse: " + response);
     }
 }
 
@@ -76,5 +76,60 @@ std::string Messaging::createTopic(const std::string &topicId,
         throw AppwriteException(
             "Error Creating Topic. Status code: " + std::to_string(statusCode) +
             "\n\nResponse: " + response);
+    }
+}
+
+std::string Messaging::getSubscriber(const std::string &topicId,
+                                     const std::string &subscriberId) {
+    if (topicId.empty()) {
+        throw AppwriteException("Missing required parameter: 'topicId'");
+    }
+
+    if (subscriberId.empty()) {
+        throw AppwriteException("Missing required parameter: 'subscriberId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/topics/" + topicId +
+                      "/subscribers/" + subscriberId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching subscribers. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
+
+std::string Messaging::listSubscribers(const std::string &topicId,
+                                       Queries &queries) {
+    if (topicId.empty()) {
+        throw AppwriteException("Missing required parameter: 'topicId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/topics/" + topicId +
+                      "/subscribers" + queries.to_string();
+    ;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error listing subscribers. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
     }
 }

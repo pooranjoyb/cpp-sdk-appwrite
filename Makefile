@@ -240,3 +240,9 @@ getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 createTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp $(LDFLAGS)
+getSubscriber: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/getSubscriber.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getSubscriber $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/getSubscriber.cpp $(LDFLAGS)
+listSubscribers: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/listSubscribers.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listSubscribers $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/listSubscribers.cpp $(LDFLAGS)
