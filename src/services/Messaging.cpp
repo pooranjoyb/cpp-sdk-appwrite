@@ -34,6 +34,51 @@ std::string Messaging::getTopic(const std::string &topicId) {
     }
 }
 
+std::string Messaging::listTopics(Queries &queries) {
+
+    std::string url =
+        Config::API_BASE_URL + "/messaging/topics" + queries.to_string();
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error listing topics. Status code: " + std::to_string(statusCode) +
+            "\n\nResponse: " + response);
+    }
+}
+
+std::string Messaging::deleteTopic(const std::string &topicId) {
+
+    if (topicId.empty()) {
+        throw AppwriteException("Missing required parameter: 'topicId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/topics/" + topicId;
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+
+    int statusCode = Utils::deleteRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::DELETED) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error deleting topic. Status code: " + std::to_string(statusCode) +
+            "\n\nResponse: " + response);
+    }
+}
+
 std::string Messaging::createTopic(const std::string &topicId,
                                    const std::string &name,
                                    const std::vector<std::string> &subscribe) {

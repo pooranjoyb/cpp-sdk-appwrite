@@ -237,6 +237,12 @@ getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp $(LDFLAGS)
+listTopics: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/listTopics.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTopics $(SRCS) $(EXAMPLES_DIR)/messaging/topics/listTopics.cpp $(LDFLAGS)
+deleteTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/deleteTopic.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/deleteTopic.cpp $(LDFLAGS)
 createTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp $(LDFLAGS)
