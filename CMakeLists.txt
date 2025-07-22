@@ -13,6 +13,7 @@ set(SRCS
     src/services/Account.cpp
     src/services/Query.cpp
     src/services/Databases.cpp
+    src/services/Messaging.cpp
     src/services/Storage.cpp
     src/services/Health.cpp
     src/Utils.cpp
@@ -34,6 +35,7 @@ set(HEADERS
     include/classes/Account.hpp
     include/classes/Query.hpp
     include/classes/Databases.hpp
+    include/classes/Messaging.hpp
     include/classes/Storage.hpp
     include/classes/Health.hpp
     include/config/Config.hpp
