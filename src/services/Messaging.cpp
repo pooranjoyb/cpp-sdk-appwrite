@@ -373,3 +373,37 @@ std::string Messaging::updateMessage(const std::string &messageId,
                                 "\n\nResponse: " + response);
     }
 }
+
+std::string Messaging::createEmailMessage(const std::string &subject,
+                                          const std::string &content,
+                                          const std::string &topicId,
+                                          const std::string &senderEmail,
+                                          const std::string &senderName) {
+    if (subject.empty() || content.empty() || topicId.empty() || senderEmail.empty() || senderName.empty()) {
+        throw AppwriteException("Missing required parameters to create email message.");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/email";
+
+    std::string payload =
+        R"({"subject":")" + Utils::escapeJsonString(subject) +
+        R"(","content":")" + Utils::escapeJsonString(content) +
+        R"(","topicId":")" + Utils::escapeJsonString(topicId) +
+        R"(","sender": { "email":")" + Utils::escapeJsonString(senderEmail) +
+        R"(","name":")" + Utils::escapeJsonString(senderName) + R"("}})";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating email message. Status code: " +
+                                std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
