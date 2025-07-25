@@ -1,3 +1,5 @@
+/// @file Messaging.hpp
+/// @brief Provides messaging-related operations (messages, topics, subscribers)
 #ifndef MESSAGING_HPP
 #define MESSAGING_HPP
 
@@ -7,8 +9,17 @@
 #include "exceptions/AppwriteException.hpp"
 #include <string>
 
+/**
+ * @class Messaging
+ * @brief Provides APIs to manage messaging: messages, topics, subscribers.
+ */
 class Messaging {
   public:
+    /**
+     * @brief Constructor for Messaging service.
+     * @param projectId Appwrite project ID
+     * @param apiKey Appwrite API key
+     */
     Messaging(const std::string &projectId, const std::string &apiKey);
 
     std::string listMessages(Queries &queries);
@@ -33,8 +44,8 @@ class Messaging {
                                   const std::string &subscriberId);
 
   private:
-    std::string projectId;
-    std::string apiKey;
+    std::string projectId; ///< Project ID
+    std::string apiKey;    ///< API Key
 };
 
 #endif

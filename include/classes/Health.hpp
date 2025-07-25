@@ -1,16 +1,26 @@
 #ifndef HEALTH_HPP
 #define HEALTH_HPP
 
-#include <string>
 #include "Utils.hpp"
-#include "exceptions/AppwriteException.hpp"
 #include "enums/HttpStatus.hpp"
+#include "exceptions/AppwriteException.hpp"
+#include <string>
 
+/**
+ * @class Health
+ * @brief Monitors the status of Appwrite's internal services.
+ */
 class Health {
-public:
-    Health(const std::string& projectId, const std::string& apiKey);
+  public:
+    /**
+     * @brief Constructor for Health class.
+     * @param projectId Appwrite project ID.
+     * @param apiKey Appwrite API key.
+     */
+    Health(const std::string &projectId, const std::string &apiKey);
 
-    // core
+    // Health checks for internal services
+
     std::string getHealthStatus();
     std::string getAntivirus();
     std::string getCache();
@@ -20,20 +30,19 @@ public:
     std::string getStorageLocal();
     std::string getTime();
     std::string getQueue();
-    std::string getCertificate(const std::string& domain = "");
-    std::string getQueueMails(const std::string& domain = "");
-    std::string getQueueCertificates(const std::string& threshold = "");
-    std::string getQueueBuilds(const std::string& threshold = "");
-    std::string getQueueMessaging(const std::string& threshold = "");
-    std::string getQueueMigrations(const std::string& threshold = "");
-    std::string getQueueFunctions(const std::string& threshold = "");
-    std::string getQueueUsageWebhooks(const std::string& threshold = "");
-    std::string getQueueUsageDump(const std::string& threshold = "");
+    std::string getCertificate(const std::string &domain = "");
+    std::string getQueueMails(const std::string &domain = "");
+    std::string getQueueCertificates(const std::string &threshold = "");
+    std::string getQueueBuilds(const std::string &threshold = "");
+    std::string getQueueMessaging(const std::string &threshold = "");
+    std::string getQueueMigrations(const std::string &threshold = "");
+    std::string getQueueFunctions(const std::string &threshold = "");
+    std::string getQueueUsageWebhooks(const std::string &threshold = "");
+    std::string getQueueUsageDump(const std::string &threshold = "");
 
-    
-private:
-    std::string apiKey;
-    std::string projectId;
+  private:
+    std::string apiKey;    ///< Appwrite API key
+    std::string projectId; ///< Appwrite project ID
 };
 
 #endif
