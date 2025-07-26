@@ -19,58 +19,121 @@ class Health {
      */
     Health(const std::string &projectId, const std::string &apiKey);
 
-    /// Check overall Appwrite health.
+    /**
+     * @brief Check overall Appwrite health.
+     * @return JSON string with health status.
+     */
     std::string getHealthStatus();
 
-    /// Check Antivirus service.
+    /**
+     * @brief Check Antivirus service status.
+     * @return JSON string with antivirus health.
+     */
     std::string getAntivirus();
 
-    /// Check cache service.
+    /**
+     * @brief Check cache service status.
+     * @return JSON string with cache health.
+     */
     std::string getCache();
 
-    /// Check database service.
+    /**
+     * @brief Check database service status.
+     * @return JSON string with database health.
+     */
     std::string getDB();
 
-    /// Check pub/sub service.
+    /**
+     * @brief Check pub/sub service status.
+     * @return JSON string with pub/sub health.
+     */
     std::string getPubSub();
 
-    /// Check storage service.
+    /**
+     * @brief Check storage service status.
+     * @return JSON string with storage health.
+     */
     std::string getStorage();
 
-    /// Check local storage service.
+    /**
+     * @brief Check local storage service status.
+     * @return JSON string with local storage health.
+     */
     std::string getStorageLocal();
 
-    /// Get server time.
+    /**
+     * @brief Get current server time.
+     * @return JSON string with server time.
+     */
     std::string getTime();
 
-    /// Check job queue service.
+    /**
+     * @brief Check job queue service status.
+     * @return JSON string with queue health.
+     */
     std::string getQueue();
 
-    /// Get SSL certificate status for a domain.
+    /**
+     * @brief Get SSL certificate status for a domain.
+     * @param domain Domain name to check.
+     * @return JSON string with certificate status.
+     */
     std::string getCertificate(const std::string &domain = "");
 
-    /// Get queued emails.
+    /**
+     * @brief Get queued emails.
+     * @param domain Optional domain to filter.
+     * @return JSON string with email queue.
+     */
     std::string getQueueMails(const std::string &domain = "");
 
-    /// Get queued certificates.
+    /**
+     * @brief Get queued certificate jobs.
+     * @param threshold Optional threshold filter.
+     * @return JSON string with certificate queue.
+     */
     std::string getQueueCertificates(const std::string &threshold = "");
 
-    /// Get queued build jobs.
+    /**
+     * @brief Get queued build jobs.
+     * @param threshold Optional threshold filter.
+     * @return JSON string with build queue.
+     */
     std::string getQueueBuilds(const std::string &threshold = "");
 
-    /// Get queued messaging jobs.
+    /**
+     * @brief Get queued messaging jobs.
+     * @param threshold Optional threshold filter.
+     * @return JSON string with messaging queue.
+     */
     std::string getQueueMessaging(const std::string &threshold = "");
 
-    /// Get queued database migrations.
+    /**
+     * @brief Get queued database migrations.
+     * @param threshold Optional threshold filter.
+     * @return JSON string with migration queue.
+     */
     std::string getQueueMigrations(const std::string &threshold = "");
 
-    /// Get queued function executions.
+    /**
+     * @brief Get queued function executions.
+     * @param threshold Optional threshold filter.
+     * @return JSON string with function queue.
+     */
     std::string getQueueFunctions(const std::string &threshold = "");
 
-    /// Get queued usage webhook events.
+    /**
+     * @brief Get queued usage webhook events.
+     * @param threshold Optional threshold filter.
+     * @return JSON string with usage webhook queue.
+     */
     std::string getQueueUsageWebhooks(const std::string &threshold = "");
 
-    /// Get queued usage dump jobs.
+    /**
+     * @brief Get queued usage dump jobs.
+     * @param threshold Optional threshold filter.
+     * @return JSON string with usage dump queue.
+     */
     std::string getQueueUsageDump(const std::string &threshold = "");
 
   private:
