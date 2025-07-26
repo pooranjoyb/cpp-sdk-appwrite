@@ -1,6 +1,6 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Iinclude 
-LDFLAGS = -lcurl 
+CXXFLAGS = -std=c++11 -Iinclude
+LDFLAGS = -lcurl
 
 SRC_DIR = src
 INCLUDE_DIR = include
@@ -131,7 +131,7 @@ updateStringAttribute: $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/upd
 				$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateStringAttribute $(SRCS) $(EXAMPLES_DIR)/database/collection/attribute/updateStringAttribute.cpp $(LDFLAGS)
 
 # Collection-Indexes
-listIndexes: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp 
+listIndexes: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp
 				@mkdir -p ./$(TESTS_DIR)
 				$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listIndexes $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/listIndexes.cpp $(LDFLAGS)
 createIndex: $(SRCS) $(EXAMPLES_DIR)/database/collection/indexes/createIndex.cpp
@@ -240,8 +240,8 @@ getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 
 # Messaging - Messages
 createPush: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp
-	        @mkdir -p ./$(TESTS_DIR)
-	        $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createPush $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createPush $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp $(LDFLAGS)
 
 listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)

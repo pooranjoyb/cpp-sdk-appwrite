@@ -7,7 +7,6 @@
 #include "exceptions/AppwriteException.hpp"
 #include <iostream>
 #include <sstream>
-#include "Messaging.hpp"
 
 Messaging::Messaging(const std::string &projectId, const std::string &apiKey)
     : projectId(projectId), apiKey(apiKey) {}
@@ -377,7 +376,7 @@ std::string Messaging::createPush(const std::string &messageId,
     std::string response;
     int statusCode = Utils::postRequest(url, payload, headers, response);
 
-    if (statusCode == HttpStatus::OK) { 
+    if (statusCode == HttpStatus::CREATED) { 
         return response; 
     }  else { 
          throw AppwriteException( 

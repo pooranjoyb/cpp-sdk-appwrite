@@ -3,23 +3,26 @@
 #include <iostream>
 
 int main() {
-    std::string projectId = "66fbb5a100070a3a1d19"; 
-    std::string apiKey = ""; 
-    Appwrite appwrite(projectId, apiKey); 
-  
-    std::string topicId = "67b3048600077f40b8a7"; 
+    
+    std::string projectId = "68809d54001a8a7c1f72"; 
 
-    Messaging messaging(projectId,apiKey);
+    std::string apiKey = "";
+
+    Appwrite appwrite(projectId, apiKey);
+    
+    std::string topicId = "67b3048600077f40b8a7";
+ 
+
     try {
 
-        std::string response = messaging.createPush(
-            "push-001",
-            "Hello!",
-            "This is a push notification.",
+        std::string response = appwrite.getMessaging().createPush(
+            "unique()",
+            "Title ",
+            "Body",
             topicId
         );
 
-        std::cout << "Push created: " << response << std::endl;
+        std::cout << "Push notification created: " << response << std::endl;
     } catch (const AppwriteException &e) {
         std::cerr << "Appwrite error: " << e.what() << std::endl;
     }
