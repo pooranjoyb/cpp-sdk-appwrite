@@ -1,0 +1,54 @@
+# Doxygen configuration for Appwrite C++ SDK
+
+# Project details
+PROJECT_NAME           = "Appwrite C++ SDK"
+PROJECT_BRIEF          = "C++ SDK for interacting with the Appwrite backend services"
+OUTPUT_DIRECTORY       = docs
+
+# Input
+INPUT                  = AppwriteSDK/
+FILE_PATTERNS          = *.hpp *.cpp
+RECURSIVE              = YES
+EXCLUDE                = 
+
+# Extraction behavior
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_ANON_NSPACES   = YES
+
+# Documentation behavior
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+OPTIMIZE_OUTPUT_VHDL   = NO
+OPTIMIZE_FOR_FORTRAN   = NO
+
+# Source browser
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+
+# HTML output
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_COLORSTYLE_HUE    = 220
+HTML_DYNAMIC_SECTIONS  = YES
+
+# LaTeX output (disable for now)
+GENERATE_LATEX         = NO
+
+# Dot Graphs
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+DOT_MULTI_TARGETS      = YES
+
+# Warnings
+QUIET                  = NO
+WARN_IF_UNDOCUMENTED   = YES
+WARN_LOGFILE           = doxygen-warnings.log
