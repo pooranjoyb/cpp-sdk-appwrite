@@ -1,3 +1,7 @@
+/// @file Account.hpp
+/// @brief Handles user account-related operations like creation and session
+/// management.
+
 #ifndef ACCOUNT_HPP
 #define ACCOUNT_HPP
 
