@@ -1,6 +1,6 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Iinclude -I"C:\tools\curl-8.15.0_4-win32-mingw\include" -DCURL_STATICLIB
-LDFLAGS = -L"C:\tools\curl-8.15.0_4-win32-mingw\lib" -lcurl -lws2_32 -lwldap32 -lcrypt32
+CXXFLAGS = -std=c++11 -Iinclude 
+LDFLAGS = -lcurl 
 
 SRC_DIR = src
 INCLUDE_DIR = include
