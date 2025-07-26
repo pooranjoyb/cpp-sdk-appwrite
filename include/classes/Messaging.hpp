@@ -31,6 +31,10 @@ class Messaging {
                                   const std::string &name,
                                   const std::string &targetId,
                                   const std::string &subscriberId);
+    std::string createPush(const std::string &messageId,
+                                  const std::string &title,
+                                  const std::string &body,
+                                  const std::string &topicId);                              
 
   private:
     std::string projectId;

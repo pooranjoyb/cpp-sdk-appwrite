@@ -239,6 +239,10 @@ getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 				$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/params/getQueueMigrations $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp $(LDFLAGS)
 
 # Messaging - Messages
+createPush: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createPush $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp $(LDFLAGS)
+
 listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp $(LDFLAGS)
