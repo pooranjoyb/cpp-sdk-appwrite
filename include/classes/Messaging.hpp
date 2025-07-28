@@ -33,12 +33,6 @@ class Messaging {
                                   const std::string &name,
                                   const std::string &targetId,
                                   const std::string &subscriberId);
-     std::string createMessage(const std::string& messageId,
-                               const std::string& subject,
-                               const std::string& content,
-                               const std::vector<std::string>& topics = {},
-                               const std::vector<std::string>& targets = {});
-
     std::string updateMessage(const std::string &messageId,
                           const std::string &subject,
                           const std::string &content);

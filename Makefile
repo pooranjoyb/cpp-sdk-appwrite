@@ -276,10 +276,8 @@ deleteSubscribers: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/deleteSubscribe
 createSubscribers: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/createSubscribers.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createSubscribers $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/createSubscribers.cpp $(LDFLAGS)
-# Messaging - messages			
-createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
-	@mkdir -p ./$(TESTS_DIR)
-	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp $(LDFLAGS)
+			
+# Messaging - messages
 updateMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateMessage.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateMessage.cpp $(LDFLAGS)
