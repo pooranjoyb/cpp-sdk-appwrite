@@ -36,8 +36,9 @@ class Messaging {
                                const std::string& content,
                                const std::vector<std::string>& topics = {},
                                const std::vector<std::string>& targets = {});
-   
-
+    std::string updateMessage(const std::string& messageId,
+                              const std::string& subject,
+                              const std::string& content);
 
   private:
     std::string projectId;

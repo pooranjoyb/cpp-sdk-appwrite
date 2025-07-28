@@ -399,3 +399,38 @@ std::string Messaging::createMessage(const std::string& messageId,
                                 std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Messaging::updateMessage(
+    const std::string& messageId,
+    const std::string& subject,
+    const std::string& content
+) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+    if (subject.empty()) {
+        throw AppwriteException("Missing required parameter: 'subject'");
+    }
+    if (content.empty()) {
+        throw AppwriteException("Missing required parameter: 'content'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/email/" + Utils::urlEncode(messageId);
+
+    std::string payload = R"({"subject":")" + Utils::escapeJsonString(subject) +
+                          R"(","content":")" + Utils::escapeJsonString(content) + R"("})";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating message. Status code: " + std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
