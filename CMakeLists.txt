@@ -18,6 +18,7 @@ set(SRCS
     src/services/Health.cpp
     src/Utils.cpp
     src/Validator.cpp
+    examples/messaging/messages/deleteMessages.cpp
 )
 
 add_library(AppwriteSDK STATIC ${SRCS})

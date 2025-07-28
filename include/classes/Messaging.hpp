@@ -13,8 +13,8 @@ class Messaging {
 
     std::string listMessages(Queries &queries);
     std::string getMessages(const std::string &messageId);
-    std::string deletemessage(const std::string &messageId);
-    
+    std::string deleteMessages(const std::string &messageId);
+
     std::string getTopic(const std::string &topicId);
     std::string listTopics(Queries &queries);
     std::string deleteTopic(const std::string &topicId);

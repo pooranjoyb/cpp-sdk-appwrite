@@ -54,9 +54,7 @@ std::string Messaging::getMessages(const std::string &messageId) {
     }
 }
 
-
-
-std::string Messaging::deletemessage(const std::string &messageId) {
+std::string Messaging::deleteMessages(const std::string &messageId) {
     if (messageId.empty()) {
         throw AppwriteException("Missing required parameter: 'messageId'");
     }
@@ -68,18 +66,16 @@ std::string Messaging::deletemessage(const std::string &messageId) {
 
     std::string response;
 
-       int statusCode = Utils::deleteRequest(url, headers, response);
+    int statusCode = Utils::deleteRequest(url, headers, response);
 
     if (statusCode == HttpStatus::DELETED) {
         return response;
     } else {
-        throw AppwriteException(
-            "Error deleting message. Status code: " + std::to_string(statusCode) +
-            "\n\nResponse: " + response);
+        throw AppwriteException("Error deleting message. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
     }
 }
-
-
 
 std::string Messaging::getTopic(const std::string &topicId) {
     if (topicId.empty()) {
