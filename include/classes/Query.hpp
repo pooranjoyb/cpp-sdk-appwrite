@@ -1,3 +1,7 @@
+/// @file Query.hpp
+/// @brief Offers helper methods to construct query parameters for filtering and
+/// sorting API responses.
+
 #ifndef QUERY_HPP_INCLUDED
 #define QUERY_HPP_INCLUDED
 

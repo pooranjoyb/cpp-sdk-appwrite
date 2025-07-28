@@ -1,4 +1,0 @@
-warning: source 'AppwriteSDK' is not a readable file or directory... skipping.
-warning: No files to be processed, please check your settings, in particular INPUT, FILE_PATTERNS, and RECURSIVE
-C:/Users/akd24/Documents/cpp-sdk-appwrite/docs/html/graph_legend.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"C:/Users/akd24/Documents/cpp-sdk-appwrite/docs/html/graph_legend.dot" -Tsvg -o "C:/Users/akd24/Documents/cpp-sdk-appwrite/docs/html/graph_legend.svg"'
-error: Problem extracting size from SVG file C:/Users/akd24/Documents/cpp-sdk-appwrite/docs/html/graph_legend.svg

@@ -1,3 +1,6 @@
+/// @file Utils.hpp
+/// @brief Provides utility functions and helpers used across the SDK.
+
 #ifndef UTILS_HPP
 #define UTILS_HPP
 

@@ -1,54 +1,59 @@
-# Doxygen configuration for Appwrite C++ SDK
-
-# Project details
+# Project information
 PROJECT_NAME           = "Appwrite C++ SDK"
-PROJECT_BRIEF          = "C++ SDK for interacting with the Appwrite backend services"
+PROJECT_BRIEF          = "Auto-generated API documentation for the Appwrite C++ SDK"
 OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
 
-# Input
-INPUT                  = AppwriteSDK/
-FILE_PATTERNS          = *.hpp *.cpp
+# Main page and input
+USE_MDFILE_AS_MAINPAGE = mainpage.dox
+INPUT                  = include mainpage.dox
+FILE_PATTERNS          = *.hpp *.h
 RECURSIVE              = YES
-EXCLUDE                = 
+EXCLUDE                = tests examples src
 
-# Extraction behavior
+# Extraction settings
 EXTRACT_ALL            = YES
-EXTRACT_PRIVATE        = YES
+EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = YES
 EXTRACT_LOCAL_CLASSES  = YES
 EXTRACT_ANON_NSPACES   = YES
 
-# Documentation behavior
-OPTIMIZE_OUTPUT_FOR_C  = NO
-OPTIMIZE_OUTPUT_JAVA   = NO
-OPTIMIZE_OUTPUT_VHDL   = NO
-OPTIMIZE_FOR_FORTRAN   = NO
+# Warnings
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
 
-# Source browser
-SOURCE_BROWSER         = YES
-INLINE_SOURCES         = YES
-REFERENCED_BY_RELATION = YES
-REFERENCES_RELATION    = YES
-CALL_GRAPH             = YES
-CALLER_GRAPH           = YES
-
-# HTML output
+# Output formats
 GENERATE_HTML          = YES
 HTML_OUTPUT            = html
-HTML_COLORSTYLE_HUE    = 220
-HTML_DYNAMIC_SECTIONS  = YES
-
-# LaTeX output (disable for now)
 GENERATE_LATEX         = NO
 
-# Dot Graphs
+# Source code browsing
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+STRIP_CODE_COMMENTS    = NO
+
+# Diagram and visualization
 HAVE_DOT               = YES
-DOT_IMAGE_FORMAT       = svg
+DOT_NUM_THREADS        = 2
 CALL_GRAPH             = YES
 CALLER_GRAPH           = YES
-DOT_MULTI_TARGETS      = YES
+CLASS_DIAGRAMS         = YES
+UML_LOOK               = YES
+TEMPLATE_RELATIONS     = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+DOT_IMAGE_FORMAT       = svg
 
-# Warnings
-QUIET                  = NO
-WARN_IF_UNDOCUMENTED   = YES
-WARN_LOGFILE           = doxygen-warnings.log
+# Markdown
+MARKDOWN_SUPPORT       = YES
+EXTENSION_MAPPING      = md=markdown
+
+# UI and navigation
+GENERATE_TREEVIEW      = YES
+FULL_PATH_NAMES        = NO
+STRIP_FROM_PATH        = include
+
+# Sorting
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+SORT_BY_SCOPE_NAME     = YES

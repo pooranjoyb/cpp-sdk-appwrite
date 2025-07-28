@@ -1,3 +1,6 @@
+/// @file Appwrite.hpp
+/// @brief Root header to import all core Appwrite SDK modules for easy access.
+
 #ifndef APPWRITE_HPP
 #define APPWRITE_HPP
 

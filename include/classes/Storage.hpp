@@ -1,3 +1,6 @@
+/// @file Storage.hpp
+/// @brief Manages file storage operations like upload, download, delete, and
+/// preview.
 #ifndef STORAGE_HPP
 #define STORAGE_HPP
 

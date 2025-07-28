@@ -1,3 +1,6 @@
+/// @file Health.hpp
+/// @brief Exposes health check APIs to verify Appwrite server status and
+/// service uptime.
 #ifndef HEALTH_HPP
 #define HEALTH_HPP
 

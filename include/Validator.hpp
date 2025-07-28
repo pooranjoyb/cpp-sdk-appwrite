@@ -1,3 +1,6 @@
+/// @file Validator.hpp
+/// @brief Contains input validation logic for arguments passed to SDK methods.
+
 #ifndef VALIDATOR_HPP
 #define VALIDATOR_HPP
 

@@ -1,0 +1,28 @@
+/**
+ * @mainpage Appwrite C++ SDK Documentation
+ *
+ * @section intro_sec Introduction
+ *
+ * The Appwrite C++ SDK is a client library for communicating with the Appwrite backend.
+ * It provides a clean, well-documented interface for working with:
+ * - User accounts
+ * - Databases and documents
+ * - Storage buckets and files
+ * - Messaging topics and subscriptions
+ * - Health checks and system diagnostics
+ *
+ * @section features_sec Key Features
+ *
+ * - Easy-to-use API abstraction
+ * - Cross-platform compatibility
+ * - Fully documented with Doxygen
+ * - Modular service separation (Account, Database, Storage, etc.)
+ *
+ * @section usage_sec Usage
+ *
+ * Browse the **Classes**, **Namespaces**, and **Files** tabs for more details on each module.
+ *
+ * @section contribute_sec Contributing
+ *
+ * Contributions are welcome! Please refer to the `CONTRIBUTING.md` for guidelines.
+ */
