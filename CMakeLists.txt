@@ -48,5 +48,3 @@ set(HEADERS
 install(DIRECTORY include/ DESTINATION /usr/local/include/AppwriteSDK)
 install(FILES ${HEADERS} DESTINATION /usr/local/include/AppwriteSDK)
 install(TARGETS AppwriteSDK ARCHIVE DESTINATION /usr/local/lib)
-
-

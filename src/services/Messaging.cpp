@@ -340,6 +340,7 @@ std::string Messaging::createSubscribers(const std::string &topicId,
                                 "\n\nResponse: " + response);
     }
 }
+
 std::string Messaging::createMessage(const std::string& messageId,
                                           const std::string& subject,
                                           const std::string& content,
@@ -398,6 +399,3 @@ std::string Messaging::createMessage(const std::string& messageId,
                                 std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
-
-
-
