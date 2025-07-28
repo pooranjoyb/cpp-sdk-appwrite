@@ -1,5 +1,3 @@
-// Messaging.hpp
-
 #ifndef MESSAGING_HPP
 #define MESSAGING_HPP
 
@@ -36,7 +34,6 @@ class Messaging {
     std::string updateMessage(const std::string &messageId,
                           const std::string &subject,
                           const std::string &content);
-                              
   private:
     std::string projectId;
     std::string apiKey;

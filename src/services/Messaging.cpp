@@ -374,3 +374,4 @@ std::string Messaging::updateMessage(
                                 "\n\nResponse: " + response);
     }
 }
+
