@@ -340,7 +340,7 @@ std::string Messaging::createSubscribers(const std::string &topicId,
                                 "\n\nResponse: " + response);
     }
 }
-std::string Messaging::createEmailMessage(const std::string& messageId,
+std::string Messaging::createMessage(const std::string& messageId,
                                           const std::string& subject,
                                           const std::string& content,
                                           const std::vector<std::string>& topics,
@@ -398,12 +398,11 @@ std::string Messaging::createEmailMessage(const std::string& messageId,
                                 std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
-
-
-
-std::string Messaging::updateMessage(const std::string &messageId,
-                                     const std::string &subject,
-                                     const std::string &content) {
+std::string Messaging::updateMessage(
+    const std::string& messageId,
+    const std::string& subject,
+    const std::string& content
+) {
     if (messageId.empty()) {
         throw AppwriteException("Missing required parameter: 'messageId'");
     }
@@ -413,8 +412,7 @@ std::string Messaging::updateMessage(const std::string &messageId,
     if (content.empty()) {
         throw AppwriteException("Missing required parameter: 'content'");
     }
-
-    std::string url = Config::API_BASE_URL + "/messaging/messages/" + Utils::urlEncode(messageId);
+    std::string url = Config::API_BASE_URL + "/messaging/messages/email/" + Utils::urlEncode(messageId);
 
     std::string payload = R"({"subject":")" + Utils::escapeJsonString(subject) +
                           R"(","content":")" + Utils::escapeJsonString(content) + R"("})";
@@ -426,10 +424,10 @@ std::string Messaging::updateMessage(const std::string &messageId,
     std::string response;
     int statusCode = Utils::patchRequest(url, payload, headers, response);
 
-    if (statusCode == HttpStatus::OK) {
+    if (statusCode == HttpStatus::OK || statusCode == HttpStatus::CREATED) {
         return response;
     } else {
-        throw AppwriteException("Error updating message. Status code: " +
-                                std::to_string(statusCode) + "\n\nResponse: " + response);
+        throw AppwriteException("Error updating message. Status code: " + std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
     }
 }

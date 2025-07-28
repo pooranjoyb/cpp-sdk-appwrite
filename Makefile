@@ -277,9 +277,9 @@ createSubscribers: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/createSubscribe
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createSubscribers $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/createSubscribers.cpp $(LDFLAGS)
 # Messaging - messages			
-createEmailMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createEmailMessage.cpp
+createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
 	@mkdir -p ./$(TESTS_DIR)
-	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createEmailMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createEmailMessage.cpp $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp $(LDFLAGS)
 updateMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateMessage.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateMessage.cpp $(LDFLAGS)

@@ -1,23 +1,23 @@
-#include "classes/Messaging.hpp"
+#include "Appwrite.hpp"
 #include <iostream>
 
 int main() {
-    std::string projectId = "<your-project-id>";
-    std::string apiKey = "<your-api-key>";
-    std::string messageId = "<existing-message-id>";
+    std::string projectId = "<project-id>";
+    std::string apiKey = "<api-key>";
 
-    Messaging messaging(projectId, apiKey);
+    Appwrite appwrite(projectId, apiKey);
+
+    std::string messageId = "<existing-email-message-id>";
+    std::string subject = "Updated Subject from C++";
+    std::string content = "Updated content of the email from C++ SDK.";
 
     try {
-        std::string updated = messaging.updateMessage(
-            messageId,
-            "New subject from C++ SDK",
-            "Updated content body using updateMessage()"
+        std::string response = appwrite.getMessaging().updateMessage(
+            messageId, subject, content
         );
-
-        std::cout << "Message updated: " << updated << std::endl;
+        std::cout << "Email Message Updated!\nResponse: " << response << std::endl;
     } catch (const AppwriteException &ex) {
-        std::cerr << "Appwrite error: " << ex.what() << std::endl;
+        std::cerr << "Exception: " << ex.what() << std::endl;
     }
 
     return 0;
