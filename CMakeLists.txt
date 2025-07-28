@@ -18,7 +18,6 @@ set(SRCS
     src/services/Health.cpp
     src/Utils.cpp
     src/Validator.cpp
-   
 )
 
 add_library(AppwriteSDK STATIC ${SRCS})
