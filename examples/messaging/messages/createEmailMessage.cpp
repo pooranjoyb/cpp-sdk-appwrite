@@ -1,22 +1,29 @@
-#include "classes/Messaging.hpp"
+#include "Appwrite.hpp"
 #include <iostream>
 
 int main() {
+    std::string projectId = "<your_project_id>";
+    std::string apiKey = "<your_api_key>";  
+    Appwrite appwrite(projectId, apiKey);
+
+    std::string messageId = "<your_message_id>";
+    std::string subject = "Hello from C++ Appwrite SDK!";
+    std::string content = "Testing email message creation with topics and targets.";
+
+    std::vector<std::string> topics = {"<topic_id>"};
+    std::vector<std::string> targets = {"<target_id>"};
+
     try {
-        Messaging messaging("your-project-id", "your-api-key");
-
-        std::string response = messaging.createEmailMessage(
-            "Welcome to the platform!",
-            "Thank you for signing up. Stay tuned for updates.",
-            "welcome-topic-id",
-            "admin@example.com",
-            "Admin Team"
+        std::string response = appwrite.getMessaging().createEmailMessage(
+            messageId, subject, content, topics, targets
         );
-
-        std::cout << "Email created: " << response << std::endl;
-    } catch (const AppwriteException &e) {
-        std::cerr << "Appwrite error: " << e.what() << std::endl;
+        std::cout << "Email Message Created!\nResponse: " << response << std::endl;
+    } catch (const AppwriteException& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
     }
 
     return 0;
 }
+
+
+
