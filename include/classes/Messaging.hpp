@@ -36,6 +36,8 @@ class Messaging {
      * @return JSON string of the message details
      */
     std::string getMessages(const std::string &messageId);
+    std::string deleteMessages(const std::string &messageId);
+    std::string listMessageLogs(const std::string &messageId, Queries &queries);
 
     /**
      * @brief Get details of a topic by ID.
