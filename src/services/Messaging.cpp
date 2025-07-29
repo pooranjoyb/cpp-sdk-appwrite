@@ -385,3 +385,61 @@ std::string Messaging::createPush(const std::string &messageId,
     } 
 }
 
+std::string Messaging::createMessage(const std::string& messageId,
+                                          const std::string& subject,
+                                          const std::string& content,
+                                          const std::vector<std::string>& topics,
+                                          const std::vector<std::string>& targets) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+    if (subject.empty()) {
+        throw AppwriteException("Missing required parameter: 'subject'");
+    }
+    if (content.empty()) {
+        throw AppwriteException("Missing required parameter: 'content'");
+    }
+    if (topics.empty() && targets.empty()) {
+        throw AppwriteException("At least one of 'topics' or 'targets' must be provided");
+    }
+
+    std::string payload = R"({"messageId":")" + Utils::escapeJsonString(messageId) +
+                          R"(","subject":")" + Utils::escapeJsonString(subject) +
+                          R"(","content":")" + Utils::escapeJsonString(content) + R"(")";
+
+    if (!topics.empty()) {
+        payload += R"(,"topics":[)";
+        for (size_t i = 0; i < topics.size(); ++i) {
+            payload += "\"" + Utils::escapeJsonString(topics[i]) + "\"";
+            if (i != topics.size() - 1) payload += ",";
+        }
+        payload += "]";
+    }
+
+    if (!targets.empty()) {
+        payload += R"(,"targets":[)";
+        for (size_t i = 0; i < targets.size(); ++i) {
+            payload += "\"" + Utils::escapeJsonString(targets[i]) + "\"";
+            if (i != targets.size() - 1) payload += ",";
+        }
+        payload += "]";
+    }
+
+    payload += "}";
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/email";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED || statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating email message. Status code: " +
+                                std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
