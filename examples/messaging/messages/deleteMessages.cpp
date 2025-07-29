@@ -10,7 +10,7 @@ int main() {
         Appwrite appwrite(projectId, apiKey);
         std::string response =
             appwrite.getMessaging().deleteMessages(messageId);
-        std::cout << "Message Fetched!\nResponse: " << response << std::endl;
+        std::cout << "Message deleted!\nResponse: " << response << std::endl;
     } catch (const AppwriteException &ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
