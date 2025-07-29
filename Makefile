@@ -248,6 +248,9 @@ listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
 getMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp $(LDFLAGS)
+deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
+            @mkdir -p ./$(TESTS_DIR)
+            $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)			
 listMessageLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp
             @mkdir -p ./$(TESTS_DIR)
             $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessageLogs $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp $(LDFLAGS)  			
