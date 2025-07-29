@@ -188,8 +188,200 @@ class Databases {
                                     const std::string &defaultValue,
                                     const std::vector<std::string> &elements);
 
-    // [Continue with similar format for the rest of attributes and update
-    // methods...]
+    /**
+     * @brief Create a float attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param min Minimum value.
+     * @param max Maximum value.
+     * @param defaultValue Default float value.
+     * @return JSON response.
+     */
+    std::string createFloatAttribute(const std::string &databaseId,
+                                     const std::string &collectionId,
+                                     const std::string &attributeId,
+                                     bool required, double min, double max,
+                                     const std::string &defaultValue);
+
+    /**
+     * @brief Create an integer attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param min Minimum value.
+     * @param max Maximum value.
+     * @param defaultValue Default integer value.
+     * @return JSON response.
+     */
+    std::string createIntegerAttribute(const std::string &databaseId,
+                                       const std::string &collectionId,
+                                       const std::string &attributeId,
+                                       bool required, int min, int max,
+                                       const std::string &defaultValue);
+
+    /**
+     * @brief Create an IP address attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param defaultValue Default IP address.
+     * @return JSON response.
+     */
+    std::string createIPaddressAttribute(const std::string &databaseId,
+                                         const std::string &collectionId,
+                                         const std::string &attributeId,
+                                         bool required,
+                                         const std::string &defaultValue);
+
+    /**
+     * @brief Create a string attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param defaultValue Default string value.
+     * @param elements Allowed string values (for enum-like behavior).
+     * @param size Maximum length of the string.
+     * @return JSON response.
+     */
+    std::string createStringAttribute(const std::string &databaseId,
+                                      const std::string &collectionId,
+                                      const std::string &attributeId,
+                                      bool required,
+                                      const std::string &defaultValue,
+                                      const std::vector<std::string> &elements,
+                                      int size);
+
+    /**
+     * @brief Update a boolean attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param defaultValue New default value.
+     * @param required Required field.
+     * @param new_key New key for the attribute.
+     * @return JSON response.
+     */
+    std::string updateBooleanAttribute(const std::string &databaseId,
+                                       const std::string &collectionId,
+                                       const std::string &attributeId,
+                                       bool defaultValue, bool required,
+                                       const std::string &new_key);
+
+    /**
+     * @brief Update an email attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param defaultValue New default email.
+     * @param new_key New key for the attribute.
+     * @return JSON response.
+     */
+    std::string updateEmailAttribute(const std::string &databaseId,
+                                     const std::string &collectionId,
+                                     const std::string &attributeId,
+                                     bool required,
+                                     const std::string &defaultValue,
+                                     std::string &new_key);
+
+    /**
+     * @brief Update an enum attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param defaultValue New default value.
+     * @param elements Allowed values.
+     * @param new_key New key for the attribute.
+     * @return JSON response.
+     */
+    std::string updateEnumAttribute(const std::string &databaseId,
+                                    const std::string &collectionId,
+                                    const std::string &attributeId,
+                                    bool required,
+                                    const std::string &defaultValue,
+                                    const std::vector<std::string> &elements,
+                                    std::string &new_key);
+
+    /**
+     * @brief Update a float attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param min Minimum value.
+     * @param max Maximum value.
+     * @param defaultValue New default value.
+     * @param new_key New key for the attribute.
+     * @return JSON response.
+     */
+    std::string updateFloatAttribute(const std::string &databaseId,
+                                     const std::string &collectionId,
+                                     const std::string &attributeId,
+                                     bool required, double min, double max,
+                                     const std::string &defaultValue,
+                                     std::string &new_key);
+
+    /**
+     * @brief Update an integer attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param min Minimum value.
+     * @param max Maximum value.
+     * @param defaultValue New default value.
+     * @param new_key New key for the attribute.
+     * @return JSON response.
+     */
+    std::string updateIntegerAttribute(const std::string &databaseId,
+                                       const std::string &collectionId,
+                                       const std::string &attributeId,
+                                       bool required, int min, int max,
+                                       const std::string &defaultValue,
+                                       std::string &new_key);
+
+    /**
+     * @brief Update an IP address attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param defaultValue New default IP address.
+     * @param new_key New key for the attribute.
+     * @return JSON response.
+     */
+    std::string updateIPaddressAttribute(const std::string &databaseId,
+                                         const std::string &collectionId,
+                                         const std::string &attributeId,
+                                         bool required,
+                                         const std::string &defaultValue,
+                                         const std::string &new_key);
+
+    /**
+     * @brief Update a string attribute.
+     * @param databaseId Database ID.
+     * @param collectionId Collection ID.
+     * @param attributeId Attribute ID.
+     * @param required Required field.
+     * @param defaultValue New default value.
+     * @param elements Allowed string values.
+     * @param size Maximum length.
+     * @param new_key New key for the attribute.
+     * @return JSON response.
+     */
+    std::string updateStringAttribute(const std::string &databaseId,
+                                      const std::string &collectionId,
+                                      const std::string &attributeId,
+                                      bool required,
+                                      const std::string &defaultValue,
+                                      const std::vector<std::string> &elements,
+                                      int size, std::string &new_key);
 
     // ------------------- Document APIs -------------------
 
