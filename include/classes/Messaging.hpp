@@ -38,6 +38,14 @@ class Messaging {
     std::string getMessages(const std::string &messageId);
 
     /**
+     * @brief List message activity logs listed by its unique ID.
+     * @param messageId ID of the topic to update
+     * @param queries Query parameters for filtering results
+     * @return JSON string of message logs list
+     */
+    std::string listMessageLogs(const std::string &messageId, Queries &queries);
+
+    /**
      * @brief Get details of a topic by ID.
      * @param topicId ID of the topic
      * @return JSON string of the topic
@@ -117,9 +125,8 @@ class Messaging {
                                   const std::string &targetId,
                                   const std::string &subscriberId);
     std::string createPush(const std::string &messageId,
-                                  const std::string &title,
-                                  const std::string &body,
-                                  const std::string &topicId);                              
+                           const std::string &title, const std::string &body,
+                           const std::string &topicId);
 
   private:
     std::string projectId; ///< Project ID

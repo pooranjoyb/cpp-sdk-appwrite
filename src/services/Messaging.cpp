@@ -54,6 +54,29 @@ std::string Messaging::getMessages(const std::string &messageId) {
     }
 }
 
+std::string Messaging::listMessageLogs(const std::string &messageId,
+                                       Queries &queries) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: messageId");
+    }
+
+    std::string url =
+        Config::API_BASE_URL + "/messaging/messages/" + messageId + "/logs";
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error listing message logs. Status code: " +
+                                std::to_string(statusCode) +
+                                "\nResponse: " + response);
+    }
+}
+
 std::string Messaging::getTopic(const std::string &topicId) {
     if (topicId.empty()) {
         throw AppwriteException("Missing required parameter: 'topicId'");
@@ -342,9 +365,9 @@ std::string Messaging::createSubscribers(const std::string &topicId,
 }
 
 std::string Messaging::createPush(const std::string &messageId,
-                                const std::string &title,
-                                const std::string &body,
-                                const std::string &topicId){
+                                  const std::string &title,
+                                  const std::string &body,
+                                  const std::string &topicId) {
     if (messageId.empty()) {
         throw AppwriteException("Missing required parameter: 'messageId'");
     }
@@ -359,29 +382,28 @@ std::string Messaging::createPush(const std::string &messageId,
 
     if (topicId.empty()) {
         throw AppwriteException("Missing required parameter: 'topicId'");
-    }  
+    }
 
     std::string url = Config::API_BASE_URL + "/messaging/messages/push";
 
     std::string payload =
         R"({"messageId":")" + Utils::escapeJsonString(messageId) +
-        R"(","title":")" + Utils::escapeJsonString(title) +
-        R"(","body":")" + Utils::escapeJsonString(body) +
-        R"(","topics": [")" + Utils::escapeJsonString(topicId) + R"("]})";
+        R"(","title":")" + Utils::escapeJsonString(title) + R"(","body":")" +
+        Utils::escapeJsonString(body) + R"(","topics": [")" +
+        Utils::escapeJsonString(topicId) + R"("]})";
 
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
-    headers.push_back("Content-Type: application/json");    
-    
+    headers.push_back("Content-Type: application/json");
+
     std::string response;
     int statusCode = Utils::postRequest(url, payload, headers, response);
 
-    if (statusCode == HttpStatus::CREATED) { 
-        return response; 
-    }  else { 
-         throw AppwriteException( 
-             "Error fetching topic. Status code: " + std::to_string(statusCode) + 
-             "\n\nResponse: " + response); 
-    } 
+    if (statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error fetching topic. Status code: " + std::to_string(statusCode) +
+            "\n\nResponse: " + response);
+    }
 }
-

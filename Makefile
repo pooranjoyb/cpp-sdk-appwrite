@@ -242,13 +242,16 @@ getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 createPush: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createPush $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp $(LDFLAGS)
-
 listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp $(LDFLAGS)
 getMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp $(LDFLAGS)
+listMessageLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp
+            @mkdir -p ./$(TESTS_DIR)
+            $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessageLogs $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp $(LDFLAGS)  			
+
 
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
