@@ -38,12 +38,11 @@ class Messaging {
     std::string getMessages(const std::string &messageId);
 
     /**
-     * @brief List message activity logs listed by its unique ID.
-     * @param messageId ID of the topic to update
-     * @param queries Query parameters for filtering results
-     * @return JSON string of message logs list
+     * @brief Delete a message by its ID.
+     * @param messageId ID of the message.
+     * @return JSON response.
      */
-    std::string listMessageLogs(const std::string &messageId, Queries &queries);
+    std::string deleteMessages(const std::string &messageId);
 
     /**
      * @brief Get details of a topic by ID.
