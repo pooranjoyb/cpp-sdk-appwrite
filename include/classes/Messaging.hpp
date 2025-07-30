@@ -121,12 +121,33 @@ class Messaging {
                                   const std::string &body,
                                   const std::vector<std::string> &topicId= {},
                                   const std::vector<std::string> &userId = {},
-                                  bool draft = false);                              
+                                  bool draft = false);                                 
+   
+  /**
+     * @brief Create a new email message.
+     * 
+     * Sends a new email message to specific topics and/or target recipients.
+     * At least one of `topics` or `targets` must be provided.
+     *
+     * @param messageId Unique ID for the message.
+     * @param subject Subject line of the email.
+     * @param content Body content of the email.
+     * @param topics List of topic IDs to send the message to (optional).
+     * @param targets List of target recipients (e.g., email:userId) (optional).
+     * @return JSON response.
+     */
+    std::string createMessage(const std::string& messageId,
+                               const std::string& subject,
+                               const std::string& content,
+                               const std::vector<std::string>& topics = {},
+                               const std::vector<std::string>& targets = {});      
+  
     std::string updatePush(const std::string &messageId,
                             const std::string &title,
                             const std::string &body,
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
+
 
   private:
     std::string projectId; ///< Project ID
