@@ -435,22 +435,21 @@ std::string Messaging::updatePush(const std::string &messageId,
         throw AppwriteException("Missing required parameter: 'userId'");
     }
 
-    std::string url = Config::API_BASE_URL + "/messaging/messages/push/" + messageId;
-
     std::string topicsJson = "[";
     for (size_t i = 0; i < topicId.size(); ++i) {
         topicsJson += "\"" + Utils::escapeJsonString(topicId[i]) + "\"";
         if (i < topicId.size() - 1) topicsJson += ",";
     }
     topicsJson += "]";
-
+    
     std::string usersJson = "[";
     for (size_t i = 0; i < userId.size(); ++i) {
         usersJson += "\"" + Utils::escapeJsonString(userId[i]) + "\"";
         if (i < userId.size() - 1) usersJson += ",";
     }
     usersJson += "]";
-
+    
+    std::string url = Config::API_BASE_URL + "/messaging/messages/push/" + messageId;
     std::string payload =
         R"({"title":")" + Utils::escapeJsonString(title) +
         R"(","body":")" + Utils::escapeJsonString(body) +
@@ -473,6 +472,3 @@ std::string Messaging::updatePush(const std::string &messageId,
             "\n\nResponse: " + response);
     }
 }
-
-
-
