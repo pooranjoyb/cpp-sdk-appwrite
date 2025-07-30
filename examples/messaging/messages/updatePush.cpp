@@ -3,18 +3,20 @@
 #include <iostream>
 
 int main() {
-
     std::string projectId = "";
-    std::string apiKey = "";
-    Appwrite appwrite(projectId, apiKey);
+    std::string apiKey = ""; 
+
     std::vector<std::string> topicId = {""};
+    std::string messageId = "";
     std::vector<std::string> userId = {""};
 
-    try {
-        std::string response = appwrite.getMessaging().createPush(
-            "unique()", "Title ", "Body", topicId, userId, true);
+    Appwrite appwrite(projectId, apiKey);
 
-        std::cout << "Push notification created: " << response << std::endl;
+    try {
+        std::string response = appwrite.getMessaging().updatePush(
+            messageId, "Updated Title", "Updated Body", topicId, userId);
+
+        std::cout << "Push notification updated successfully:\n" << response << std::endl;
     } catch (const AppwriteException &e) {
         std::cerr << "Appwrite error: " << e.what() << std::endl;
     }

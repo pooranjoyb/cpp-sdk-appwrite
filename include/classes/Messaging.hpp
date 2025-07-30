@@ -119,7 +119,14 @@ class Messaging {
     std::string createPush(const std::string &messageId,
                                   const std::string &title,
                                   const std::string &body,
-                                  const std::string &topicId);                              
+                                  const std::vector<std::string> &topicId= {},
+                                  const std::vector<std::string> &userId = {},
+                                  bool draft = false);                              
+    std::string updatePush(const std::string &messageId,
+                            const std::string &title,
+                            const std::string &body,
+                            const std::vector<std::string> &topicId = {},
+                            const std::vector<std::string> &userId = {});
 
   private:
     std::string projectId; ///< Project ID

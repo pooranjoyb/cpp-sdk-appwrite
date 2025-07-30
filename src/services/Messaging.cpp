@@ -344,7 +344,9 @@ std::string Messaging::createSubscribers(const std::string &topicId,
 std::string Messaging::createPush(const std::string &messageId,
                                 const std::string &title,
                                 const std::string &body,
-                                const std::string &topicId){
+                                const std::vector<std::string> &topicId,
+                                const std::vector<std::string> &userId,
+                                bool draft){
     if (messageId.empty()) {
         throw AppwriteException("Missing required parameter: 'messageId'");
     }
@@ -361,13 +363,36 @@ std::string Messaging::createPush(const std::string &messageId,
         throw AppwriteException("Missing required parameter: 'topicId'");
     }  
 
+    if (userId.empty()) {
+        throw AppwriteException("Missing required parameter: 'userId'");
+    }
+
+
     std::string url = Config::API_BASE_URL + "/messaging/messages/push";
+
+     std::string topicIdJson = "[";
+    for (size_t i = 0; i < topicId.size(); ++i) {
+        topicIdJson += "\"" + Utils::escapeJsonString(topicId[i]) + "\"";
+        if (i < topicId.size() - 1) topicIdJson += ",";
+    }
+    topicIdJson += "]";
+
+    std::string userIdJson = "[";
+    for (size_t i = 0; i < userId.size(); ++i) {
+        userIdJson += "\"" + Utils::escapeJsonString(userId[i]) + "\"";
+        if (i < userId.size() - 1) userIdJson += ",";
+    }
+    userIdJson += "]";
+
 
     std::string payload =
         R"({"messageId":")" + Utils::escapeJsonString(messageId) +
         R"(","title":")" + Utils::escapeJsonString(title) +
         R"(","body":")" + Utils::escapeJsonString(body) +
-        R"(","topics": [")" + Utils::escapeJsonString(topicId) + R"("]})";
+        R"(","topicId":)" + topicIdJson +
+        R"(,"userId":)" + userIdJson +
+        R"(,"draft":)" + (draft ? "true" : "false") +
+        "}";
 
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
@@ -384,4 +409,70 @@ std::string Messaging::createPush(const std::string &messageId,
              "\n\nResponse: " + response); 
     } 
 }
+
+std::string Messaging::updatePush(const std::string &messageId,
+                                  const std::string &title,
+                                  const std::string &body,
+                                  const std::vector<std::string> &topicId,
+                                  const std::vector<std::string> &userId) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+
+    if (title.empty()) {
+        throw AppwriteException("Missing required parameter: 'title'");
+    }
+
+    if (body.empty()) {
+        throw AppwriteException("Missing required parameter: 'body'");
+    }
+
+    if (topicId.empty()) {
+        throw AppwriteException("Missing required parameter: 'topicId'");
+    }
+
+    if (userId.empty()) {
+        throw AppwriteException("Missing required parameter: 'userId'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/push/" + messageId;
+
+    std::string topicsJson = "[";
+    for (size_t i = 0; i < topicId.size(); ++i) {
+        topicsJson += "\"" + Utils::escapeJsonString(topicId[i]) + "\"";
+        if (i < topicId.size() - 1) topicsJson += ",";
+    }
+    topicsJson += "]";
+
+    std::string usersJson = "[";
+    for (size_t i = 0; i < userId.size(); ++i) {
+        usersJson += "\"" + Utils::escapeJsonString(userId[i]) + "\"";
+        if (i < userId.size() - 1) usersJson += ",";
+    }
+    usersJson += "]";
+
+    std::string payload =
+        R"({"title":")" + Utils::escapeJsonString(title) +
+        R"(","body":")" + Utils::escapeJsonString(body) +
+        R"(","topics":)" + topicsJson +
+        R"(,"users":)" + usersJson +
+        "}";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error updating push message. Status code: " + std::to_string(statusCode) +
+            "\n\nResponse: " + response);
+    }
+}
+
+
 
