@@ -249,7 +249,9 @@ listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
 getMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp $(LDFLAGS)
-
+updateMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateMessage.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateMessage.cpp $(LDFLAGS)
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)

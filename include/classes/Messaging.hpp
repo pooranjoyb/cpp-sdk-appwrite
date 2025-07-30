@@ -119,7 +119,17 @@ class Messaging {
     std::string createPush(const std::string &messageId,
                                   const std::string &title,
                                   const std::string &body,
-                                  const std::string &topicId);                              
+                                  const std::string &topicId);                          
+    /**
+     * @brief Update an existing message (email).
+     * @param messageId ID of the message to update
+     * @param subject Updated subject of the message
+     * @param content Updated content of the message
+     * @return JSON response
+     */
+    std::string updateMessage(const std::string& messageId,
+                              const std::string& subject,
+                              const std::string& content);
 
   private:
     std::string projectId; ///< Project ID
