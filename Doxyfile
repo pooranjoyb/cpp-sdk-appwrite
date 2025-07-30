@@ -1,0 +1,59 @@
+# Project information
+PROJECT_NAME           = "Appwrite C++ SDK"
+PROJECT_BRIEF          = "Auto-generated API documentation for the Appwrite C++ SDK"
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
+
+# Main page and input
+USE_MDFILE_AS_MAINPAGE = mainpage.dox
+INPUT                  = include mainpage.dox
+FILE_PATTERNS          = *.hpp *.h
+RECURSIVE              = YES
+EXCLUDE                = tests examples src
+
+# Extraction settings
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_ANON_NSPACES   = YES
+
+# Warnings
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+
+# Output formats
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+
+# Source code browsing
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+STRIP_CODE_COMMENTS    = NO
+
+# Diagram and visualization
+HAVE_DOT               = YES
+DOT_NUM_THREADS        = 2
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+CLASS_DIAGRAMS         = YES
+UML_LOOK               = YES
+TEMPLATE_RELATIONS     = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+DOT_IMAGE_FORMAT       = svg
+
+# Markdown
+MARKDOWN_SUPPORT       = YES
+EXTENSION_MAPPING      = md=markdown
+
+# UI and navigation
+GENERATE_TREEVIEW      = YES
+FULL_PATH_NAMES        = NO
+STRIP_FROM_PATH        = include
+
+# Sorting
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+SORT_BY_SCOPE_NAME     = YES

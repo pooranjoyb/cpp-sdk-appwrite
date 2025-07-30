@@ -1,3 +1,7 @@
+/// @file HttpStatus.hpp
+/// @brief Defines HTTP status code enums for consistent error and response
+/// handling.
+
 #ifndef HTTPSTATUS_HPP
 #define HTTPSTATUS_HPP
 

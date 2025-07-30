@@ -1,0 +1,13 @@
+digraph "classes"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  dir_b02e4219757ae4e3a0f1714873865bbf [label="classes", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_b02e4219757ae4e3a0f1714873865bbf.html",tooltip=""];
+  dir_c7b7c939f7976c07b6a5a70b483e0207 [label="enums", fillcolor="#edf0f7", color="grey25", style="filled", URL="dir_c7b7c939f7976c07b6a5a70b483e0207.html",tooltip=""];
+  dir_fceced95d8215eeebebd9df6aa39e1a5 [label="exceptions", fillcolor="#edf0f7", color="grey25", style="filled", URL="dir_fceced95d8215eeebebd9df6aa39e1a5.html",tooltip=""];
+  dir_b02e4219757ae4e3a0f1714873865bbf->dir_c7b7c939f7976c07b6a5a70b483e0207 [headlabel="5", labeldistance=1.5 headhref="dir_000000_000002.html" href="dir_000000_000002.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_b02e4219757ae4e3a0f1714873865bbf->dir_fceced95d8215eeebebd9df6aa39e1a5 [headlabel="5", labeldistance=1.5 headhref="dir_000000_000003.html" href="dir_000000_000003.html" color="steelblue1" fontcolor="steelblue1"];
+}
