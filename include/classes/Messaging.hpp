@@ -120,7 +120,7 @@ class Messaging {
                                   const std::string &title,
                                   const std::string &body,
                                   const std::string &topicId);                          
-        /**
+    /**
      * @brief Update an existing message (email).
      * @param messageId ID of the message to update
      * @param subject Updated subject of the message
