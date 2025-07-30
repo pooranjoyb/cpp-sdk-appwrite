@@ -368,23 +368,23 @@ std::string Messaging::createPush(const std::string &messageId,
     }
 
 
-    std::string url = Config::API_BASE_URL + "/messaging/messages/push";
-
-     std::string topicIdJson = "[";
+    
+    std::string topicIdJson = "[";
     for (size_t i = 0; i < topicId.size(); ++i) {
         topicIdJson += "\"" + Utils::escapeJsonString(topicId[i]) + "\"";
         if (i < topicId.size() - 1) topicIdJson += ",";
     }
     topicIdJson += "]";
-
+    
     std::string userIdJson = "[";
     for (size_t i = 0; i < userId.size(); ++i) {
         userIdJson += "\"" + Utils::escapeJsonString(userId[i]) + "\"";
         if (i < userId.size() - 1) userIdJson += ",";
     }
     userIdJson += "]";
-
-
+    
+    
+    std::string url = Config::API_BASE_URL + "/messaging/messages/push";
     std::string payload =
         R"({"messageId":")" + Utils::escapeJsonString(messageId) +
         R"(","title":")" + Utils::escapeJsonString(title) +
