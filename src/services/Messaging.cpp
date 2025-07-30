@@ -385,7 +385,7 @@ std::string Messaging::createPush(const std::string &messageId,
     } 
 }
 
-std::string Messaging::updateMessage(
+std::string Messaging::updateEmail(
     const std::string& messageId,
     const std::string& subject,
     const std::string& content

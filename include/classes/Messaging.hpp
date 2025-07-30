@@ -127,7 +127,7 @@ class Messaging {
      * @param content Updated content of the message
      * @return JSON response
      */
-    std::string updateMessage(const std::string& messageId,
+    std::string updateEmail(const std::string& messageId,
                               const std::string& subject,
                               const std::string& content);
 

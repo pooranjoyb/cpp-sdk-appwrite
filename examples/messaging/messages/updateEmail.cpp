@@ -12,7 +12,7 @@ int main() {
     std::string content = "Updated content of the email from C++ SDK.";
 
     try {
-        std::string response = appwrite.getMessaging().updateMessage(
+        std::string response = appwrite.getMessaging().updateEmail(
             messageId, subject, content
         );
         std::cout << "Email Message Updated!\nResponse: " << response << std::endl;
