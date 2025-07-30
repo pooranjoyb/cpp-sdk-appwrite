@@ -443,3 +443,34 @@ std::string Messaging::createMessage(const std::string& messageId,
                                 std::to_string(statusCode) + "\n\nResponse: " + response);
     }
 }
+
+std::string Messaging::createSms(const std::string &recipient,
+                                 const std::string &message) {
+    if (recipient.empty()) {
+        throw AppwriteException("Missing required parameter: 'recipient'");
+    }
+    if (message.empty()) {
+        throw AppwriteException("Missing required parameter: 'message'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/sms";
+
+    std::string payload =
+        R"({"recipient":")" + Utils::escapeJsonString(recipient) +
+        R"(","content":")" + Utils::escapeJsonString(message) + R"("})";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED || statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error creating SMS message. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}

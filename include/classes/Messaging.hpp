@@ -9,6 +9,7 @@
 #include "enums/HttpStatus.hpp"
 #include "exceptions/AppwriteException.hpp"
 #include <string>
+#include <vector>
 
 /**
  * @class Messaging
@@ -138,7 +139,17 @@ class Messaging {
                                const std::string& content,
                                const std::vector<std::string>& topics = {},
                                const std::vector<std::string>& targets = {});                         
-
+    /**
+     * @brief Create a new SMS message.
+     *
+     * Sends an SMS message to a specific recipient phone number.
+     *
+     * @param recipient Phone number of the recipient (e.g., +911234567890).
+     * @param message   Text message content.
+     * @return JSON response.
+     */
+    std::string createSms(const std::string &recipient,
+                          const std::string &message);
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key

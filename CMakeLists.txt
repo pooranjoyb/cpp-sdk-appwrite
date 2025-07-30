@@ -48,3 +48,6 @@ set(HEADERS
 install(DIRECTORY include/ DESTINATION /usr/local/include/AppwriteSDK)
 install(FILES ${HEADERS} DESTINATION /usr/local/include/AppwriteSDK)
 install(TARGETS AppwriteSDK ARCHIVE DESTINATION /usr/local/lib)
+
+add_executable(example-messaging-create-sms examples/messaging/messages/createSms.cpp)
+target_link_libraries(example-messaging-create-sms AppwriteSDK)
