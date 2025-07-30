@@ -14,6 +14,13 @@ class Messaging {
     std::string listMessages(Queries &queries);
     std::string getMessages(const std::string &messageId);
 
+    
+    /**
+     * @brief Delete a message by its ID.
+     * @param messageId ID of the message.
+     * @return JSON response.
+     */
+    std::string deleteMessages(const std::string &messageId);
     std::string getTopic(const std::string &topicId);
     std::string listTopics(Queries &queries);
     std::string deleteTopic(const std::string &topicId);
