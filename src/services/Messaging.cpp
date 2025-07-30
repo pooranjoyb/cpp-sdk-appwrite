@@ -493,26 +493,26 @@ std::string Messaging::updatePush(const std::string &messageId,
         throw AppwriteException("Missing required parameter: 'userId'");
     }
 
-    std::string topicsJson = "[";
+    std::string topicIdJson = "[";
     for (size_t i = 0; i < topicId.size(); ++i) {
-        topicsJson += "\"" + Utils::escapeJsonString(topicId[i]) + "\"";
-        if (i < topicId.size() - 1) topicsJson += ",";
+        topicIdJson += "\"" + Utils::escapeJsonString(topicId[i]) + "\"";
+        if (i < topicId.size() - 1) topicIdJson += ",";
     }
-    topicsJson += "]";
+    topicIdJson += "]";
     
-    std::string usersJson = "[";
+    std::string userIdJson = "[";
     for (size_t i = 0; i < userId.size(); ++i) {
-        usersJson += "\"" + Utils::escapeJsonString(userId[i]) + "\"";
-        if (i < userId.size() - 1) usersJson += ",";
+        userIdJson += "\"" + Utils::escapeJsonString(userId[i]) + "\"";
+        if (i < userId.size() - 1) userIdJson += ",";
     }
-    usersJson += "]";
+    userIdJson += "]";
     
     std::string url = Config::API_BASE_URL + "/messaging/messages/push/" + messageId;
     std::string payload =
         R"({"title":")" + Utils::escapeJsonString(title) +
         R"(","body":")" + Utils::escapeJsonString(body) +
-        R"(","topics":)" + topicsJson +
-        R"(,"users":)" + usersJson +
+        R"(","topicId":)" + topicIdJson +
+        R"(,"userId":)" + userIdJson +
         "}";
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
