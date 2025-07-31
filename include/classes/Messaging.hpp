@@ -116,6 +116,20 @@ class Messaging {
                                   const std::string &name,
                                   const std::string &targetId,
                                   const std::string &subscriberId);
+  /**
+     * @brief Creates a new push notification message.
+     * 
+     * Sends a push notification to specified users, topics, or both. 
+     *
+     * @param messageId A unique Id for the message.
+     * @param title Title of the push notification.
+     * @param body Body content of the push notification.
+     * @param topicId A list of topic IDs to which the notification should be sent.
+     * @param userId A list of user IDs to which the notification should be sent.
+     * @param draft If true, saves the message as a draft.
+     * 
+     * @return JSON response.
+ */                         
     std::string createPush(const std::string &messageId,
                                   const std::string &title,
                                   const std::string &body,
@@ -140,8 +154,20 @@ class Messaging {
                                const std::string& subject,
                                const std::string& content,
                                const std::vector<std::string>& topics = {},
-                               const std::vector<std::string>& targets = {});      
-  
+                               const std::vector<std::string>& targets = {});
+    
+  /**
+     * @brief Updates an existing push notification message.
+     * 
+     * Modifies the title and body of an existing push message. 
+     *
+     * @param messageId The ID of the message to update.
+     * @param title New title of the push notification.
+     * @param body New body content of the push notification.
+     * @param topicId List of topic IDs to update the message.
+     * @param userId List of user IDs to update the message.
+     * @return JSON response
+  */                           
     std::string updatePush(const std::string &messageId,
                             const std::string &title,
                             const std::string &body,
