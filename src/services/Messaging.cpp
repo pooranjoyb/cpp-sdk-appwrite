@@ -521,7 +521,7 @@ std::string Messaging::updatePush(const std::string &messageId,
   
   int statusCode = Utils::patchRequest(url, payload, headers, response);
 
-    if (statusCode == HttpStatus::CREATED) {
+    if (statusCode == HttpStatus::OK) {
         return response;
     } else {
         throw AppwriteException(
