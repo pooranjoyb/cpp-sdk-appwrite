@@ -46,6 +46,13 @@ class Messaging {
     std::string listMessageLogs(const std::string &messageId, Queries &queries);
 
     /**
+     * @brief Delete a message by its ID.
+     * @param messageId ID of the message.
+     * @return JSON response.
+     */
+    std::string deleteMessages(const std::string &messageId);
+    
+    /**
      * @brief Get details of a topic by ID.
      * @param topicId ID of the topic
      * @return JSON string of the topic
