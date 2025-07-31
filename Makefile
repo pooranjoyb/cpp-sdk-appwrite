@@ -249,9 +249,14 @@ listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
 getMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp $(LDFLAGS)
+deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
+            @mkdir -p ./$(TESTS_DIR)
+            $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)			
+
 createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp $(LDFLAGS)
+
 
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
