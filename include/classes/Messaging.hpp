@@ -29,6 +29,14 @@ class Messaging {
      * @return JSON string of message list
      */
     std::string listMessages(Queries &queries);
+    
+    /**
+     * @brief List all message logs with optional filters.
+     * @param messageId ID of the message
+     * @param queries Query parameters for filtering
+     * @return JSON string of messageLog list
+     */
+    std::string listMessageLogs(const std::string &messageId, Queries &queries);
 
     /**
      * @brief Get a specific message by ID.
@@ -131,6 +139,9 @@ class Messaging {
      * @return JSON response.
  */                         
     std::string createPush(const std::string &messageId,
+                           const std::string &title, const std::string &body,
+                           const std::string &topicId);
+    /**
                                   const std::string &title,
                                   const std::string &body,
                                   const std::vector<std::string> &topicId= {},
@@ -139,7 +150,7 @@ class Messaging {
    
   /**
      * @brief Create a new email message.
-     * 
+     *
      * Sends a new email message to specific topics and/or target recipients.
      * At least one of `topics` or `targets` must be provided.
      *
@@ -150,6 +161,11 @@ class Messaging {
      * @param targets List of target recipients (e.g., email:userId) (optional).
      * @return JSON response.
      */
+    std::string createMessage(const std::string &messageId,
+                              const std::string &subject,
+                              const std::string &content,
+                              const std::vector<std::string> &topics = {},
+                              const std::vector<std::string> &targets = {});
     std::string createMessage(const std::string& messageId,
                                const std::string& subject,
                                const std::string& content,
