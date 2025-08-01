@@ -56,10 +56,14 @@ Set the neccessary header files.
 ```cpp
 #include "AppwriteSDK/Appwrite.hpp"
 ```
+## Also have to set ...
+''cpp
+using namespace std;
+'''
 Once your SDK header is set, create the Appwrite service objects and choose the request to send.
 ```cpp
-    std::string projectId = "<your-project-id>";
-    std::string apiKey = "<your-api-key>"; 
+    string projectId = "<your-project-id>";
+    string apiKey = "<your-api-key>"; 
 
     Appwrite appwrite(projectId, apiKey);
 
@@ -71,17 +75,17 @@ Once your SDK header is set, create the Appwrite service objects and choose the 
 ```cpp
 #include "Appwrite.hpp"
 #include <iostream>
-
+using namespace std;
 int main() {
-    std::string projectId = "<your-project-id>";
-    std::string apiKey = "<your-api-key>"; 
-    std::string databaseId = "<unique-database-id>";
-    std::string name = "<unique-database-name>";
+   string projectId = "<your-project-id>";
+    string apiKey = "<your-api-key>"; 
+    string databaseId = "<unique-database-id>";
+    string name = "<unique-database-name>";
     bool enabled = true;
 
     Appwrite appwrite(projectId, apiKey);
     
-    std::string response = appwrite.getDatabases().create(databaseId, name, enabled);
+    string response = appwrite.getDatabases().create(databaseId, name, enabled);
 
     return 0;
 }    
@@ -95,7 +99,7 @@ The Appwrite C++ SDK raises `AppwriteException` object with `message`, `code` an
     try {
         // Send some request here
     } catch (const AppwriteException& ex) {
-        std::cerr << "Exception: " << ex.what() << std::endl;
+        cerr << "Exception: " << ex.what() << std::endl;
     }
 ```
 
