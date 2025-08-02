@@ -256,7 +256,10 @@ createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp $(LDFLAGS)
 deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
             @mkdir -p ./$(TESTS_DIR)
-            $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)			
+            $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)
+listMessageLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp
+            @mkdir -p ./$(TESTS_DIR)
+            $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessageLogs $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp $(LDFLAGS)							
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
