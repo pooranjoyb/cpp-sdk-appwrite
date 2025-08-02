@@ -1,0 +1,49 @@
+name: "Build & Deploy Doxygen Docs"
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write     
+      pages: write           
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Doxygen
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+      - name: Generate Doxygen HTML
+        run: doxygen ./Doxyfile
+
+      - name: Setup Git for Deployment
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Clone docs branch
+        run: |
+          git clone --branch docs https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} docs-out
+
+      - name: Copy generated HTML
+        run: |
+          rm -rf docs-out/*
+          cp -R docs/html/* docs-out/
+
+      - name: Commit & Push
+        working-directory: docs-out
+        run: |
+          git add .
+          git commit -m "Regenerate Doxygen docs from ${{ github.sha }}" || echo "No changes to commit"
+          git push
