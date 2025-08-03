@@ -38,6 +38,13 @@ class Messaging {
     std::string getMessages(const std::string &messageId);
 
     /**
+     * @brief Delete a message by its ID.
+     * @param messageId ID of the message.
+     * @return JSON response.
+     */
+    std::string deleteMessages(const std::string &messageId);
+
+    /**
      * @brief Get details of a topic by ID.
      * @param topicId ID of the topic
      * @return JSON string of the topic
@@ -131,6 +138,9 @@ class Messaging {
      * @return JSON response.
  */                         
     std::string createPush(const std::string &messageId,
+                           const std::string &title, const std::string &body,
+                           const std::string &topicId);
+    /**
                                   const std::string &title,
                                   const std::string &body,
                                   const std::vector<std::string> &topicId= {},
@@ -139,7 +149,7 @@ class Messaging {
    
   /**
      * @brief Create a new email message.
-     * 
+     *
      * Sends a new email message to specific topics and/or target recipients.
      * At least one of `topics` or `targets` must be provided.
      *
@@ -150,6 +160,11 @@ class Messaging {
      * @param targets List of target recipients (e.g., email:userId) (optional).
      * @return JSON response.
      */
+    std::string createMessage(const std::string &messageId,
+                              const std::string &subject,
+                              const std::string &content,
+                              const std::vector<std::string> &topics = {},
+                              const std::vector<std::string> &targets = {});
     std::string createMessage(const std::string& messageId,
                                const std::string& subject,
                                const std::string& content,
