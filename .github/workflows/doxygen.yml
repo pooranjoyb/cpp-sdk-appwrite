@@ -27,11 +27,6 @@ jobs:
       - name: Generate Doxygen HTML
         run: doxygen ./Doxyfile
 
-      - name: Setup Git for Deployment
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Clone docs branch
         run: |
           git clone --branch docs https://x-access-token:${{ secrets.USER_SECRET }}@github.com/${{ github.repository }} docs-out
@@ -44,6 +39,8 @@ jobs:
       - name: Commit & Push
         working-directory: docs-out
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Regenerate Doxygen docs from ${{ github.sha }}" || echo "No changes to commit"
           git push
