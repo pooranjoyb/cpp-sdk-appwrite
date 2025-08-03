@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - main
+      - develop
 
 jobs:
   build-and-deploy:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Clone docs branch
         run: |
-          git clone --branch docs https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} docs-out
+          git clone --branch docs https://x-access-token:${{ secrets.USER_SECRET }}@github.com/${{ github.repository }} docs-out
 
       - name: Copy generated HTML
         run: |
