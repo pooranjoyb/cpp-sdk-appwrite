@@ -174,7 +174,12 @@ class Messaging {
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
 
-
+    /**
+     * @brief Delete a message by its ID.
+     * @param messageId ID of the message.
+     * @return JSON response.
+     */
+    std::string deleteMessages(const std::string &messageId);
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
