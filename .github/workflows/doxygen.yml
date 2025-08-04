@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write     
-      pages: write           
+      contents: write
+      pages: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          submodules: false
 
       - name: Install Doxygen
         run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
@@ -28,22 +29,20 @@ jobs:
       - name: Generate Doxygen HTML
         run: doxygen ./Doxyfile
 
-      - name: Clone docs branch
+      - name: Clone docs branch into docs-out/
         run: |
           git clone --branch docs https://x-access-token:${{ secrets.USER_TOKEN }}@github.com/${{ github.repository }} docs-out
 
-      - name: Copy generated HTML
+      - name: Copy generated HTML into docs-out/
         run: |
-          find docs-out -mindepth 1 ! -regex '^docs-out/\.git\(/.*\)?' -delete
+          rm -rf docs-out/*
           cp -R docs/html/* docs-out/
 
-      - name: Commit & Push to `docs` branch
+      - name: Commit and push to docs branch
         run: |
+          cd docs-out
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin docs || git checkout --orphan docs
-          git switch docs || git checkout -b docs
-          cp -r docs/html/* .
           git add .
           git commit -m "Regenerate Doxygen docs from ${{ github.sha }}" || echo "No changes to commit"
-          git push --force https://x-access-token:${{ secrets.USER_SECRET }}@github.com/${{ github.repository }}.git HEAD:docs
+          git push --force https://x-access-token:${{ secrets.USER_TOKEN }}@github.com/${{ github.repository }}.git HEAD:docs
