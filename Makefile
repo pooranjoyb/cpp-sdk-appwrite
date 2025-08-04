@@ -242,14 +242,22 @@ getQueueMigrations: $(SRCS) $(EXAMPLES_DIR)/health/params/getQueueMigrations.cpp
 createPush: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createPush $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createPush.cpp $(LDFLAGS)
-
+updatePush: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updatePush.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updatePush $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updatePush.cpp $(LDFLAGS)
 listMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessages.cpp $(LDFLAGS)
 getMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp $(LDFLAGS)
-updateMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp
+createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp $(LDFLAGS)
+deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
+			@mkdir -p ./$(TESTS_DIR)
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)
+					updateMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateEmail $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp $(LDFLAGS)
 # Messaging - Topics
