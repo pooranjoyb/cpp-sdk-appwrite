@@ -1,9 +1,0 @@
-<map id="classes" name="classes">
-<area shape="rect" id="node1" href="dir_b02e4219757ae4e3a0f1714873865bbf.html" title="classes" alt="" coords="55,5,126,31"/>
-<area shape="rect" id="node2" href="dir_c7b7c939f7976c07b6a5a70b483e0207.html" title="enums" alt="" coords="5,79,72,104"/>
-<area shape="poly" id="edge1" href="dir_000000_000002.html" alt="" coords="84,33,57,69,53,66,80,29"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000000_000002.html" title="5" alt="" coords="60,62,69,76"/>
-<area shape="rect" id="node3" href="dir_fceced95d8215eeebebd9df6aa39e1a5.html" title="exceptions" alt="" coords="96,79,189,104"/>
-<area shape="poly" id="edge2" href="dir_000000_000003.html" alt="" coords="101,29,128,66,124,69,97,33"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000000_000003.html" title="5" alt="" coords="126,52,135,66"/>
-</map>

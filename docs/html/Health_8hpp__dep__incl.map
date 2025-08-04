@@ -1,5 +1,0 @@
-<map id="Health.hpp" name="Health.hpp">
-<area shape="rect" id="Node000001" title="Exposes health check APIs to verify Appwrite server status and service uptime." alt="" coords="13,5,106,31"/>
-<area shape="rect" id="Node000002" href="$Appwrite_8hpp.html" title="Root header to import all core Appwrite SDK modules for easy access." alt="" coords="5,79,113,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,44,62,79,57,79,57,44"/>
-</map>
