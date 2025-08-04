@@ -3,7 +3,7 @@
 int main() {
     std::string projectId = "68853010003a3f4fc106";
     std::string apiKey = "";
-    std::string messageId = "6888d1e6000845ceb627";
+    std::string messageId = "";
     try {
         Appwrite appwrite(projectId, apiKey);
         std::string response =
