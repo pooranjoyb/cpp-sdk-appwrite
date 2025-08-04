@@ -1,0 +1,24 @@
+digraph "HttpStatus.hpp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="HttpStatus.hpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Defines HTTP status code enums for consistent error and response handling."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Account.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_account_8hpp.html",tooltip="Handles user account-related operations like creation and session management."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Appwrite.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_appwrite_8hpp.html",tooltip="Root header to import all core Appwrite SDK modules for easy access."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Databases.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_databases_8hpp.html",tooltip="Provides database management APIs: databases, collections, attributes, documents, and indexes."];
+  Node4 -> Node3 [id="edge4_Node000004_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node5 [id="edge5_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Health.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_health_8hpp.html",tooltip="Exposes health check APIs to verify Appwrite server status and service uptime."];
+  Node5 -> Node3 [id="edge6_Node000005_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge7_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Messaging.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_messaging_8hpp.html",tooltip="Provides messaging-related operations (messages, topics, subscribers)"];
+  Node6 -> Node3 [id="edge8_Node000006_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node7 [id="edge9_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Storage.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_storage_8hpp.html",tooltip="Manages file storage operations like upload, download, delete, and preview."];
+  Node7 -> Node3 [id="edge10_Node000007_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

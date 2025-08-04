@@ -1,0 +1,19 @@
+<map id="HttpStatus.hpp" name="HttpStatus.hpp">
+<area shape="rect" id="Node000001" title="Defines HTTP status code enums for consistent error and response handling." alt="" coords="263,5,381,31"/>
+<area shape="rect" id="Node000002" href="$Account_8hpp.html" title="Handles user account&#45;related operations like creation and session management." alt="" coords="5,79,108,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,37,100,81,99,76,265,32"/>
+<area shape="rect" id="Node000004" href="$Databases_8hpp.html" title="Provides database management APIs: databases, collections, attributes, documents, and indexes." alt="" coords="132,79,251,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="290,40,214,81,211,76,287,35"/>
+<area shape="rect" id="Node000005" href="$Health_8hpp.html" title="Exposes health check APIs to verify Appwrite server status and service uptime." alt="" coords="275,79,369,104"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="325,44,325,79,319,79,319,44"/>
+<area shape="rect" id="Node000006" href="$Messaging_8hpp.html" title="Provides messaging&#45;related operations (messages, topics, subscribers)" alt="" coords="393,79,513,104"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="357,35,433,76,430,81,354,40"/>
+<area shape="rect" id="Node000007" href="$Storage_8hpp.html" title="Manages file storage operations like upload, download, delete, and preview." alt="" coords="537,79,637,104"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="379,32,545,76,544,81,377,37"/>
+<area shape="rect" id="Node000003" href="$Appwrite_8hpp.html" title="Root header to import all core Appwrite SDK modules for easy access." alt="" coords="268,152,376,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,105,280,149,278,154,112,110"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="226,108,302,149,299,154,223,113"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="325,118,325,152,319,152,319,118"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="421,113,345,154,342,149,418,108"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="532,110,366,154,364,149,531,105"/>
+</map>

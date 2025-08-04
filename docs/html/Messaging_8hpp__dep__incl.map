@@ -1,0 +1,5 @@
+<map id="Messaging.hpp" name="Messaging.hpp">
+<area shape="rect" id="Node000001" title="Provides messaging&#45;related operations (messages, topics, subscribers)" alt="" coords="5,5,125,31"/>
+<area shape="rect" id="Node000002" href="$Appwrite_8hpp.html" title="Root header to import all core Appwrite SDK modules for easy access." alt="" coords="11,79,119,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,44,68,79,63,79,63,44"/>
+</map>

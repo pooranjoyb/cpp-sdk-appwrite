@@ -1,0 +1,17 @@
+<map id="Storage.hpp" name="Storage.hpp">
+<area shape="rect" id="Node000001" title="Manages file storage operations like upload, download, delete, and preview." alt="" coords="133,5,233,31"/>
+<area shape="rect" id="Node000002" href="$Utils_8hpp.html" title="Provides utility functions and helpers used across the SDK." alt="" coords="5,79,85,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,33,81,75,79,70,159,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,152,156,177"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="177,32,150,80,134,139,129,137,146,78,172,30"/>
+<area shape="rect" id="Node000005" href="$HttpStatus_8hpp.html" title="Defines HTTP status code enums for consistent error and response handling." alt="" coords="161,79,327,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="195,29,227,66,223,70,191,33"/>
+<area shape="rect" id="Node000006" href="$AppwriteException_8hpp.html" title="Declares the base exception class used to represent Appwrite SDK errors." alt="" coords="351,79,598,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="230,28,415,73,414,78,229,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="60,102,105,141,101,145,57,106"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="10,152,73,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="47,104,45,139,40,138,42,104"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="419,107,170,157,169,152,418,101"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="431,152,518,177"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="477,104,477,138,472,138,472,104"/>
+</map>

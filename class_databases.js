@@ -1,0 +1,27 @@
+var class_databases =
+[
+    [ "Databases", "class_databases.html#aca9c16fe64ac21c82e4493ed25a3a794", null ],
+    [ "create", "class_databases.html#a50bbb114e6f8539743799df888ccfe69", null ],
+    [ "createBooleanAttribute", "class_databases.html#a59b599aa4778a4f40edfe986869e9a95", null ],
+    [ "createCollection", "class_databases.html#ab415e79581f01d90f4117109d0e83195", null ],
+    [ "createDocument", "class_databases.html#a485e576db321d51baf504c6406b44afb", null ],
+    [ "createEmailAttribute", "class_databases.html#a7f4fb85e9e78c427edaa4c94e5a0b1ab", null ],
+    [ "createEnumAttribute", "class_databases.html#a941c8b0c4885171d77a60c101884cd9b", null ],
+    [ "createIndexes", "class_databases.html#ae6380b2058a17169a37e02840eed3335", null ],
+    [ "deleteCollection", "class_databases.html#ad2a828f382ce62b05463233a51bfd3a5", null ],
+    [ "deleteDocument", "class_databases.html#a7706c3a2e2c7952b429a4dd6fae8fcd8", null ],
+    [ "deleteIndexes", "class_databases.html#a5e73975dc5eab34ef94b91eb4953b9af", null ],
+    [ "get", "class_databases.html#a97f413ffe73355d7c9af1f249aca020e", null ],
+    [ "getCollection", "class_databases.html#a0c4dca45210292b0e626e22f4132127e", null ],
+    [ "getCollectionUsage", "class_databases.html#af437c9dec8fa6bd721bf33b2a1b90a6a", null ],
+    [ "getDatabaseUsage", "class_databases.html#ad9cd94d12b4f24510e3d3ed0d4b32069", null ],
+    [ "getDocument", "class_databases.html#a214952825ce1324417a5daa31d75260e", null ],
+    [ "getIndexes", "class_databases.html#a625ee5c55faf19abb67641c65332fcfc", null ],
+    [ "list", "class_databases.html#a054f8615a598de92feef2664b0370b60", null ],
+    [ "listAttributes", "class_databases.html#a1a6e3f5a50a72f10ff0853db5aea4307", null ],
+    [ "listCollection", "class_databases.html#a976bece07e27d164b39226904be4e3fb", null ],
+    [ "listDocument", "class_databases.html#ad41367ab8d7853935f07a09e4519092c", null ],
+    [ "listIndexes", "class_databases.html#a3eece7cda99fa4934cb9f1c20e7ab468", null ],
+    [ "update", "class_databases.html#a72d1493d3ab31aab08e2e4222a75df27", null ],
+    [ "updateCollection", "class_databases.html#ac77978047167621c30a717ce3383e872", null ]
+];

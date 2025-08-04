@@ -1,0 +1,32 @@
+<map id="Messaging.hpp" name="Messaging.hpp">
+<area shape="rect" id="Node000001" title="Provides messaging&#45;related operations (messages, topics, subscribers)" alt="" coords="549,5,669,31"/>
+<area shape="rect" id="Node000002" href="$Query_8hpp.html" title="Offers helper methods to construct query parameters for filtering and sorting API responses." alt="" coords="325,79,411,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="571,33,421,77,420,72,570,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="580,152,639,177"/>
+<area shape="poly" id="edge16_Node000001_Node000008" title=" " alt="" coords="595,33,580,47,567,64,558,83,560,103,571,123,587,141,583,144,567,127,555,105,553,83,562,62,576,43,592,29"/>
+<area shape="rect" id="Node000010" href="$Utils_8hpp.html" title="Provides utility functions and helpers used across the SDK." alt="" coords="569,79,649,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="612,31,612,65,607,65,607,31"/>
+<area shape="rect" id="Node000012" href="$HttpStatus_8hpp.html" title="Defines HTTP status code enums for consistent error and response handling." alt="" coords="945,79,1111,104"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="670,27,947,74,947,79,669,32"/>
+<area shape="rect" id="Node000013" href="$AppwriteException_8hpp.html" title="Declares the base exception class used to represent Appwrite SDK errors." alt="" coords="674,79,921,104"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="640,28,755,71,753,76,639,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="287,152,353,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="362,106,338,142,333,139,358,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="377,152,452,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="378,103,402,139,397,142,373,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="476,152,556,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="393,102,481,144,478,148,391,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,152,48,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="325,102,209,122,62,155,60,150,208,117,324,97"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="72,152,147,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="327,107,161,152,159,147,326,101"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="408,101,567,148,566,153,406,107"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="171,152,263,177"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="345,106,256,148,253,144,343,102"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="612,104,612,138,607,138,607,104"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="663,152,726,177"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="625,102,672,141,669,145,621,106"/>
+<area shape="poly" id="edge15_Node000013_Node000008" title=" " alt="" coords="768,107,652,150,651,145,766,102"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="754,152,841,177"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="800,104,800,138,795,138,795,104"/>
+</map>
