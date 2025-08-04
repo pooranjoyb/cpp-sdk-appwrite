@@ -173,13 +173,33 @@ class Messaging {
                             const std::string &body,
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
-
-    /**
+     /**
      * @brief Delete a message by its ID.
      * @param messageId ID of the message.
      * @return JSON response.
      */
+
     std::string deleteMessages(const std::string &messageId);
+  /**
+     * @brief Update an email message by its ID.
+     * @class updateEmail
+     * 
+     * This method belongs to the updateEmail class and provides the functionality
+     * to update the subject and content of an existing email message via the 
+     * Appwrite Messaging API.
+     * 
+     * @param messageId Unique message identifier
+     * @param subject New subject of the email
+     * @param content Updated content/body of the email
+     * @return JSON response string from the server
+     * @throws AppwriteException if parameters are invalid or request fails
+  */
+    std::string updateEmail(
+        const std::string& messageId,
+        const std::string& subject,
+        const std::string& content
+    );
+
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key

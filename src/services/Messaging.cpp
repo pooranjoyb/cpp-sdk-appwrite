@@ -546,7 +546,8 @@ std::string Messaging::deleteMessages(const std::string &messageId) {
                                 std::to_string(statusCode) +
                                 "\nResponse: " + response);
     }
-}std::string Messaging::updateEmail(
+}
+ std::string Messaging::updateEmail(
     const std::string& messageId,
     const std::string& subject,
     const std::string& content
