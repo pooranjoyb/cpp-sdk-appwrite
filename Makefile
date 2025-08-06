@@ -258,6 +258,9 @@ deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)
 					
+listTargets: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTargets $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp $(LDFLAGS)
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)

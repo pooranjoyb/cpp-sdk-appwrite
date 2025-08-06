@@ -547,3 +547,35 @@ std::string Messaging::deleteMessages(const std::string &messageId) {
                                 "\nResponse: " + response);
     }
 }
+
+std::string Messaging::listTargets(const std::string &messageId, 
+                                   const std::vector<std::string> &queries) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+    
+    std::string url = Config::API_BASE_URL + "/messaging/messages/" + messageId + "/targets";
+    std::string queryParam = "";
+    if (!queries.empty()) {
+        queryParam += "?queries[]=" + Utils::urlEncode(queries[0]);
+        for (size_t i = 1; i < queries.size(); ++i) {
+            queryParam += "&queries[]=" + Utils::urlEncode(queries[i]);
+        }
+    }
+    
+    url += queryParam;
+    
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error fetching message targets. Status code: " + std::to_string(statusCode) +
+            "\n\nResponse: " + response);
+    }
+}
