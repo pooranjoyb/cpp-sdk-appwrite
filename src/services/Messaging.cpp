@@ -544,8 +544,6 @@ std::string Messaging::listMessageLogs(const std::string &messageId,
     if (statusCode == HttpStatus::OK) {
         return response;
     } else {
-        throw AppwriteException("Error listing message logs. Status code: " +
-                                std::to_string(statusCode) +
-                                "\nResponse: " + response);
+        throw AppwriteException("Error listing message logs. Status code: " +std::to_string(statusCode) +"\nResponse: " + response);
     }
 }
