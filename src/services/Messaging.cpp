@@ -530,6 +530,25 @@ std::string Messaging::updatePush(const std::string &messageId,
     }
 }
 
+
+std::string Messaging::listMessageLogs(const std::string &messageId,
+                                       Queries &queries) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: messageId");
+    }
+    std::string url =
+        Config::API_BASE_URL + "/messaging/messages/" + messageId + "/logs";
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error listing message logs. Status code: " +std::to_string(statusCode) + "\nResponse: " + response);
+    }
+}
+
 std::string Messaging::deleteMessages(const std::string &messageId) {
     if (messageId.empty()) {
         throw AppwriteException("Missing required parameter: messageId");

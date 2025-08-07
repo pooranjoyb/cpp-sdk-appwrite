@@ -175,11 +175,20 @@ class Messaging {
                             const std::vector<std::string> &userId = {});
 
     /**
+     * @brief List all message logs with optional filters.
+     * @param messageId ID of the message
+     * @param queries Query parameters for filtering
+     * @return JSON string of messageLog list
+     */
+    std::string listMessageLogs(const std::string &messageId, Queries &queries);
+  
+   /**
      * @brief Delete a message by its ID.
      * @param messageId ID of the message.
      * @return JSON response.
      */
     std::string deleteMessages(const std::string &messageId);
+
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
