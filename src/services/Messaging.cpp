@@ -574,7 +574,7 @@ std::string Messaging::deleteMessages(const std::string &messageId) {
     std::string response;
     int statusCode = Utils::patchRequest(url, payload, headers, response);
 
-    if (statusCode == HttpStatus::OK || statusCode == HttpStatus::CREATED) {
+    if (statusCode == HttpStatus::OK) {
         return response;
     } else {
         throw AppwriteException("Error updating message. Status code: " + std::to_string(statusCode) +
