@@ -174,7 +174,12 @@ class Messaging {
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
 
-
+    /**
+     * @brief List all providers.
+     * @param queries Optional query filters
+     * @return JSON string of providers list
+     */
+    std::string listProviders(Queries &queries);
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
