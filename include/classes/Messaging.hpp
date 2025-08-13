@@ -173,6 +173,13 @@ class Messaging {
                             const std::string &body,
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
+  
+    /**
+     * @brief List all providers.
+     * @param queries Optional query filters
+     * @return JSON string of providers list
+     */
+    std::string listProviders(Queries &queries);
 
     /**
      * @brief List all message logs with optional filters.
