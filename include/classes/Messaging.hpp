@@ -180,7 +180,8 @@ class Messaging {
      * @return JSON string of providers list
      */
     std::string listProviders(Queries &queries);
-  
+
+    /**
      * @brief List all message logs with optional filters.
      * @param messageId ID of the message
      * @param queries Query parameters for filtering
