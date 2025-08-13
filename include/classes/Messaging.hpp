@@ -174,7 +174,12 @@ class Messaging {
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
 
-
+    /**
+     * @brief Get a specific provider by ID.
+     * @param providerId ID of the provider
+     * @return JSON string of the provider details
+     */
+    std::string getProvider(const std::string &providerId);
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
