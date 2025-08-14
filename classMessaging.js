@@ -11,8 +11,10 @@ var classMessaging =
     [ "getMessages", "classMessaging.html#aa596d2b309995e8d3e7196a3037f24ff", null ],
     [ "getSubscriber", "classMessaging.html#adcce04cbe30abcb19f17b9b7390247b5", null ],
     [ "getTopic", "classMessaging.html#ac4206d4f3710b00f0b914f2c8cdf23a5", null ],
+    [ "listMessageLogs", "classMessaging.html#aab2cfcd2f79171a204ef1780beef1103", null ],
     [ "listMessages", "classMessaging.html#afa46132a851eeca06d601a0ea889d577", null ],
     [ "listSubscribers", "classMessaging.html#af9cf658c971cc754e4e560520b94ad8f", null ],
+    [ "listTargets", "classMessaging.html#aed59aaab660e767275e118c3ffc23968", null ],
     [ "listTopics", "classMessaging.html#a6a097bd5ad8238b4c91e282fc2f57b68", null ],
     [ "updatePush", "classMessaging.html#a0175a63caca1dde7df9fa4c21b08d9d9", null ],
     [ "updateTopic", "classMessaging.html#adf1111aaf72b9d0d4dfc4b08dd551f6a", null ]
