@@ -530,6 +530,24 @@ std::string Messaging::updatePush(const std::string &messageId,
     }
 }
 
+std::string Messaging::getProvider(const std::string &providerId) {
+    if (providerId.empty()) {
+        throw AppwriteException("Missing required parameter: providerId");
+    }
+    std::string url =
+        Config::API_BASE_URL + "/messaging/providers/" + providerId;
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching provider. Status code: " +
+                                std::to_string(statusCode) +
+                                "\nResponse: " + response);
+    }
+}
 
 std::string Messaging::listMessageLogs(const std::string &messageId,
                                        Queries &queries) {
@@ -598,3 +616,4 @@ std::string Messaging::listTargets(const std::string &messageId,
             "\n\nResponse: " + response);
     }
 }
+
