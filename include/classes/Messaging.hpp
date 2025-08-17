@@ -180,7 +180,6 @@ class Messaging {
      * @return JSON response
      */
     std::string deleteProvider(const std::string &providerId);
-
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
