@@ -174,6 +174,12 @@ class Messaging {
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
 
+    /**
+     * @brief Delete a provider.
+     * @param providerId ID of the provider
+     * @return JSON response
+     */
+    std::string deleteProvider(const std::string &providerId);
 
   private:
     std::string projectId; ///< Project ID
