@@ -283,7 +283,9 @@ createTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/createTopic.cpp
 updateTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/updateTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateTopic $(SRCS) $(EXAMPLES_DIR)/messaging/topics/updateTopic.cpp $(LDFLAGS)
-
+list_Topic_logs: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/list_Topic_logs.cpp
+	        @mkdir -p ./$(TESTS_DIR)
+	        $(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/list_Topic_logs $(SRCS) $(EXAMPLES_DIR)/messaging/topics/list_Topic_logs.cpp $(LDFLAGS)
 # Messaging - subscribers
 getSubscriber: $(SRCS) $(EXAMPLES_DIR)/messaging/subscribers/getSubscriber.cpp
 			@mkdir -p ./$(TESTS_DIR)
