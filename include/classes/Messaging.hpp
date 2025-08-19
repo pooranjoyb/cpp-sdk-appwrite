@@ -204,6 +204,14 @@ class Messaging {
    */
     std::string listTargets(const std::string &messageId, 
                             const std::vector<std::string> &queries = {});
+    /**
+     * @brief List all logs for a given topic.
+     * @param topicID ID of the message.
+     * @param queries Optional query filters.
+     * @return JSON response.
+ */
+    std::string listTopicLogs(const std::string &topicId,
+                              const std::vector<std::string> &queries = {});
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
