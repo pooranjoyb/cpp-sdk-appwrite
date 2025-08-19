@@ -544,6 +544,19 @@ std::string Messaging::deleteProvider(const std::string &providerId) {
         return "provider deleted successfully.";
     } else {
         throw AppwriteException("Failed to delete provider. Status code: " +
+    }
+}
+
+std::string Messaging::listProviders(Queries &queries) {
+    std::string url = Config::API_BASE_URL + "/messaging/providers";
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error listing providers . Status code: " +
                                 std::to_string(statusCode) +
                                 "\nResponse: " + response);
     }

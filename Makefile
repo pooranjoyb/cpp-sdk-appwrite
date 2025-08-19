@@ -257,6 +257,9 @@ createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
 deleteProvider: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteProvider.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteProvider $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteProvider.cpp $(LDFLAGS)
+listProviders: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviders.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listProviders $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviders.cpp $(LDFLAGS)
 listMessageLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listMessageLogs $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp $(LDFLAGS)
