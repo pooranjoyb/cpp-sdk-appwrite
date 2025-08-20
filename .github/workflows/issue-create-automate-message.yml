@@ -10,7 +10,7 @@ permissions:
 jobs:
   issue-greeter:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Greeter
         uses: anishanne/greeter@V1
@@ -19,5 +19,10 @@ jobs:
           message: |
             ### Thank you for raising this issue!
             We'll review it as soon as possible. We truly appreciate your contributions! ✨
-            
-            > Meanwhile make sure you've visited the README.md, CONTRIBUTING.md, and CODE_OF_CONDUCT.md before creating a PR for this. Also, please do NOT create a PR until this issue has been assigned to you. 😊
+
+            > Meanwhile, make sure you've visited our documentation:
+            > - [README.md](https://github.com/pooranjoyb/cpp-sdk-appwrite/blob/develop/README.md)
+            > - [CONTRIBUTING.md](https://github.com/pooranjoyb/cpp-sdk-appwrite/blob/develop/CONTRIBUTING.md)
+            > - [CODE_OF_CONDUCT.md](https://github.com/pooranjoyb/cpp-sdk-appwrite/blob/develop/CODE_OF_CONDUCT.md)
+            > 
+            > Please do NOT create a PR until this issue has been assigned to you. 😊
