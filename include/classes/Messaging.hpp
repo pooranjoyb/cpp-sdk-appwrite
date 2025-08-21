@@ -173,6 +173,13 @@ class Messaging {
                             const std::string &body,
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
+  
+    /**
+     * @brief List all providers.
+     * @param queries Optional query filters
+     * @return JSON string of providers list
+     */
+    std::string listProviders(Queries &queries);
 
     /**
      * @brief List all message logs with optional filters.
@@ -211,6 +218,14 @@ class Messaging {
     );
 
 
+    /**
+     * @brief List all targets for a given message.
+     * @param messageId ID of the message.
+     * @param queries Optional query filters.
+     * @return JSON response.
+   */
+    std::string listTargets(const std::string &messageId, 
+                            const std::vector<std::string> &queries = {});
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
