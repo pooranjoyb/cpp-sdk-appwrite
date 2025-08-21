@@ -263,7 +263,9 @@ listMessageLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp
 deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)
-					
+updateEmail: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateEmail $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp $(LDFLAGS)			
 listTargets: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTargets $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp $(LDFLAGS)
