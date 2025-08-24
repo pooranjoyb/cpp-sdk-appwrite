@@ -182,6 +182,13 @@ class Messaging {
     std::string listProviders(Queries &queries);
 
     /**
+     * @brief Delete a provider.
+     * @param providerId ID of the provider
+     * @return JSON response
+     */
+    std::string deleteProvider(const std::string &providerId);
+  
+    /**
      * @brief Get a specific provider by ID.
      * @param providerId ID of the provider
      * @return JSON string of the provider details
@@ -211,6 +218,7 @@ class Messaging {
    */
     std::string listTargets(const std::string &messageId, 
                             const std::vector<std::string> &queries = {});
+  
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
