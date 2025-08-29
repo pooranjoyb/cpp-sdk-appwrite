@@ -273,9 +273,6 @@ updateEmail: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp
 listTargets: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTargets $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp $(LDFLAGS)
-updateEmail: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp
-	@mkdir -p ./$(TESTS_DIR)
-	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateEmail $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp $(LDFLAGS)
 
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
