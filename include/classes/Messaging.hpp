@@ -155,7 +155,7 @@ class Messaging {
                                const std::string& content,
                                const std::vector<std::string>& topics = {},
                                const std::vector<std::string>& targets = {});
-    
+
   /**
      * @brief Updates an existing push notification message.
      * 
@@ -208,7 +208,29 @@ class Messaging {
      * @param messageId ID of the message.
      * @return JSON response.
      */
+
     std::string deleteMessages(const std::string &messageId);
+  
+  /**
+     * @brief Update an email message by its ID.
+     * @class updateEmail
+     * 
+     * This method belongs to the updateEmail class and provides the functionality
+     * to update the subject and content of an existing email message via the 
+     * Appwrite Messaging API.
+     * 
+     * @param messageId Unique message identifier
+     * @param subject New subject of the email
+     * @param content Updated content/body of the email
+     * @return JSON response string from the server
+     * @throws AppwriteException if parameters are invalid or request fails
+  */
+    std::string updateEmail(
+        const std::string& messageId,
+        const std::string& subject,
+        const std::string& content
+    );
+
 
     /**
      * @brief List all targets for a given message.
