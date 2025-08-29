@@ -182,6 +182,13 @@ class Messaging {
     std::string listProviders(Queries &queries);
 
     /**
+     * @brief Get a specific provider by ID.
+     * @param providerId ID of the provider
+     * @return JSON string of the provider details
+     */
+    std::string getProvider(const std::string &providerId);
+  
+    /**
      * @brief List all message logs with optional filters.
      * @param messageId ID of the message
      * @param queries Query parameters for filtering

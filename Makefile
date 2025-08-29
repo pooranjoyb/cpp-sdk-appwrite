@@ -254,6 +254,9 @@ getMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp
 createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp $(LDFLAGS)
+getProvider: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getProvider.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getProvider $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getProvider.cpp $(LDFLAGS)
 listProviders: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviders.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listProviders $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviders.cpp $(LDFLAGS)
@@ -266,9 +269,11 @@ deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
 updateEmail: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateEmail $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp $(LDFLAGS)			
+			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)	
 listTargets: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTargets $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp $(LDFLAGS)
+
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
