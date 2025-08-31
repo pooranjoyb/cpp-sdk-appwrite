@@ -12,33 +12,30 @@ if(WIN32)
     add_definitions(-DNOMINMAX)
 endif()
 
-# Include Conan toolchain
-include(${CMAKE_BINARY_DIR}/Release/generators/conan_toolchain.cmake)
+if(NOT CONAN_TOOLCHAIN_FOUND)
+    message(WARNING "Conan toolchain not found, proceeding without it")
+endif()
 
 # Make PkgConfig optional for Windows compatibility
 find_package(PkgConfig QUIET)
 
-# CRITICAL: Use Conan targets directly without find_package
-# This bypasses CMake's problematic built-in find modules
+# Set CMAKE_PREFIX_PATH for Conan-generated files
 set(CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR}/generators ${CMAKE_PREFIX_PATH})
 
-# Include Conan's generated target files directly
+# Include Conan's generated target files directly (only CURL now, no nlohmann_json)
 include(${CMAKE_BINARY_DIR}/generators/CURL-config.cmake OPTIONAL)
-include(${CMAKE_BINARY_DIR}/generators/nlohmann_json-config.cmake OPTIONAL)
 
-# Alternative: Load all Conan targets
+# Alternative: Load all available Conan targets
 file(GLOB CONAN_CONFIGS "${CMAKE_BINARY_DIR}/generators/*-config.cmake")
 foreach(config_file ${CONAN_CONFIGS})
     include(${config_file})
 endforeach()
 
-# Create a simple library (adjust source file locations as needed)
-# For testing, create a minimal library
+# Create library - handle both dummy.cpp and header-only scenarios
 set(SOURCES 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/dummy.cpp
 )
 
-# If dummy.cpp doesn't exist, create a header-only library
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/dummy.cpp)
     add_library(AppwriteSDK INTERFACE)
     target_include_directories(AppwriteSDK 
@@ -46,6 +43,7 @@ if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/dummy.cpp)
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
             $<INSTALL_INTERFACE:include>
     )
+    set(LIBRARY_TYPE "INTERFACE")
 else()
     add_library(AppwriteSDK ${SOURCES})
     target_include_directories(AppwriteSDK 
@@ -55,36 +53,42 @@ else()
         PRIVATE
             ${CMAKE_CURRENT_SOURCE_DIR}/src
     )
+    set(LIBRARY_TYPE "STATIC")
 endif()
 
-# Link libraries using Conan targets (these should be available now)
 # Handle CURL target compatibility
+set(CURL_TARGET "")
 if(TARGET CURL::libcurl)
     set(CURL_TARGET CURL::libcurl)
+    message(STATUS "Using CURL target: CURL::libcurl")
 elseif(TARGET CURL::CURL)
     set(CURL_TARGET CURL::CURL)
+    message(STATUS "Using CURL target: CURL::CURL")
 else()
-    # Fallback to variables
-    set(CURL_TARGET ${CURL_LIBRARIES})
+    message(STATUS "No CURL target found, continuing without it")
 endif()
 
-target_link_libraries(AppwriteSDK 
-    INTERFACE 
-        ${CURL_TARGET}
-        nlohmann_json::nlohmann_json
-)
-
-if(WIN32)
-    target_link_libraries(AppwriteSDK INTERFACE ws2_32 wldap32 crypt32)
+# Link libraries - ONLY CURL (nlohmann_json removed as per Issue #19)
+if(CURL_TARGET)
+    if(LIBRARY_TYPE STREQUAL "INTERFACE")
+        target_link_libraries(AppwriteSDK INTERFACE ${CURL_TARGET})
+    else()
+        target_link_libraries(AppwriteSDK PUBLIC ${CURL_TARGET})
+    endif()
 endif()
-
-message(STATUS "AppwriteSDK configured successfully with CURL target: ${CURL_TARGET}")
 
 # Windows-specific linking
 if(WIN32)
-    target_link_libraries(AppwriteSDK PRIVATE ws2_32 wldap32 crypt32)
+    if(LIBRARY_TYPE STREQUAL "INTERFACE")
+        target_link_libraries(AppwriteSDK INTERFACE ws2_32 wldap32 crypt32)
+    else()
+        target_link_libraries(AppwriteSDK PRIVATE ws2_32 wldap32 crypt32)
+    endif()
 endif()
 
-# Print debug info
+# Status messages
+message(STATUS "AppwriteSDK configured successfully")
+message(STATUS "Library type: ${LIBRARY_TYPE}")
+message(STATUS "CURL target: ${CURL_TARGET}")
+message(STATUS "nlohmann_json removed as per Issue #19")
 message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
-message(STATUS "Available targets: ${CMAKE_BINARY_DIR}/generators")
