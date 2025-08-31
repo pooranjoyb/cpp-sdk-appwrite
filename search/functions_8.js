@@ -8,7 +8,8 @@ var searchData=
   ['listindexes_5',['listIndexes',['../classDatabases.html#a3eece7cda99fa4934cb9f1c20e7ab468',1,'Databases']]],
   ['listmessagelogs_6',['listMessageLogs',['../classMessaging.html#aab2cfcd2f79171a204ef1780beef1103',1,'Messaging']]],
   ['listmessages_7',['listMessages',['../classMessaging.html#afa46132a851eeca06d601a0ea889d577',1,'Messaging']]],
-  ['listsubscribers_8',['listSubscribers',['../classMessaging.html#af9cf658c971cc754e4e560520b94ad8f',1,'Messaging']]],
-  ['listtargets_9',['listTargets',['../classMessaging.html#aed59aaab660e767275e118c3ffc23968',1,'Messaging']]],
-  ['listtopics_10',['listTopics',['../classMessaging.html#a6a097bd5ad8238b4c91e282fc2f57b68',1,'Messaging']]]
+  ['listproviders_8',['listProviders',['../classMessaging.html#ae5433ab8389b8f3e2f0816baeef95eae',1,'Messaging']]],
+  ['listsubscribers_9',['listSubscribers',['../classMessaging.html#af9cf658c971cc754e4e560520b94ad8f',1,'Messaging']]],
+  ['listtargets_10',['listTargets',['../classMessaging.html#aed59aaab660e767275e118c3ffc23968',1,'Messaging']]],
+  ['listtopics_11',['listTopics',['../classMessaging.html#a6a097bd5ad8238b4c91e282fc2f57b68',1,'Messaging']]]
 ];

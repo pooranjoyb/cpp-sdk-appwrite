@@ -26,16 +26,16 @@
 <text text-anchor="start" x="4" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="17" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00">deleteMessages()</text>
 <text text-anchor="start" x="4" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">deleteSubscribers()</text>
+<text text-anchor="start" x="17" y="-81.5" font-family="Helvetica,sans-Serif" font-size="10.00">deleteProvider()</text>
 <text text-anchor="start" x="4" y="-66.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17" y="-66.5" font-family="Helvetica,sans-Serif" font-size="10.00">deleteTopic()</text>
+<text text-anchor="start" x="17" y="-66.5" font-family="Helvetica,sans-Serif" font-size="10.00">deleteSubscribers()</text>
 <text text-anchor="start" x="4" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">getMessages()</text>
+<text text-anchor="start" x="17" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">deleteTopic()</text>
 <text text-anchor="start" x="4" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">getSubscriber()</text>
+<text text-anchor="start" x="17" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">getMessages()</text>
 <text text-anchor="start" x="4" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="17" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">getTopic()</text>
-<text text-anchor="start" x="17" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 8 more...</text>
+<text text-anchor="start" x="17" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">getProvider()</text>
+<text text-anchor="start" x="17" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 11 more...</text>
 <polygon fill="#666666" stroke="#666666" points="0,-181.5 0,-181.5 116,-181.5 116,-181.5 0,-181.5"/>
 <polygon fill="#666666" stroke="#666666" points="0,-166.5 0,-166.5 116,-166.5 116,-166.5 0,-166.5"/>
 <polygon fill="none" stroke="#666666" points="0,0 0,-199 116,-199 116,0 0,0"/>

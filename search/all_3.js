@@ -9,8 +9,9 @@ var searchData=
   ['deletefile_6',['deleteFile',['../classStorage.html#a1c68f3d337b9ea4c3b54ac33ef10014c',1,'Storage']]],
   ['deleteindexes_7',['deleteIndexes',['../classDatabases.html#a5e73975dc5eab34ef94b91eb4953b9af',1,'Databases']]],
   ['deletemessages_8',['deleteMessages',['../classMessaging.html#a39c06798a06c32d23a58f0f9d619f630',1,'Messaging']]],
-  ['deleterequest_9',['deleteRequest',['../classUtils.html#a5bb4bcff8ee6e684c6ef04d73e6fdfea',1,'Utils']]],
-  ['deletesubscribers_10',['deleteSubscribers',['../classMessaging.html#a3d23e0d1f5313c7ef7e05de5f0774818',1,'Messaging']]],
-  ['deletetopic_11',['deleteTopic',['../classMessaging.html#a12f8f20f51bd8ec80de6d3f2d6b467ce',1,'Messaging']]],
-  ['documentation_12',['Appwrite C++ SDK Documentation',['../index.html',1,'']]]
+  ['deleteprovider_9',['deleteProvider',['../classMessaging.html#a40a9efa92535ca3c745b38ac77021222',1,'Messaging']]],
+  ['deleterequest_10',['deleteRequest',['../classUtils.html#a5bb4bcff8ee6e684c6ef04d73e6fdfea',1,'Utils']]],
+  ['deletesubscribers_11',['deleteSubscribers',['../classMessaging.html#a3d23e0d1f5313c7ef7e05de5f0774818',1,'Messaging']]],
+  ['deletetopic_12',['deleteTopic',['../classMessaging.html#a12f8f20f51bd8ec80de6d3f2d6b467ce',1,'Messaging']]],
+  ['documentation_13',['Appwrite C++ SDK Documentation',['../index.html',1,'']]]
 ];
