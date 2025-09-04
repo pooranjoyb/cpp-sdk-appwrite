@@ -7,7 +7,7 @@ int main() {
     std::string projectId = "68853010003a3f4fc106";
     std::string apiKey = "";
     std::string providerId = "68a22c7b00325882e4e5";
-    std::string name = "ehab";
+    std::string name = "";
     std::ifstream file("");
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -17,7 +17,7 @@ int main() {
         Messaging messaging(projectId, apiKey);
         std::string response = messaging.createFcmProvider(
             providerId, name, service_account_json, enabled);
-        std::cout << "provider Created!\nResponse: " << response << std::endl;
+        std::cout << "FCM Provider Created!\nResponse: " << response << std::endl;
     } catch (const AppwriteException &ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
