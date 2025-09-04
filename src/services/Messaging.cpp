@@ -529,3 +529,34 @@ std::string Messaging::updatePush(const std::string &messageId,
             "\n\nResponse: " + response);
     }
 }
+
+std::string Messaging::createFcmProvider(std::string &providerId,
+                                         std::string name,
+                                         std::string service_account_json,
+                                         bool enabled) {
+    if (providerId.empty()) {
+        throw AppwriteException("Missing required parameter: 'providerId'");
+    }
+    if (name.empty()) {
+        throw AppwriteException("Missing required parameter: 'name'");
+    }
+    std::string url = Config::API_BASE_URL + "/messaging/providers/fcm";
+    std::string payload =
+        R"({"providerId":")" + Utils::escapeJsonString(providerId) +
+        R"(","name":")" + Utils::escapeJsonString(name) +
+        R"(","serviceAccountJSON":)" + service_account_json + R"(,"enabled":)" +
+        (enabled ? "true" : "false") + R"(})";
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+    if (statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error Creating fcm provider. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
+

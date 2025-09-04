@@ -174,6 +174,18 @@ class Messaging {
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
 
+  /**
+     * @brief Create a new Firebase Cloud Messaging provider..
+     *
+     * @param providerId A unique Id for the provider.
+     * @param name provider name.
+     * @param service_account_json FCM service account JSON..
+     * @param enabled Whether the provider should be active immediately after creation.
+     * @return JSON response.
+   */
+    std::string createFcmProvider(std::string &providerId, std::string name,
+                                  std::string service_account_json,
+                                  bool enabled);
 
   private:
     std::string projectId; ///< Project ID
