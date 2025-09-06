@@ -104,11 +104,14 @@ $(document).ready(function(){initNavTree('classMessaging.html',''); initResizabl
 <div class="dynheader">
 Collaboration diagram for Messaging:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMessaging__coll__graph.svg" width="166" height="276"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMessaging__coll__graph.svg" width="172" height="276"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a7ed0aafac67cf508c73ce7b9ae08b154" id="r_a7ed0aafac67cf508c73ce7b9ae08b154"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154">createFcmProvider</a> (std::string &amp;providerId, std::string name, std::string service_account_json, bool enabled)</td></tr>
+<tr class="memdesc:a7ed0aafac67cf508c73ce7b9ae08b154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new Firebase Cloud <a class="el" href="classMessaging.html" title="Provides APIs to manage messaging: messages, topics, subscribers.">Messaging</a> provider.  <br /></td></tr>
+<tr class="separator:a7ed0aafac67cf508c73ce7b9ae08b154"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d8efed770871df527c361e121bb59a4" id="r_a1d8efed770871df527c361e121bb59a4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessaging.html#a1d8efed770871df527c361e121bb59a4">createMessage</a> (const std::string &amp;messageId, const std::string &amp;subject, const std::string &amp;content, const std::vector&lt; std::string &gt; &amp;topics={}, const std::vector&lt; std::string &gt; &amp;targets={})</td></tr>
 <tr class="memdesc:a1d8efed770871df527c361e121bb59a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new email message.  <br /></td></tr>
 <tr class="separator:a1d8efed770871df527c361e121bb59a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +219,58 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7ed0aafac67cf508c73ce7b9ae08b154" name="a7ed0aafac67cf508c73ce7b9ae08b154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ed0aafac67cf508c73ce7b9ae08b154">&#9670;&#160;</a></span>createFcmProvider()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Messaging::createFcmProvider </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>providerId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>service_account_json</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a new Firebase Cloud <a class="el" href="classMessaging.html" title="Provides APIs to manage messaging: messages, topics, subscribers.">Messaging</a> provider. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">providerId</td><td>A unique Id for the provider. </td></tr>
+    <tr><td class="paramname">name</td><td>provider name. </td></tr>
+    <tr><td class="paramname">service_account_json</td><td>FCM service account JSON.. </td></tr>
+    <tr><td class="paramname">enabled</td><td>Whether the provider should be active immediately after creation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>JSON response. </dd></dl>
+
+</div>
+</div>
 <a id="a1d8efed770871df527c361e121bb59a4" name="a1d8efed770871df527c361e121bb59a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1d8efed770871df527c361e121bb59a4">&#9670;&#160;</a></span>createMessage()</h2>
 

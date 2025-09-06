@@ -1,6 +1,7 @@
 var classMessaging =
 [
     [ "Messaging", "classMessaging.html#ad6775b6b42ba1f5892b46643a548aa85", null ],
+    [ "createFcmProvider", "classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154", null ],
     [ "createMessage", "classMessaging.html#a1d8efed770871df527c361e121bb59a4", null ],
     [ "createPush", "classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2", null ],
     [ "createSubscribers", "classMessaging.html#a47f9b222b054338040d95f559acb916b", null ],
