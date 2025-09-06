@@ -181,6 +181,18 @@ class Messaging {
      */
     std::string listProviders(Queries &queries);
 
+  /**
+     * @brief Create a new Firebase Cloud Messaging provider.
+     * @param providerId A unique Id for the provider.
+     * @param name provider name.
+     * @param service_account_json FCM service account JSON..
+     * @param enabled Whether the provider should be active immediately after creation.
+     * @return JSON response.
+   */
+    std::string createFcmProvider(std::string &providerId, std::string name,
+                                  std::string service_account_json,
+                                  bool enabled);
+  
     /**
      * @brief Delete a provider.
      * @param providerId ID of the provider
