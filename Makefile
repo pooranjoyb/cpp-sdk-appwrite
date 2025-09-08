@@ -258,6 +258,7 @@ createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
 listProviderLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviderLogs.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listProviderLogs $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviderLogs.cpp $(LDFLAGS)
+	
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
