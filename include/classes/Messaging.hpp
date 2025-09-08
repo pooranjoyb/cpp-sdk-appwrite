@@ -173,16 +173,73 @@ class Messaging {
                             const std::string &body,
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
+  
+    /**
+     * @brief List all providers.
+     * @param queries Optional query filters
+     * @return JSON string of providers list
+     */
+    std::string listProviders(Queries &queries);
 
-  /**
+    /**
      * @brief List all provider logs.
-     * @param topicId ID of the provider
+     * @param providerId ID of the provider
      * @param queries Optional query filters
      * @return JSON string of provider logs list
      */
     std::string listProviderLogs(const std::string &providerId,
                                  Queries &queries);
+  
+    /**
+     * @brief Create a new Firebase Cloud Messaging provider.
+     * @param providerId A unique Id for the provider.
+     * @param name provider name.
+     * @param service_account_json FCM service account JSON..
+     * @param enabled Whether the provider should be active immediately after creation.
+     * @return JSON response.
+   */
+    std::string createFcmProvider(std::string &providerId, std::string name,
+                                  std::string service_account_json,
+                                  bool enabled);
+  
+    /**
+     * @brief Delete a provider.
+     * @param providerId ID of the provider
+     * @return JSON response
+     */
+    std::string deleteProvider(const std::string &providerId);
+  
+    /**
+     * @brief Get a specific provider by ID.
+     * @param providerId ID of the provider
+     * @return JSON string of the provider details
+     */
+    std::string getProvider(const std::string &providerId);
+  
+    /**
+     * @brief List all message logs with optional filters.
+     * @param messageId ID of the message
+     * @param queries Query parameters for filtering
+     * @return JSON string of messageLog list
+     */
+    std::string listMessageLogs(const std::string &messageId, Queries &queries);
+  
+   /**
+     * @brief Delete a message by its ID.
+     * @param messageId ID of the message.
+     * @return JSON response.
+     */
+    std::string deleteMessages(const std::string &messageId);
 
+    /**
+     * @brief List all targets for a given message.
+     * @param messageId ID of the message.
+     * @param queries Optional query filters.
+     * @return JSON response.
+   */
+    std::string listTargets(const std::string &messageId, 
+                            const std::vector<std::string> &queries = {});
+  
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
