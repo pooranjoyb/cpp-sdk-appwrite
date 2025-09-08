@@ -174,6 +174,14 @@ class Messaging {
                             const std::vector<std::string> &topicId = {},
                             const std::vector<std::string> &userId = {});
 
+  /**
+     * @brief List all provider logs.
+     * @param topicId ID of the provider
+     * @param queries Optional query filters
+     * @return JSON string of provider logs list
+     */
+    std::string listProviderLogs(const std::string &providerId,
+                                 Queries &queries);
 
   private:
     std::string projectId; ///< Project ID
