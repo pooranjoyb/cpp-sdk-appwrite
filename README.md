@@ -24,29 +24,55 @@ This **C++ SDK** is built from scratch as a **prototype** for interacting with A
 
 ### Prerequisites
 
-Before you begin, ensure that you have `conan` & `clang-format` installed on your system. 
-- You can install `conan` using `pip`,
-- and `clang-format` using `apt`
-
+Before you begin, ensure `conan`, `clang-format`, and `cmake` are installed:
 ```bash
-sudo apt install clang-format
+sudo apt install clang-format cmake
 pip install conan
 ```
 
-### Build From Source Code
+#### Build From Source Code
 
-Clone the repository and run the following commands
+Clone the repository and run the following commands **(out-of-source build, all artifacts in `build/` only):**
 ```bash
 mkdir build && cd build
-conan install .. --build=missing
-cmake ..
+conan install .. --output-folder=. --build=missing
+cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
 make
 ```
+
+All Conan and CMake files will be in `build/`.
 
 Install the SDK.
 ```bash
 sudo make install
 ```
+
+## Installation (Windows)
+
+#### Prerequisites
+
+- Install [MinGW-w64](http://mingw-w64.org/) and add it to your system PATH.
+- Install [Conan](https://conan.io/) using Python/pip.
+- Install [CMake](https://cmake.org/).
+
+#### Build From Source Code
+
+1. Open a MinGW-w64 environment or Command Prompt with MinGW in PATH.
+2. Clone the repository and run:
+
+```bash
+mkdir build
+cd build
+conan install .. --output-folder=. --build=missing
+cmake .. -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
+mingw64-make
+```
+#### Install SDK (MinGW)
+
+To copy the headers and library to your MinGW installation, use:
+./install_windows.bat
+
+This will place headers in `<MinGW Root>\include\AppwriteSDK` and library files in `<MinGW Root>\lib`.
 
 ## Getting Started
 

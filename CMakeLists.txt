@@ -56,6 +56,18 @@ else()
     set(LIBRARY_TYPE "STATIC")
 endif()
 
+# Install headers
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        DESTINATION include/AppwriteSDK)
+
+# Install library only if not header-only
+if(NOT LIBRARY_TYPE STREQUAL "INTERFACE")
+    install(TARGETS AppwriteSDK
+            ARCHIVE DESTINATION lib
+            LIBRARY DESTINATION lib
+            RUNTIME DESTINATION bin)
+endif()
+
 # Handle CURL target compatibility
 set(CURL_TARGET "")
 if(TARGET CURL::libcurl)
