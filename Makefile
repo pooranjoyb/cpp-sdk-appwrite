@@ -254,6 +254,15 @@ getMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getMessages.cpp
 createMessage: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createMessage $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createMessage.cpp $(LDFLAGS)
+createFcmProvider: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createFcmProvider.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createFcmProvider $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createFcmProvider.cpp $(LDFLAGS)	
+deleteProvider: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteProvider.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteProvider $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteProvider.cpp $(LDFLAGS)
+getProvider: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getProvider.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/getProvider $(SRCS) $(EXAMPLES_DIR)/messaging/messages/getProvider.cpp $(LDFLAGS)
 listProviders: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviders.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listProviders $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviders.cpp $(LDFLAGS)
@@ -263,10 +272,14 @@ listMessageLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listMessageLogs.cpp
 deleteMessages: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp
 			@mkdir -p ./$(TESTS_DIR)
 			$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/deleteMessages $(SRCS) $(EXAMPLES_DIR)/messaging/messages/deleteMessages.cpp $(LDFLAGS)
-					
+updateEmail: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateEmail $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateEmail.cpp $(LDFLAGS)			
 listTargets: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTargets $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp $(LDFLAGS)
+
+
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)

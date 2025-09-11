@@ -249,7 +249,7 @@ std::string Messaging::listSubscribers(const std::string &topicId,
 
     std::string url = Config::API_BASE_URL + "/messaging/topics/" + topicId +
                       "/subscribers" + queries.to_string();
-    ;
+    
 
     std::vector<std::string> headers = Config::getHeaders(projectId);
     headers.push_back("X-Appwrite-Key: " + apiKey);
@@ -468,6 +468,41 @@ std::string Messaging::createMessage(const std::string& messageId,
     }
 }
 
+std::string Messaging::updateEmail(
+    const std::string& messageId,
+    const std::string& subject,
+    const std::string& content
+) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+    if (subject.empty()) {
+        throw AppwriteException("Missing required parameter: 'subject'");
+    }
+    if (content.empty()) {
+        throw AppwriteException("Missing required parameter: 'content'");
+    }
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/email/" + Utils::urlEncode(messageId);
+
+    std::string payload = R"({"subject":")" + Utils::escapeJsonString(subject) +
+                          R"(","content":")" + Utils::escapeJsonString(content) + R"("})";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating message. Status code: " + std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
+
 std::string Messaging::updatePush(const std::string &messageId,
                                   const std::string &title,
                                   const std::string &body,
@@ -527,6 +562,74 @@ std::string Messaging::updatePush(const std::string &messageId,
         throw AppwriteException(
             "Error updating push message. Status code: " + std::to_string(statusCode) +
             "\n\nResponse: " + response);
+    }
+}
+
+std::string Messaging::createFcmProvider(std::string &providerId,
+                                         std::string name,
+                                         std::string service_account_json,
+                                         bool enabled) {
+    if (providerId.empty()) {
+        throw AppwriteException("Missing required parameter: 'providerId'");
+    }
+    if (name.empty()) {
+        throw AppwriteException("Missing required parameter: 'name'");
+    }
+    std::string url = Config::API_BASE_URL + "/messaging/providers/fcm";
+    std::string payload =
+        R"({"providerId":")" + Utils::escapeJsonString(providerId) +
+        R"(","name":")" + Utils::escapeJsonString(name) +
+        R"(","serviceAccountJSON":)" + service_account_json + R"(,"enabled":)" +
+        (enabled ? "true" : "false") + R"(})";
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+    std::string response;
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+    if (statusCode == HttpStatus::CREATED) {
+        return response;
+    } else {
+        throw AppwriteException("Error Creating fcm provider. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
+
+std::string Messaging::deleteProvider(const std::string &providerId) {
+    if (providerId.empty()) {
+        throw AppwriteException("Missing required parameter: providerId");
+    }
+    std::string url =
+        Config::API_BASE_URL + "/messaging/providers/" + providerId;
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    std::string response;
+    int statusCode = Utils::deleteRequest(url, headers, response);
+    if (statusCode == HttpStatus::DELETED) {
+        return "provider deleted successfully.";
+    } else {
+        throw AppwriteException("Failed to delete provider. Status code: " +
+                                std::to_string(statusCode) +
+                                "\nResponse: " + response);
+    }
+}
+
+std::string Messaging::getProvider(const std::string &providerId) {
+    if (providerId.empty()) {
+        throw AppwriteException("Missing required parameter: providerId");
+    }
+    std::string url =
+        Config::API_BASE_URL + "/messaging/providers/" + providerId;
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error fetching provider. Status code: " +
+                                std::to_string(statusCode) +
+                                "\nResponse: " + response);
     }
 }
 
@@ -604,11 +707,12 @@ std::string Messaging::listTargets(const std::string &messageId,
     std::string response;
     int statusCode = Utils::getRequest(url, headers, response);
 
+
     if (statusCode == HttpStatus::OK) {
         return response;
     } else {
-        throw AppwriteException(
-            "Error fetching message targets. Status code: " + std::to_string(statusCode) +
-            "\n\nResponse: " + response);
+        throw AppwriteException("Error updating message. Status code: " + std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
     }
 }
+

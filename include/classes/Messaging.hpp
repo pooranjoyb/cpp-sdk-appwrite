@@ -155,7 +155,7 @@ class Messaging {
                                const std::string& content,
                                const std::vector<std::string>& topics = {},
                                const std::vector<std::string>& targets = {});
-    
+
   /**
      * @brief Updates an existing push notification message.
      * 
@@ -181,6 +181,32 @@ class Messaging {
      */
     std::string listProviders(Queries &queries);
 
+  /**
+     * @brief Create a new Firebase Cloud Messaging provider.
+     * @param providerId A unique Id for the provider.
+     * @param name provider name.
+     * @param service_account_json FCM service account JSON..
+     * @param enabled Whether the provider should be active immediately after creation.
+     * @return JSON response.
+   */
+    std::string createFcmProvider(std::string &providerId, std::string name,
+                                  std::string service_account_json,
+                                  bool enabled);
+  
+    /**
+     * @brief Delete a provider.
+     * @param providerId ID of the provider
+     * @return JSON response
+     */
+    std::string deleteProvider(const std::string &providerId);
+  
+    /**
+     * @brief Get a specific provider by ID.
+     * @param providerId ID of the provider
+     * @return JSON string of the provider details
+     */
+    std::string getProvider(const std::string &providerId);
+  
     /**
      * @brief List all message logs with optional filters.
      * @param messageId ID of the message
@@ -194,7 +220,29 @@ class Messaging {
      * @param messageId ID of the message.
      * @return JSON response.
      */
+
     std::string deleteMessages(const std::string &messageId);
+  
+  /**
+     * @brief Update an email message by its ID.
+     * @class updateEmail
+     * 
+     * This method belongs to the updateEmail class and provides the functionality
+     * to update the subject and content of an existing email message via the 
+     * Appwrite Messaging API.
+     * 
+     * @param messageId Unique message identifier
+     * @param subject New subject of the email
+     * @param content Updated content/body of the email
+     * @return JSON response string from the server
+     * @throws AppwriteException if parameters are invalid or request fails
+  */
+    std::string updateEmail(
+        const std::string& messageId,
+        const std::string& subject,
+        const std::string& content
+    );
+
 
     /**
      * @brief List all targets for a given message.
@@ -204,6 +252,7 @@ class Messaging {
    */
     std::string listTargets(const std::string &messageId, 
                             const std::vector<std::string> &queries = {});
+  
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
