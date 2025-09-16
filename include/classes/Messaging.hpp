@@ -181,7 +181,16 @@ class Messaging {
      */
     std::string listProviders(Queries &queries);
 
-  /**
+    /**
+     * @brief List all provider logs.
+     * @param providerId ID of the provider
+     * @param queries Optional query filters
+     * @return JSON string of provider logs list
+     */
+    std::string listProviderLogs(const std::string &providerId,
+                                 Queries &queries);
+  
+    /**
      * @brief Create a new Firebase Cloud Messaging provider.
      * @param providerId A unique Id for the provider.
      * @param name provider name.

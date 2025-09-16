@@ -565,6 +565,26 @@ std::string Messaging::updatePush(const std::string &messageId,
     }
 }
 
+std::string Messaging::listProviderLogs(const std::string &providerId,
+                                        Queries &queries) {
+    if (providerId.empty()) {
+        throw AppwriteException("Missing required parameter: providerId");
+    }
+    std::string url =
+        Config::API_BASE_URL + "/messaging/providers/" + providerId + "/logs";
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    std::string response;
+    int statusCode = Utils::getRequest(url, headers, response);
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error listing providers logs. Status code: " +
+                                std::to_string(statusCode) +
+                                "\nResponse: " + response);
+    }
+}
+
 std::string Messaging::createFcmProvider(std::string &providerId,
                                          std::string name,
                                          std::string service_account_json,
@@ -715,4 +735,5 @@ std::string Messaging::listTargets(const std::string &messageId,
                                 "\n\nResponse: " + response);
     }
 }
+
 

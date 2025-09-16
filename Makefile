@@ -280,6 +280,10 @@ listTargets: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTargets $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp $(LDFLAGS)
 
 
+listProviderLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviderLogs.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listProviderLogs $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviderLogs.cpp $(LDFLAGS)
+	
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)
