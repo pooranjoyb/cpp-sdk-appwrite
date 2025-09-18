@@ -468,6 +468,83 @@ std::string Messaging::createMessage(const std::string& messageId,
     }
 }
 
+// Added method to create a new SMS message
+std::string Messaging::createSms(const std::string &messageId,
+                                 const std::string &content,
+                                 const std::vector<std::string> &topics,
+                                 const std::vector<std::string> &users,
+                                 const std::vector<std::string> &targets,
+                                 bool draft, const std::string &scheduled_at) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+
+    if (content.empty()) {
+        throw AppwriteException("Missing required parameter: 'content'");
+    }
+
+    std::string payload =
+        R"({"messageId":")" + Utils::escapeJsonString(messageId) +
+        R"(","content":")" + Utils::escapeJsonString(content) + R"(")";
+
+    if (!topics.empty()) {
+        payload += R"(,"topics":[)";
+        for (size_t i = 0; i < topics.size(); ++i) {
+            payload += "\"" + Utils::escapeJsonString(topics[i]) + "\"";
+            if (i != topics.size() - 1)
+                payload += ",";
+        }
+        payload += "]";
+    }
+
+    if (!users.empty()) {
+        payload += R"(,"users":[)";
+        for (size_t i = 0; i < users.size(); ++i) {
+            payload += "\"" + Utils::escapeJsonString(users[i]) + "\"";
+            if (i != users.size() - 1)
+                payload += ",";
+        }
+        payload += "]";
+    }
+
+    if (!targets.empty()) {
+        payload += R"(,"targets":[)";
+        for (size_t i = 0; i < targets.size(); ++i) {
+            payload += "\"" + Utils::escapeJsonString(targets[i]) + "\"";
+            if (i != targets.size() - 1)
+                payload += ",";
+        }
+        payload += "]";
+    }
+
+    payload += std::string(R"(,"draft":)") + (draft ? "true" : "false");
+
+    if (!scheduled_at.empty()) {
+        payload += R"(,"scheduledAt":")" +
+                   Utils::escapeJsonString(scheduled_at) + "\"";
+    }
+
+    payload += "}";
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/sms";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED || statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error creating a new sms message. Status code: " +
+            std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Messaging::updateEmail(
     const std::string& messageId,
     const std::string& subject,
