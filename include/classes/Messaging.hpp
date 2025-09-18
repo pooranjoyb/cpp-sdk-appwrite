@@ -116,30 +116,31 @@ class Messaging {
                                   const std::string &name,
                                   const std::string &targetId,
                                   const std::string &subscriberId);
-  /**
+    /**
      * @brief Creates a new push notification message.
-     * 
-     * Sends a push notification to specified users, topics, or both. 
+     *
+     * Sends a push notification to specified users, topics, or both.
      *
      * @param messageId A unique Id for the message.
      * @param title Title of the push notification.
      * @param body Body content of the push notification.
-     * @param topicId A list of topic IDs to which the notification should be sent.
-     * @param userId A list of user IDs to which the notification should be sent.
+     * @param topicId A list of topic IDs to which the notification should be
+     * sent.
+     * @param userId A list of user IDs to which the notification should be
+     * sent.
      * @param draft If true, saves the message as a draft.
-     * 
+     *
      * @return JSON response.
- */                         
+     */
     std::string createPush(const std::string &messageId,
-                                  const std::string &title,
-                                  const std::string &body,
-                                  const std::vector<std::string> &topicId= {},
-                                  const std::vector<std::string> &userId = {},
-                                  bool draft = false);                                 
-   
-  /**
+                           const std::string &title, const std::string &body,
+                           const std::vector<std::string> &topicId = {},
+                           const std::vector<std::string> &userId = {},
+                           bool draft = false);
+
+    /**
      * @brief Create a new email message.
-     * 
+     *
      * Sends a new email message to specific topics and/or target recipients.
      * At least one of `topics` or `targets` must be provided.
      *
