@@ -22,7 +22,8 @@ var searchData=
   ['createmessage_19',['createMessage',['../classMessaging.html#a1d8efed770871df527c361e121bb59a4',1,'Messaging']]],
   ['createpush_20',['createPush',['../classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2',1,'Messaging']]],
   ['createsession_21',['createSession',['../classAccount.html#a74cc9e0bc04ea11e0ac459d91987a574',1,'Account']]],
-  ['createstringattribute_22',['createStringAttribute',['../classDatabases.html#aace14340471211e7a1e1d1706ae76747',1,'Databases']]],
-  ['createsubscribers_23',['createSubscribers',['../classMessaging.html#a47f9b222b054338040d95f559acb916b',1,'Messaging']]],
-  ['createtopic_24',['createTopic',['../classMessaging.html#a10e4125080cde9483e1d22c3fe4d26be',1,'Messaging']]]
+  ['createsms_22',['createSms',['../classMessaging.html#abf49d061eb6d5642398048f26d4fe43d',1,'Messaging']]],
+  ['createstringattribute_23',['createStringAttribute',['../classDatabases.html#aace14340471211e7a1e1d1706ae76747',1,'Databases']]],
+  ['createsubscribers_24',['createSubscribers',['../classMessaging.html#a47f9b222b054338040d95f559acb916b',1,'Messaging']]],
+  ['createtopic_25',['createTopic',['../classMessaging.html#a10e4125080cde9483e1d22c3fe4d26be',1,'Messaging']]]
 ];

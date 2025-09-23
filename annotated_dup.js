@@ -8,6 +8,7 @@ var annotated_dup =
     [ "Messaging", "classMessaging.html", "classMessaging" ],
     [ "Queries", "classQueries.html", "classQueries" ],
     [ "Storage", "classStorage.html", "classStorage" ],
+    [ "updateEmail", "classupdateEmail.html", null ],
     [ "Utils", "classUtils.html", "classUtils" ],
     [ "Validator", "classValidator.html", "classValidator" ]
 ];

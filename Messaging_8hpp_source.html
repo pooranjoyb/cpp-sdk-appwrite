@@ -217,128 +217,199 @@ $(document).ready(function(){initNavTree('Messaging_8hpp_source.html',''); initR
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                                  <span class="keyword">const</span> std::string &amp;name,</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                                  <span class="keyword">const</span> std::string &amp;targetId,</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                                  <span class="keyword">const</span> std::string &amp;subscriberId);<span class="comment"></span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">    /**</span></div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">     * @brief Creates a new push notification message.</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">     * </span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">     * Sends a push notification to specified users, topics, or both. </span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">     * Sends a push notification to specified users, topics, or both.</span></div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">     *</span></div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">     * @param messageId A unique Id for the message.</span></div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">     * @param title Title of the push notification.</span></div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">     * @param body Body content of the push notification.</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">     * @param topicId A list of topic IDs to which the notification should be sent.</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">     * @param userId A list of user IDs to which the notification should be sent.</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">     * @param draft If true, saves the message as a draft.</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">     * </span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">     * @return JSON response.</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment"> */</span>                         </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2">  133</a></span>    std::string <a class="code hl_function" href="classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2">createPush</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                  <span class="keyword">const</span> std::string &amp;title,</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                                  <span class="keyword">const</span> std::string &amp;body,</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                                  <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;topicId= {},</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                                  <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;userId = {},</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                                  <span class="keywordtype">bool</span> draft = <span class="keyword">false</span>);                                 </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>   <span class="comment"></span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">     * @brief Create a new email message.</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">     * </span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">     * Sends a new email message to specific topics and/or target recipients.</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">     * At least one of `topics` or `targets` must be provided.</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">     * @param messageId Unique ID for the message.</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">     * @param subject Subject line of the email.</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">     * @param content Body content of the email.</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">     * @param topics List of topic IDs to send the message to (optional).</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">     * @param targets List of target recipients (e.g., email:userId) (optional).</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">     * @return JSON response.</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classMessaging.html#a1d8efed770871df527c361e121bb59a4">  153</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a1d8efed770871df527c361e121bb59a4">createMessage</a>(<span class="keyword">const</span> std::string&amp; messageId,</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                               <span class="keyword">const</span> std::string&amp; subject,</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                               <span class="keyword">const</span> std::string&amp; content,</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                               <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; topics = {},</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                               <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; targets = {});</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="comment"></span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">     * @brief Updates an existing push notification message.</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">     * </span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">     * Modifies the title and body of an existing push message. </span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">     * @param messageId The ID of the message to update.</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">     * @param title New title of the push notification.</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">     * @param body New body content of the push notification.</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     * @param topicId List of topic IDs to update the message.</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     * @param userId List of user IDs to update the message.</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @return JSON response</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">  */</span>                           </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classMessaging.html#a0175a63caca1dde7df9fa4c21b08d9d9">  171</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a0175a63caca1dde7df9fa4c21b08d9d9">updatePush</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                            <span class="keyword">const</span> std::string &amp;title,</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                            <span class="keyword">const</span> std::string &amp;body,</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                            <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;topicId = {},</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                            <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;userId = {});</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="comment"></span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">     * @brief List all providers.</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">     * @param queries Optional query filters</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">     * @return JSON string of providers list</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classMessaging.html#ae5433ab8389b8f3e2f0816baeef95eae">  182</a></span>    std::string <a class="code hl_function" href="classMessaging.html#ae5433ab8389b8f3e2f0816baeef95eae">listProviders</a>(<a class="code hl_class" href="classQueries.html">Queries</a> &amp;queries);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment"></span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">     * @brief Create a new Firebase Cloud Messaging provider.</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">     * @param providerId A unique Id for the provider.</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     * @param name provider name.</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     * @param service_account_json FCM service account JSON..</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">     * @param enabled Whether the provider should be active immediately after creation.</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">     * @return JSON response.</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154">  192</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154">createFcmProvider</a>(std::string &amp;providerId, std::string name,</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                                  std::string service_account_json,</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                                  <span class="keywordtype">bool</span> enabled);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  <span class="comment"></span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">     * @brief Delete a provider.</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">     * @param providerId ID of the provider</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">     * @return JSON response</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="classMessaging.html#a40a9efa92535ca3c745b38ac77021222">  201</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a40a9efa92535ca3c745b38ac77021222">deleteProvider</a>(<span class="keyword">const</span> std::string &amp;providerId);</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment"></span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">     * @brief Get a specific provider by ID.</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">     * @param providerId ID of the provider</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">     * @return JSON string of the provider details</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="classMessaging.html#a5cd5fb3e33bbbe79efd2c33aaa4ee7f1">  208</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a5cd5fb3e33bbbe79efd2c33aaa4ee7f1">getProvider</a>(<span class="keyword">const</span> std::string &amp;providerId);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="comment"></span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">     * @brief List all message logs with optional filters.</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">     * @param messageId ID of the message</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">     * @param queries Query parameters for filtering</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">     * @return JSON string of messageLog list</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classMessaging.html#aab2cfcd2f79171a204ef1780beef1103">  216</a></span>    std::string <a class="code hl_function" href="classMessaging.html#aab2cfcd2f79171a204ef1780beef1103">listMessageLogs</a>(<span class="keyword">const</span> std::string &amp;messageId, <a class="code hl_class" href="classQueries.html">Queries</a> &amp;queries);</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>  <span class="comment"></span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">   /**</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">     * @brief Delete a message by its ID.</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">     * @param messageId ID of the message.</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">     * @return JSON response.</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno"><a class="line" href="classMessaging.html#a39c06798a06c32d23a58f0f9d619f630">  223</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a39c06798a06c32d23a58f0f9d619f630">deleteMessages</a>(<span class="keyword">const</span> std::string &amp;messageId);</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment"></span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">     * @brief List all targets for a given message.</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">     * @param messageId ID of the message.</span></div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">     * @param queries Optional query filters.</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">     * @param topicId A list of topic IDs to which the notification should be</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">     * sent.</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">     * @param userId A list of user IDs to which the notification should be</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">     * sent.</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">     * @param draft If true, saves the message as a draft.</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">     * @return JSON response.</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2">  135</a></span>    std::string <a class="code hl_function" href="classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2">createPush</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                           <span class="keyword">const</span> std::string &amp;title, <span class="keyword">const</span> std::string &amp;body,</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                           <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;topicId = {},</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                           <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;userId = {},</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                           <span class="keywordtype">bool</span> draft = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"></span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">     * @brief Create a new email message.</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">     * Sends a new email message to specific topics and/or target recipients.</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">     * At least one of `topics` or `targets` must be provided.</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">     * @param messageId Unique ID for the message.</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">     * @param subject Subject line of the email.</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">     * @param content Body content of the email.</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">     * @param topics List of topic IDs to send the message to (optional).</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">     * @param targets List of target recipients (e.g., email:userId) (optional).</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">     * @return JSON response.</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classMessaging.html#a1d8efed770871df527c361e121bb59a4">  154</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a1d8efed770871df527c361e121bb59a4">createMessage</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                              <span class="keyword">const</span> std::string &amp;subject,</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                              <span class="keyword">const</span> std::string &amp;content,</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                              <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;topics = {},</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                              <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;targets = {});</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment"></span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">     * @brief Create a new sms message.</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">     * @param messageId Unique ID for the message.</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">     * @param content SMS Content.</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">     * @param topics List of topic IDs (optional).</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">     * @param users List of User IDs (optional).</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     * @param targets List of target IDs (optional).</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     * @param draft If true, saves the message as a draft.</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @param scheduled_at Scheduled delivery time for message.</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     * @return JSON response.</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classMessaging.html#abf49d061eb6d5642398048f26d4fe43d">  172</a></span>    std::string <a class="code hl_function" href="classMessaging.html#abf49d061eb6d5642398048f26d4fe43d">createSms</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                          <span class="keyword">const</span> std::string &amp;content,</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                          <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;topics = {},</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                          <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;users = {},</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                          <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;targets = {},</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                          <span class="keywordtype">bool</span> draft = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                          <span class="keyword">const</span> std::string &amp;scheduled_at = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment"></span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">     * @brief Updates an existing push notification</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">     * message.</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">     * Modifies the title and body of an existing push</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">     * message.</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     * @param messageId The ID of the message to</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     * update.</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">     * @param title New title of the push</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">     * notification.</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">     * @param body New body content of the push</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">     * notification.</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">     * @param topicId List of topic IDs to update the</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">     * message.</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">     * @param userId List of user IDs to update the</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">     * message.</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">     * @return JSON response</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classMessaging.html#a0175a63caca1dde7df9fa4c21b08d9d9">  199</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a0175a63caca1dde7df9fa4c21b08d9d9">updatePush</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                           <span class="keyword">const</span> std::string &amp;title, <span class="keyword">const</span> std::string &amp;body,</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                           <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;topicId = {},</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                           <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;userId = {});</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment"></span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">     * @brief List all providers.</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">     * @param queries Optional query filters</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">     * @return JSON string of providers list</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="classMessaging.html#ae5433ab8389b8f3e2f0816baeef95eae">  209</a></span>    std::string <a class="code hl_function" href="classMessaging.html#ae5433ab8389b8f3e2f0816baeef95eae">listProviders</a>(<a class="code hl_class" href="classQueries.html">Queries</a> &amp;queries);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment"></span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">     * @brief List all provider logs.</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">     * @param providerId ID of the provider</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">     * @param queries Optional query filters</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">     * @return JSON string of provider logs list</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="classMessaging.html#a8a4a79d56d17ec6748d07d88003a67d5">  217</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a8a4a79d56d17ec6748d07d88003a67d5">listProviderLogs</a>(<span class="keyword">const</span> std::string &amp;providerId,</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                                 <a class="code hl_class" href="classQueries.html">Queries</a> &amp;queries);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment"></span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">     * @brief Create a new Firebase Cloud Messaging</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">     * provider.</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">     * @param providerId A unique Id for the provider.</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">     * @param name provider name.</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">     * @param service_account_json FCM service account</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">     * JSON..</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">     * @param enabled Whether the provider should be</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">     * active immediately after creation.</span></div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">     * @return JSON response.</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classMessaging.html#aed59aaab660e767275e118c3ffc23968">  231</a></span>    std::string <a class="code hl_function" href="classMessaging.html#aed59aaab660e767275e118c3ffc23968">listTargets</a>(<span class="keyword">const</span> std::string &amp;messageId, </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                            <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;queries = {});</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    std::string projectId; <span class="comment">///&lt; Project ID</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    std::string apiKey;    <span class="comment">///&lt; API Key</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>};</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154">  231</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154">createFcmProvider</a>(std::string &amp;providerId, std::string name,</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                                  std::string service_account_json,</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                                  <span class="keywordtype">bool</span> enabled);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment"></span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">     * @brief Delete a provider.</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">     * @param providerId ID of the provider</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">     * @return JSON response</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classMessaging.html#a40a9efa92535ca3c745b38ac77021222">  240</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a40a9efa92535ca3c745b38ac77021222">deleteProvider</a>(<span class="keyword">const</span> std::string &amp;providerId);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment"></span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="comment">     * @brief Get a specific provider by ID.</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">     * @param providerId ID of the provider</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">     * @return JSON string of the provider details</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="classMessaging.html#a5cd5fb3e33bbbe79efd2c33aaa4ee7f1">  247</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a5cd5fb3e33bbbe79efd2c33aaa4ee7f1">getProvider</a>(<span class="keyword">const</span> std::string &amp;providerId);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="comment"></span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment">     * @brief List all message logs with optional</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment">     * filters.</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">     * @param messageId ID of the message</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment">     * @param queries Query parameters for filtering</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">     * @return JSON string of messageLog list</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno"><a class="line" href="classMessaging.html#aab2cfcd2f79171a204ef1780beef1103">  256</a></span>    std::string <a class="code hl_function" href="classMessaging.html#aab2cfcd2f79171a204ef1780beef1103">listMessageLogs</a>(<span class="keyword">const</span> std::string &amp;messageId, <a class="code hl_class" href="classQueries.html">Queries</a> &amp;queries);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="comment"></span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">     * @brief Delete a message by its ID.</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment">     * @param messageId ID of the message.</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="comment">     * @return JSON response.</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno"><a class="line" href="classMessaging.html#a39c06798a06c32d23a58f0f9d619f630">  264</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a39c06798a06c32d23a58f0f9d619f630">deleteMessages</a>(<span class="keyword">const</span> std::string &amp;messageId);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment"></span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment">     * @brief Update an email message by its ID.</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classupdateEmail.html">  268</a></span><span class="comment">     * @class updateEmail</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment">     * This method belongs to the updateEmail class</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment">     * and provides the functionality to update the</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment">     * subject and content of an existing email</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment">     * message via the Appwrite Messaging API.</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="comment">     * @param messageId Unique message identifier</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment">     * @param subject New subject of the email</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment">     * @param content Updated content/body of the</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment">     * email</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment">     * @return JSON response string from the server</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment">     * @throws AppwriteException if parameters are</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment">     * invalid or request fails</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno"><a class="line" href="classMessaging.html#a505e224089625038dcff279159e0789b">  283</a></span>    std::string <a class="code hl_function" href="classMessaging.html#a505e224089625038dcff279159e0789b">updateEmail</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                            <span class="keyword">const</span> std::string &amp;subject,</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                            <span class="keyword">const</span> std::string &amp;content);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="comment"></span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="comment">     * @brief List all targets for a given message.</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="comment">     * @param messageId ID of the message.</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">     * @param queries Optional query filters.</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment">     * @return JSON response.</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno"><a class="line" href="classMessaging.html#aed59aaab660e767275e118c3ffc23968">  293</a></span>    std::string <a class="code hl_function" href="classMessaging.html#aed59aaab660e767275e118c3ffc23968">listTargets</a>(<span class="keyword">const</span> std::string &amp;messageId,</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>                            <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;queries = {});</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="comment"></span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="comment">      /**</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="comment">     * @brief List all logs for a given topic.</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="comment">     * @param topicID ID of the message.</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">     * @param queries Optional query filters.</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="comment">     * @return JSON response.</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="comment">    */</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="classMessaging.html#aec28269ee560feea6d21d245e0f55a23">  302</a></span>    std::string <a class="code hl_function" href="classMessaging.html#aec28269ee560feea6d21d245e0f55a23">listTopicLogs</a>(<span class="keyword">const</span> std::string &amp;topicId,</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>                              <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;queries = {});</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>  </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    std::string projectId; <span class="comment">///&lt; Project ID</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    std::string apiKey;    <span class="comment">///&lt; API Key</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>};</div>
 </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aAppwriteException_8hpp_html"><div class="ttname"><a href="AppwriteException_8hpp.html">AppwriteException.hpp</a></div><div class="ttdoc">Declares the base exception class used to represent Appwrite SDK errors.</div></div>
 <div class="ttc" id="aHttpStatus_8hpp_html"><div class="ttname"><a href="HttpStatus_8hpp.html">HttpStatus.hpp</a></div><div class="ttdoc">Defines HTTP status code enums for consistent error and response handling.</div></div>
 <div class="ttc" id="aQuery_8hpp_html"><div class="ttname"><a href="Query_8hpp.html">Query.hpp</a></div><div class="ttdoc">Offers helper methods to construct query parameters for filtering and sorting API responses.</div></div>
@@ -352,17 +423,21 @@ $(document).ready(function(){initNavTree('Messaging_8hpp_source.html',''); initR
 <div class="ttc" id="aclassMessaging_html_a3d23e0d1f5313c7ef7e05de5f0774818"><div class="ttname"><a href="classMessaging.html#a3d23e0d1f5313c7ef7e05de5f0774818">Messaging::deleteSubscribers</a></div><div class="ttdeci">std::string deleteSubscribers(const std::string &amp;topicId, const std::string &amp;subscriberId)</div><div class="ttdoc">Delete a subscriber from a topic.</div></div>
 <div class="ttc" id="aclassMessaging_html_a40a9efa92535ca3c745b38ac77021222"><div class="ttname"><a href="classMessaging.html#a40a9efa92535ca3c745b38ac77021222">Messaging::deleteProvider</a></div><div class="ttdeci">std::string deleteProvider(const std::string &amp;providerId)</div><div class="ttdoc">Delete a provider.</div></div>
 <div class="ttc" id="aclassMessaging_html_a47f9b222b054338040d95f559acb916b"><div class="ttname"><a href="classMessaging.html#a47f9b222b054338040d95f559acb916b">Messaging::createSubscribers</a></div><div class="ttdeci">std::string createSubscribers(const std::string &amp;topicId, const std::string &amp;name, const std::string &amp;targetId, const std::string &amp;subscriberId)</div><div class="ttdoc">Add a subscriber to a topic.</div></div>
+<div class="ttc" id="aclassMessaging_html_a505e224089625038dcff279159e0789b"><div class="ttname"><a href="classMessaging.html#a505e224089625038dcff279159e0789b">Messaging::updateEmail</a></div><div class="ttdeci">std::string updateEmail(const std::string &amp;messageId, const std::string &amp;subject, const std::string &amp;content)</div></div>
 <div class="ttc" id="aclassMessaging_html_a5cd5fb3e33bbbe79efd2c33aaa4ee7f1"><div class="ttname"><a href="classMessaging.html#a5cd5fb3e33bbbe79efd2c33aaa4ee7f1">Messaging::getProvider</a></div><div class="ttdeci">std::string getProvider(const std::string &amp;providerId)</div><div class="ttdoc">Get a specific provider by ID.</div></div>
 <div class="ttc" id="aclassMessaging_html_a6a097bd5ad8238b4c91e282fc2f57b68"><div class="ttname"><a href="classMessaging.html#a6a097bd5ad8238b4c91e282fc2f57b68">Messaging::listTopics</a></div><div class="ttdeci">std::string listTopics(Queries &amp;queries)</div><div class="ttdoc">List all topics with optional filters.</div></div>
 <div class="ttc" id="aclassMessaging_html_a7ed0aafac67cf508c73ce7b9ae08b154"><div class="ttname"><a href="classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154">Messaging::createFcmProvider</a></div><div class="ttdeci">std::string createFcmProvider(std::string &amp;providerId, std::string name, std::string service_account_json, bool enabled)</div><div class="ttdoc">Create a new Firebase Cloud Messaging provider.</div></div>
+<div class="ttc" id="aclassMessaging_html_a8a4a79d56d17ec6748d07d88003a67d5"><div class="ttname"><a href="classMessaging.html#a8a4a79d56d17ec6748d07d88003a67d5">Messaging::listProviderLogs</a></div><div class="ttdeci">std::string listProviderLogs(const std::string &amp;providerId, Queries &amp;queries)</div><div class="ttdoc">List all provider logs.</div></div>
 <div class="ttc" id="aclassMessaging_html_aa596d2b309995e8d3e7196a3037f24ff"><div class="ttname"><a href="classMessaging.html#aa596d2b309995e8d3e7196a3037f24ff">Messaging::getMessages</a></div><div class="ttdeci">std::string getMessages(const std::string &amp;messageId)</div><div class="ttdoc">Get a specific message by ID.</div></div>
 <div class="ttc" id="aclassMessaging_html_aab2cfcd2f79171a204ef1780beef1103"><div class="ttname"><a href="classMessaging.html#aab2cfcd2f79171a204ef1780beef1103">Messaging::listMessageLogs</a></div><div class="ttdeci">std::string listMessageLogs(const std::string &amp;messageId, Queries &amp;queries)</div><div class="ttdoc">List all message logs with optional filters.</div></div>
 <div class="ttc" id="aclassMessaging_html_ab8e8cb4df3f5c106da6bab81e7eb67f2"><div class="ttname"><a href="classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2">Messaging::createPush</a></div><div class="ttdeci">std::string createPush(const std::string &amp;messageId, const std::string &amp;title, const std::string &amp;body, const std::vector&lt; std::string &gt; &amp;topicId={}, const std::vector&lt; std::string &gt; &amp;userId={}, bool draft=false)</div><div class="ttdoc">Creates a new push notification message.</div></div>
+<div class="ttc" id="aclassMessaging_html_abf49d061eb6d5642398048f26d4fe43d"><div class="ttname"><a href="classMessaging.html#abf49d061eb6d5642398048f26d4fe43d">Messaging::createSms</a></div><div class="ttdeci">std::string createSms(const std::string &amp;messageId, const std::string &amp;content, const std::vector&lt; std::string &gt; &amp;topics={}, const std::vector&lt; std::string &gt; &amp;users={}, const std::vector&lt; std::string &gt; &amp;targets={}, bool draft=false, const std::string &amp;scheduled_at=&quot;&quot;)</div><div class="ttdoc">Create a new sms message.</div></div>
 <div class="ttc" id="aclassMessaging_html_ac4206d4f3710b00f0b914f2c8cdf23a5"><div class="ttname"><a href="classMessaging.html#ac4206d4f3710b00f0b914f2c8cdf23a5">Messaging::getTopic</a></div><div class="ttdeci">std::string getTopic(const std::string &amp;topicId)</div><div class="ttdoc">Get details of a topic by ID.</div></div>
 <div class="ttc" id="aclassMessaging_html_ad6775b6b42ba1f5892b46643a548aa85"><div class="ttname"><a href="classMessaging.html#ad6775b6b42ba1f5892b46643a548aa85">Messaging::Messaging</a></div><div class="ttdeci">Messaging(const std::string &amp;projectId, const std::string &amp;apiKey)</div><div class="ttdoc">Constructor for Messaging service.</div></div>
 <div class="ttc" id="aclassMessaging_html_adcce04cbe30abcb19f17b9b7390247b5"><div class="ttname"><a href="classMessaging.html#adcce04cbe30abcb19f17b9b7390247b5">Messaging::getSubscriber</a></div><div class="ttdeci">std::string getSubscriber(const std::string &amp;topicId, const std::string &amp;subscriberId)</div><div class="ttdoc">Get details of a subscriber to a topic.</div></div>
 <div class="ttc" id="aclassMessaging_html_adf1111aaf72b9d0d4dfc4b08dd551f6a"><div class="ttname"><a href="classMessaging.html#adf1111aaf72b9d0d4dfc4b08dd551f6a">Messaging::updateTopic</a></div><div class="ttdeci">std::string updateTopic(const std::string &amp;topicId, const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;subscribe={})</div><div class="ttdoc">Update an existing topic.</div></div>
 <div class="ttc" id="aclassMessaging_html_ae5433ab8389b8f3e2f0816baeef95eae"><div class="ttname"><a href="classMessaging.html#ae5433ab8389b8f3e2f0816baeef95eae">Messaging::listProviders</a></div><div class="ttdeci">std::string listProviders(Queries &amp;queries)</div><div class="ttdoc">List all providers.</div></div>
+<div class="ttc" id="aclassMessaging_html_aec28269ee560feea6d21d245e0f55a23"><div class="ttname"><a href="classMessaging.html#aec28269ee560feea6d21d245e0f55a23">Messaging::listTopicLogs</a></div><div class="ttdeci">std::string listTopicLogs(const std::string &amp;topicId, const std::vector&lt; std::string &gt; &amp;queries={})</div><div class="ttdoc">List all logs for a given topic.</div></div>
 <div class="ttc" id="aclassMessaging_html_aed59aaab660e767275e118c3ffc23968"><div class="ttname"><a href="classMessaging.html#aed59aaab660e767275e118c3ffc23968">Messaging::listTargets</a></div><div class="ttdeci">std::string listTargets(const std::string &amp;messageId, const std::vector&lt; std::string &gt; &amp;queries={})</div><div class="ttdoc">List all targets for a given message.</div></div>
 <div class="ttc" id="aclassMessaging_html_af9cf658c971cc754e4e560520b94ad8f"><div class="ttname"><a href="classMessaging.html#af9cf658c971cc754e4e560520b94ad8f">Messaging::listSubscribers</a></div><div class="ttdeci">std::string listSubscribers(const std::string &amp;topicId, Queries &amp;queries)</div><div class="ttdoc">List all subscribers of a topic.</div></div>
 <div class="ttc" id="aclassMessaging_html_afa46132a851eeca06d601a0ea889d577"><div class="ttname"><a href="classMessaging.html#afa46132a851eeca06d601a0ea889d577">Messaging::listMessages</a></div><div class="ttdeci">std::string listMessages(Queries &amp;queries)</div><div class="ttdoc">List all messages with optional filters.</div></div>

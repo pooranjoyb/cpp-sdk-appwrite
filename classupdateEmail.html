@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Appwrite C++ SDK: Class Index</title>
+<title>Appwrite C++ SDK: updateEmail Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classes.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('classupdateEmail.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -90,41 +90,46 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Class Index</div></div>
+  <div class="headertitle"><div class="title">updateEmail Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="qindex"><a class="qindex" href="#letter_A">A</a>&#160;|&#160;<a class="qindex" href="#letter_D">D</a>&#160;|&#160;<a class="qindex" href="#letter_H">H</a>&#160;|&#160;<a class="qindex" href="#letter_M">M</a>&#160;|&#160;<a class="qindex" href="#letter_Q">Q</a>&#160;|&#160;<a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_U">U</a>&#160;|&#160;<a class="qindex" href="#letter_V">V</a></div>
-<div class="classindex">
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_A" name="letter_A">A</a></dt>
-<dd><a class="el" href="classAccount.html">Account</a></dd><dd><a class="el" href="classAppwrite.html">Appwrite</a></dd><dd><a class="el" href="classAppwriteException.html">AppwriteException</a></dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_D" name="letter_D">D</a></dt>
-<dd><a class="el" href="classDatabases.html">Databases</a></dd></dl>
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_H" name="letter_H">H</a></dt>
-<dd><a class="el" href="classHealth.html">Health</a></dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_M" name="letter_M">M</a></dt>
-<dd><a class="el" href="classMessaging.html">Messaging</a></dd></dl>
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_Q" name="letter_Q">Q</a></dt>
-<dd><a class="el" href="classQueries.html">Queries</a></dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_S" name="letter_S">S</a></dt>
-<dd><a class="el" href="classStorage.html">Storage</a></dd></dl>
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_U" name="letter_U">U</a></dt>
-<dd><a class="el" href="classupdateEmail.html">updateEmail</a></dd><dd><a class="el" href="classUtils.html">Utils</a></dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_V" name="letter_V">V</a></dt>
-<dd><a class="el" href="classValidator.html">Validator</a></dd></dl>
+
+<p>Update an email message by its ID.  
+ <a href="classupdateEmail.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Messaging_8hpp_source.html">Messaging.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for updateEmail:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classupdateEmail__coll__graph.svg" width="107" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Update an email message by its ID. </p>
+<p>This method belongs to the <a class="el" href="classupdateEmail.html" title="Update an email message by its ID.">updateEmail</a> class and provides the functionality to update the subject and content of an existing email message via the <a class="el" href="classAppwrite.html" title="Main entry point for accessing Appwrite services via the C++ SDK.">Appwrite</a> <a class="el" href="classMessaging.html" title="Provides APIs to manage messaging: messages, topics, subscribers.">Messaging</a> API.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messageId</td><td>Unique message identifier </td></tr>
+    <tr><td class="paramname">subject</td><td>New subject of the email </td></tr>
+    <tr><td class="paramname">content</td><td>Updated content/body of the email </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>JSON response string from the server </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classAppwriteException.html">AppwriteException</a></td><td>if parameters are invalid or request fails </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="Messaging_8hpp_source.html">Messaging.hpp</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="classupdateEmail.html">updateEmail</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

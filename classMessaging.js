@@ -4,6 +4,7 @@ var classMessaging =
     [ "createFcmProvider", "classMessaging.html#a7ed0aafac67cf508c73ce7b9ae08b154", null ],
     [ "createMessage", "classMessaging.html#a1d8efed770871df527c361e121bb59a4", null ],
     [ "createPush", "classMessaging.html#ab8e8cb4df3f5c106da6bab81e7eb67f2", null ],
+    [ "createSms", "classMessaging.html#abf49d061eb6d5642398048f26d4fe43d", null ],
     [ "createSubscribers", "classMessaging.html#a47f9b222b054338040d95f559acb916b", null ],
     [ "createTopic", "classMessaging.html#a10e4125080cde9483e1d22c3fe4d26be", null ],
     [ "deleteMessages", "classMessaging.html#a39c06798a06c32d23a58f0f9d619f630", null ],
@@ -16,10 +17,13 @@ var classMessaging =
     [ "getTopic", "classMessaging.html#ac4206d4f3710b00f0b914f2c8cdf23a5", null ],
     [ "listMessageLogs", "classMessaging.html#aab2cfcd2f79171a204ef1780beef1103", null ],
     [ "listMessages", "classMessaging.html#afa46132a851eeca06d601a0ea889d577", null ],
+    [ "listProviderLogs", "classMessaging.html#a8a4a79d56d17ec6748d07d88003a67d5", null ],
     [ "listProviders", "classMessaging.html#ae5433ab8389b8f3e2f0816baeef95eae", null ],
     [ "listSubscribers", "classMessaging.html#af9cf658c971cc754e4e560520b94ad8f", null ],
     [ "listTargets", "classMessaging.html#aed59aaab660e767275e118c3ffc23968", null ],
+    [ "listTopicLogs", "classMessaging.html#aec28269ee560feea6d21d245e0f55a23", null ],
     [ "listTopics", "classMessaging.html#a6a097bd5ad8238b4c91e282fc2f57b68", null ],
+    [ "updateEmail", "classMessaging.html#a505e224089625038dcff279159e0789b", null ],
     [ "updatePush", "classMessaging.html#a0175a63caca1dde7df9fa4c21b08d9d9", null ],
     [ "updateTopic", "classMessaging.html#adf1111aaf72b9d0d4dfc4b08dd551f6a", null ]
 ];

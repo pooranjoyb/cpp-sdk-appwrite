@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['utils_0',['Utils',['../classUtils.html',1,'']]]
+  ['updateemail_0',['updateEmail',['../classupdateEmail.html',1,'']]],
+  ['utils_1',['Utils',['../classUtils.html',1,'']]]
 ];

@@ -10,6 +10,7 @@ var hierarchy =
       [ "AppwriteException", "classAppwriteException.html", null ]
     ] ],
     [ "Storage", "classStorage.html", null ],
+    [ "updateEmail", "classupdateEmail.html", null ],
     [ "Utils", "classUtils.html", null ],
     [ "Validator", "classValidator.html", null ]
 ];
