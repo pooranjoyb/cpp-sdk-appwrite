@@ -116,30 +116,31 @@ class Messaging {
                                   const std::string &name,
                                   const std::string &targetId,
                                   const std::string &subscriberId);
-  /**
+    /**
      * @brief Creates a new push notification message.
-     * 
-     * Sends a push notification to specified users, topics, or both. 
+     *
+     * Sends a push notification to specified users, topics, or both.
      *
      * @param messageId A unique Id for the message.
      * @param title Title of the push notification.
      * @param body Body content of the push notification.
-     * @param topicId A list of topic IDs to which the notification should be sent.
-     * @param userId A list of user IDs to which the notification should be sent.
+     * @param topicId A list of topic IDs to which the notification should be
+     * sent.
+     * @param userId A list of user IDs to which the notification should be
+     * sent.
      * @param draft If true, saves the message as a draft.
-     * 
+     *
      * @return JSON response.
- */                         
+     */
     std::string createPush(const std::string &messageId,
-                                  const std::string &title,
-                                  const std::string &body,
-                                  const std::vector<std::string> &topicId= {},
-                                  const std::vector<std::string> &userId = {},
-                                  bool draft = false);                                 
-   
-  /**
+                           const std::string &title, const std::string &body,
+                           const std::vector<std::string> &topicId = {},
+                           const std::vector<std::string> &userId = {},
+                           bool draft = false);
+
+    /**
      * @brief Create a new email message.
-     * 
+     *
      * Sends a new email message to specific topics and/or target recipients.
      * At least one of `topics` or `targets` must be provided.
      *
@@ -150,30 +151,56 @@ class Messaging {
      * @param targets List of target recipients (e.g., email:userId) (optional).
      * @return JSON response.
      */
-    std::string createMessage(const std::string& messageId,
-                               const std::string& subject,
-                               const std::string& content,
-                               const std::vector<std::string>& topics = {},
-                               const std::vector<std::string>& targets = {});
+    std::string createMessage(const std::string &messageId,
+                              const std::string &subject,
+                              const std::string &content,
+                              const std::vector<std::string> &topics = {},
+                              const std::vector<std::string> &targets = {});
 
-  /**
-     * @brief Updates an existing push notification message.
-     * 
-     * Modifies the title and body of an existing push message. 
+    /**
+     * @brief Create a new sms message.
      *
-     * @param messageId The ID of the message to update.
-     * @param title New title of the push notification.
-     * @param body New body content of the push notification.
-     * @param topicId List of topic IDs to update the message.
-     * @param userId List of user IDs to update the message.
+     * @param messageId Unique ID for the message.
+     * @param content SMS Content.
+     * @param topics List of topic IDs (optional).
+     * @param users List of User IDs (optional).
+     * @param targets List of target IDs (optional).
+     * @param draft If true, saves the message as a draft.
+     * @param scheduled_at Scheduled delivery time for message.
+     * @return JSON response.
+     */
+    std::string createSms(const std::string &messageId,
+                          const std::string &content,
+                          const std::vector<std::string> &topics = {},
+                          const std::vector<std::string> &users = {},
+                          const std::vector<std::string> &targets = {},
+                          bool draft = false,
+                          const std::string &scheduled_at = "");
+
+    /**
+     * @brief Updates an existing push notification
+     * message.
+     *
+     * Modifies the title and body of an existing push
+     * message.
+     *
+     * @param messageId The ID of the message to
+     * update.
+     * @param title New title of the push
+     * notification.
+     * @param body New body content of the push
+     * notification.
+     * @param topicId List of topic IDs to update the
+     * message.
+     * @param userId List of user IDs to update the
+     * message.
      * @return JSON response
-  */                           
+     */
     std::string updatePush(const std::string &messageId,
-                            const std::string &title,
-                            const std::string &body,
-                            const std::vector<std::string> &topicId = {},
-                            const std::vector<std::string> &userId = {});
-  
+                           const std::string &title, const std::string &body,
+                           const std::vector<std::string> &topicId = {},
+                           const std::vector<std::string> &userId = {});
+
     /**
      * @brief List all providers.
      * @param queries Optional query filters
@@ -189,77 +216,81 @@ class Messaging {
      */
     std::string listProviderLogs(const std::string &providerId,
                                  Queries &queries);
-  
+
     /**
-     * @brief Create a new Firebase Cloud Messaging provider.
+     * @brief Create a new Firebase Cloud Messaging
+     * provider.
      * @param providerId A unique Id for the provider.
      * @param name provider name.
-     * @param service_account_json FCM service account JSON..
-     * @param enabled Whether the provider should be active immediately after creation.
+     * @param service_account_json FCM service account
+     * JSON..
+     * @param enabled Whether the provider should be
+     * active immediately after creation.
      * @return JSON response.
-   */
+     */
     std::string createFcmProvider(std::string &providerId, std::string name,
                                   std::string service_account_json,
                                   bool enabled);
-  
+
     /**
      * @brief Delete a provider.
      * @param providerId ID of the provider
      * @return JSON response
      */
     std::string deleteProvider(const std::string &providerId);
-  
+
     /**
      * @brief Get a specific provider by ID.
      * @param providerId ID of the provider
      * @return JSON string of the provider details
      */
     std::string getProvider(const std::string &providerId);
-  
+
     /**
-     * @brief List all message logs with optional filters.
+     * @brief List all message logs with optional
+     * filters.
      * @param messageId ID of the message
      * @param queries Query parameters for filtering
      * @return JSON string of messageLog list
      */
     std::string listMessageLogs(const std::string &messageId, Queries &queries);
-  
-   /**
+
+    /**
      * @brief Delete a message by its ID.
      * @param messageId ID of the message.
      * @return JSON response.
      */
 
     std::string deleteMessages(const std::string &messageId);
-  
-  /**
+
+    /**
      * @brief Update an email message by its ID.
      * @class updateEmail
-     * 
-     * This method belongs to the updateEmail class and provides the functionality
-     * to update the subject and content of an existing email message via the 
-     * Appwrite Messaging API.
-     * 
+     *
+     * This method belongs to the updateEmail class
+     * and provides the functionality to update the
+     * subject and content of an existing email
+     * message via the Appwrite Messaging API.
+     *
      * @param messageId Unique message identifier
      * @param subject New subject of the email
-     * @param content Updated content/body of the email
+     * @param content Updated content/body of the
+     * email
      * @return JSON response string from the server
-     * @throws AppwriteException if parameters are invalid or request fails
-  */
-    std::string updateEmail(
-        const std::string& messageId,
-        const std::string& subject,
-        const std::string& content
-    );
-
+     * @throws AppwriteException if parameters are
+     * invalid or request fails
+     */
+    std::string updateEmail(const std::string &messageId,
+                            const std::string &subject,
+                            const std::string &content);
 
     /**
      * @brief List all targets for a given message.
      * @param messageId ID of the message.
      * @param queries Optional query filters.
      * @return JSON response.
-   */
-    std::string listTargets(const std::string &messageId, 
+     */
+    std::string listTargets(const std::string &messageId,
                             const std::vector<std::string> &queries = {});
 
       /**
