@@ -36,7 +36,7 @@ Clone the repository and run the following commands **(out-of-source build, all 
 ```bash
 mkdir build && cd build
 conan install .. --output-folder=. --build=missing
-cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
+cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
 make
 ```
 
