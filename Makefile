@@ -279,7 +279,6 @@ listTargets: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listTargets $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listTargets.cpp $(LDFLAGS)
 
-
 listProviderLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviderLogs.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/listProviderLogs $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviderLogs.cpp $(LDFLAGS)
@@ -287,6 +286,10 @@ listProviderLogs: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/listProviderLogs.cp
 createSms: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createSms.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createSms $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createSms.cpp $(LDFLAGS)
+
+createEmail: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createEmail.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createEmail $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createEmail.cpp $(LDFLAGS)
 
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
