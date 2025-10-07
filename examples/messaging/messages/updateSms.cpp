@@ -11,7 +11,7 @@ int main() {
     std::string messageId = "6b309gbdfjhfjsk4016e14b8";
     std::string subject = "Hello from C++ Appwrite SDK!";
     std::string content =
-        "Testing SMS message creation with topics, users, and targets.";
+        "Testing SMS message updation with topics, users, and targets.";
 
     std::vector<std::string> topics = {};
     std::vector<std::string> users = {};
@@ -32,9 +32,9 @@ int main() {
     bool draft = true;
 
     try {
-        std::string response = appwrite.getMessaging().createSms(
-            messageId, content, topics, users, targets, draft, scheduled_at);
-        std::cout << "SMS Message Created!\nResponse: " << response
+        std::string response = appwrite.getMessaging().updateSms(
+            messageId, topics, users, targets, content, draft, scheduled_at);
+        std::cout << "SMS Message updated!\nResponse: " << response
                   << std::endl;
     } catch (const AppwriteException &ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

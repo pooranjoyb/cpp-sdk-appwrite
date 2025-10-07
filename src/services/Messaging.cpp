@@ -548,6 +548,77 @@ std::string Messaging::createSms(const std::string &messageId,
     }
 }
 
+// Added method to update an existing SMS message
+std::string Messaging::updateSms(const std::string &messageId,
+                                 const std::vector<std::string> &topics,
+                                 const std::vector<std::string> &users,
+                                 const std::vector<std::string> &targets,
+                                 const std::string &content, bool draft,
+                                 const std::string &scheduled_at) {
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+
+    if (content.empty()) {
+        throw AppwriteException("Missing required parameter: 'content'");
+    }
+
+    std::string payload = "{";
+
+    payload += R"("topics":[)";
+    for (size_t i = 0; i < topics.size(); ++i) {
+        payload += "\"" + Utils::escapeJsonString(topics[i]) + "\"";
+        if (i != topics.size() - 1)
+            payload += ",";
+    }
+    payload += "]";
+
+    payload += R"(,"users":[)";
+    for (size_t i = 0; i < users.size(); ++i) {
+        payload += "\"" + Utils::escapeJsonString(users[i]) + "\"";
+        if (i != users.size() - 1)
+            payload += ",";
+    }
+    payload += "]";
+
+    payload += R"(,"targets":[)";
+    for (size_t i = 0; i < targets.size(); ++i) {
+        payload += "\"" + Utils::escapeJsonString(targets[i]) + "\"";
+        if (i != targets.size() - 1)
+            payload += ",";
+    }
+    payload += "]";
+
+    payload += R"(,"content":")" + Utils::escapeJsonString(content) + R"(")";
+
+    payload += std::string(R"(,"draft":)") + (draft ? "true" : "false");
+
+    if (!scheduled_at.empty()) {
+        payload += R"(,"scheduledAt":")" +
+                   Utils::escapeJsonString(scheduled_at) + "\"";
+    }
+
+    payload += "}";
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/sms/" +
+                      Utils::urlEncode(messageId);
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+    int statusCode = Utils::patchRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException("Error updating sms message. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
+    }
+}
+
 // Added method to create a new email message.
 std::string Messaging::createEmail(
     const std::string &messageId, const std::string &subject,
