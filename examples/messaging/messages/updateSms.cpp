@@ -8,10 +8,8 @@ int main() {
 
     Appwrite appwrite(projectId, apiKey);
 
-    std::string messageId = "6b309gbdfjhfjsk4016e14b8";
-    std::string subject = "Hello from C++ Appwrite SDK!";
-    std::string content =
-        "Testing SMS message updation with topics, users, and targets.";
+    std::string messageId = "msg001";
+    std::string content = "Testing SMS message updation.";
 
     std::vector<std::string> topics = {};
     std::vector<std::string> users = {};
@@ -24,10 +22,7 @@ int main() {
                   future_time.time_since_epoch()) %
               1000;
 
-    std::stringstream ss;
-    ss << std::put_time(std::gmtime(&time_t), "%Y-%m-%dT%H:%M:%S");
-    ss << "." << std::setfill('0') << std::setw(3) << ms.count() << "+00:00";
-    std::string scheduled_at = ss.str();
+    std::string scheduled_at = "";
 
     bool draft = true;
 

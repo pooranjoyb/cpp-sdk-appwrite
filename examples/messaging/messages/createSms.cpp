@@ -8,10 +8,8 @@ int main() {
 
     Appwrite appwrite(projectId, apiKey);
 
-    std::string messageId = "6b309gbdfjhfjsk4016e14b8";
-    std::string subject = "Hello from C++ Appwrite SDK!";
-    std::string content =
-        "Testing SMS message creation with topics, users, and targets.";
+    std::string messageId = "msg001";
+    std::string content = "Testing SMS message creation.";
 
     std::vector<std::string> topics = {};
     std::vector<std::string> users = {};
