@@ -8,7 +8,7 @@ int main() {
 
     Appwrite appwrite(projectId, apiKey);
 
-    std::string messageId = "6b9k4016e14b8";
+    std::string messageId = "email001";
     std::string subject = "Hello from C++ Appwrite SDK!";
     std::string content =
         "Testing Email message creation with topics, users, and targets.";

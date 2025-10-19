@@ -573,65 +573,27 @@ std::string Messaging::createEmail(
         R"(","subject":")" + Utils::escapeJsonString(subject) +
         R"(","content":")" + Utils::escapeJsonString(content) + R"(")";
 
-    if (!topics.empty()) {
-        payload += R"(,"topics":[)";
-        for (size_t i = 0; i < topics.size(); ++i) {
-            payload += "\"" + Utils::escapeJsonString(topics[i]) + "\"";
-            if (i != topics.size() - 1)
-                payload += ",";
-        }
-        payload += "]";
-    }
+    auto addFieldToPayload = [](std::string &payload,
+                                const std::string &fieldName,
+                                const std::vector<std::string> &items) {
+        if (items.empty())
+            return;
 
-    if (!users.empty()) {
-        payload += R"(,"users":[)";
-        for (size_t i = 0; i < users.size(); ++i) {
-            payload += "\"" + Utils::escapeJsonString(users[i]) + "\"";
-            if (i != users.size() - 1)
+        payload += R"(,")" + fieldName + R"(":[)";
+        for (size_t i = 0; i < items.size(); ++i) {
+            payload += "\"" + Utils::escapeJsonString(items[i]) + "\"";
+            if (i != items.size() - 1)
                 payload += ",";
         }
         payload += "]";
-    }
+    };
 
-    if (!targets.empty()) {
-        payload += R"(,"targets":[)";
-        for (size_t i = 0; i < targets.size(); ++i) {
-            payload += "\"" + Utils::escapeJsonString(targets[i]) + "\"";
-            if (i != targets.size() - 1)
-                payload += ",";
-        }
-        payload += "]";
-    }
-
-    if (!cc.empty()) {
-        payload += R"(,"cc":[)";
-        for (size_t i = 0; i < cc.size(); ++i) {
-            payload += "\"" + Utils::escapeJsonString(cc[i]) + "\"";
-            if (i != cc.size() - 1)
-                payload += ",";
-        }
-        payload += "]";
-    }
-
-    if (!bcc.empty()) {
-        payload += R"(,"bcc":[)";
-        for (size_t i = 0; i < bcc.size(); ++i) {
-            payload += "\"" + Utils::escapeJsonString(bcc[i]) + "\"";
-            if (i != bcc.size() - 1)
-                payload += ",";
-        }
-        payload += "]";
-    }
-
-    if (!attachments.empty()) {
-        payload += R"(,"attachments":[)";
-        for (size_t i = 0; i < attachments.size(); ++i) {
-            payload += "\"" + Utils::escapeJsonString(attachments[i]) + "\"";
-            if (i != attachments.size() - 1)
-                payload += ",";
-        }
-        payload += "]";
-    }
+    addFieldToPayload(payload, "topics", topics);
+    addFieldToPayload(payload, "users", users);
+    addFieldToPayload(payload, "targets", targets);
+    addFieldToPayload(payload, "cc", cc);
+    addFieldToPayload(payload, "bcc", bcc);
+    addFieldToPayload(payload, "attachments", attachments);
 
     payload += std::string(R"(,"draft":)") + (draft ? "true" : "false");
 
