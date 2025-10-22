@@ -178,6 +178,36 @@ class Messaging {
                           const std::string &scheduled_at = "");
 
     /**
+     * @brief Create a new email message.
+     *
+     * @param messageId Unique ID for the message.
+     * @param subject Subject line of the email.
+     * @param content Email Content.
+     * @param topics List of topic IDs (optional).
+     * @param users List of User IDs (optional).
+     * @param targets List of target IDs (optional).
+     * @param cc List of target IDs to be added as CC.
+     * @param bcc List of target IDs to be added as BCC.
+     * @param attachments List of compound ID strings of bucket IDs and file IDs
+     * to be attached to the email.
+     * @param draft If true, saves the message as a draft.
+     * @param html Is content of type HTML
+     * @param scheduled_at Scheduled delivery time for message.
+     * @return JSON response.
+     */
+    std::string createEmail(const std::string &messageId,
+                            const std::string &subject,
+                            const std::string &content,
+                            const std::vector<std::string> &topics = {},
+                            const std::vector<std::string> &users = {},
+                            const std::vector<std::string> &targets = {},
+                            const std::vector<std::string> &cc = {},
+                            const std::vector<std::string> &bcc = {},
+                            const std::vector<std::string> &attachments = {},
+                            bool draft = false, bool html = false,
+                            const std::string &scheduled_at = "");
+
+    /**
      * @brief Updates an existing push notification
      * message.
      *

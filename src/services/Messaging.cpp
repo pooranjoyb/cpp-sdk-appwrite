@@ -548,6 +548,83 @@ std::string Messaging::createSms(const std::string &messageId,
     }
 }
 
+// Added method to create a new email message.
+std::string Messaging::createEmail(
+    const std::string &messageId, const std::string &subject,
+    const std::string &content, const std::vector<std::string> &topics,
+    const std::vector<std::string> &users,
+    const std::vector<std::string> &targets, const std::vector<std::string> &cc,
+    const std::vector<std::string> &bcc,
+    const std::vector<std::string> &attachments, bool draft, bool html,
+    const std::string &scheduled_at) {
+
+    if (messageId.empty()) {
+        throw AppwriteException("Missing required parameter: 'messageId'");
+    }
+    if (subject.empty()) {
+        throw AppwriteException("Missing required parameter: 'subject'");
+    }
+    if (content.empty()) {
+        throw AppwriteException("Missing required parameter: 'content'");
+    }
+
+    std::string payload =
+        R"({"messageId":")" + Utils::escapeJsonString(messageId) +
+        R"(","subject":")" + Utils::escapeJsonString(subject) +
+        R"(","content":")" + Utils::escapeJsonString(content) + R"(")";
+
+    auto addFieldToPayload = [](std::string &payload,
+                                const std::string &fieldName,
+                                const std::vector<std::string> &items) {
+        if (items.empty())
+            return;
+
+        payload += R"(,")" + fieldName + R"(":[)";
+        for (size_t i = 0; i < items.size(); ++i) {
+            payload += "\"" + Utils::escapeJsonString(items[i]) + "\"";
+            if (i != items.size() - 1)
+                payload += ",";
+        }
+        payload += "]";
+    };
+
+    addFieldToPayload(payload, "topics", topics);
+    addFieldToPayload(payload, "users", users);
+    addFieldToPayload(payload, "targets", targets);
+    addFieldToPayload(payload, "cc", cc);
+    addFieldToPayload(payload, "bcc", bcc);
+    addFieldToPayload(payload, "attachments", attachments);
+
+    payload += std::string(R"(,"draft":)") + (draft ? "true" : "false");
+
+    payload += std::string(R"(,"html":)") + (html ? "true" : "false");
+
+    if (!scheduled_at.empty()) {
+        payload += R"(,"scheduledAt":")" +
+                   Utils::escapeJsonString(scheduled_at) + "\"";
+    }
+
+    payload += "}";
+
+    std::string url = Config::API_BASE_URL + "/messaging/messages/email";
+
+    std::vector<std::string> headers = Config::getHeaders(projectId);
+    headers.push_back("X-Appwrite-Key: " + apiKey);
+    headers.push_back("Content-Type: application/json");
+
+    std::string response;
+
+    int statusCode = Utils::postRequest(url, payload, headers, response);
+
+    if (statusCode == HttpStatus::CREATED || statusCode == HttpStatus::OK) {
+        return response;
+    } else {
+        throw AppwriteException(
+            "Error creating a new email message. Status code: " +
+            std::to_string(statusCode) + "\n\nResponse: " + response);
+    }
+}
+
 std::string Messaging::updateEmail(const std::string &messageId,
                                    const std::string &subject,
                                    const std::string &content) {
@@ -827,7 +904,8 @@ std::string Messaging::listTopicLogs(const std::string &topicId,
         throw AppwriteException("Missing required parameter: 'topicId'");
     }
 
-    std::string url = Config::API_BASE_URL + "/messaging/topics/" + topicId + "/logs";
+    std::string url =
+        Config::API_BASE_URL + "/messaging/topics/" + topicId + "/logs";
 
     std::string queryParam = "";
     if (!queries.empty()) {
@@ -846,8 +924,8 @@ std::string Messaging::listTopicLogs(const std::string &topicId,
     if (statusCode == HttpStatus::OK) {
         return response;
     } else {
-        throw AppwriteException(
-            "Error fetching topic logs. Status code: " + std::to_string(statusCode) +
-            "\n\nResponse: " + response);
+        throw AppwriteException("Error fetching topic logs. Status code: " +
+                                std::to_string(statusCode) +
+                                "\n\nResponse: " + response);
     }
 }
