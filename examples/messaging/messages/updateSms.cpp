@@ -9,7 +9,7 @@ int main() {
     Appwrite appwrite(projectId, apiKey);
 
     std::string messageId = "msg001";
-    std::string content = "Testing SMS message creation.";
+    std::string content = "Testing SMS message updation.";
 
     std::vector<std::string> topics = {};
     std::vector<std::string> users = {};
@@ -22,17 +22,14 @@ int main() {
                   future_time.time_since_epoch()) %
               1000;
 
-    std::stringstream ss;
-    ss << std::put_time(std::gmtime(&time_t), "%Y-%m-%dT%H:%M:%S");
-    ss << "." << std::setfill('0') << std::setw(3) << ms.count() << "+00:00";
-    std::string scheduled_at = ss.str();
+    std::string scheduled_at = "";
 
     bool draft = true;
 
     try {
-        std::string response = appwrite.getMessaging().createSms(
-            messageId, content, topics, users, targets, draft, scheduled_at);
-        std::cout << "SMS Message Created!\nResponse: " << response
+        std::string response = appwrite.getMessaging().updateSms(
+            messageId, topics, users, targets, content, draft, scheduled_at);
+        std::cout << "SMS Message updated!\nResponse: " << response
                   << std::endl;
     } catch (const AppwriteException &ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;

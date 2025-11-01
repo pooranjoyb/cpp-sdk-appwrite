@@ -291,6 +291,10 @@ createEmail: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createEmail.cpp
 	@mkdir -p ./$(TESTS_DIR)
 	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/createEmail $(SRCS) $(EXAMPLES_DIR)/messaging/messages/createEmail.cpp $(LDFLAGS)
 
+updateSms: $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateSms.cpp
+	@mkdir -p ./$(TESTS_DIR)
+	$(CXX) $(CXXFLAGS) -o ./$(TESTS_DIR)/updateSms $(SRCS) $(EXAMPLES_DIR)/messaging/messages/updateSms.cpp $(LDFLAGS)
+
 # Messaging - Topics
 getTopic: $(SRCS) $(EXAMPLES_DIR)/messaging/topics/getTopic.cpp
 			@mkdir -p ./$(TESTS_DIR)

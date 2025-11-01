@@ -206,6 +206,24 @@ class Messaging {
                             const std::vector<std::string> &attachments = {},
                             bool draft = false, bool html = false,
                             const std::string &scheduled_at = "");
+    /**
+     * @brief Update an existing sms message.
+     *
+     * @param messageId Unique ID for the message.
+     * @param topics List of topic IDs (optional).
+     * @param users List of User IDs (optional).
+     * @param targets List of target IDs (optional).
+     * @param content SMS Content.
+     * @param draft If true, saves the message as a draft.
+     * @param scheduled_at Scheduled delivery time for message.
+     * @return JSON response.
+     */
+    std::string updateSms(const std::string &messageId,
+                          const std::vector<std::string> &topics = {},
+                          const std::vector<std::string> &users = {},
+                          const std::vector<std::string> &targets = {},
+                          const std::string &content = "", bool draft = false,
+                          const std::string &scheduled_at = "");
 
     /**
      * @brief Updates an existing push notification
@@ -323,15 +341,15 @@ class Messaging {
     std::string listTargets(const std::string &messageId,
                             const std::vector<std::string> &queries = {});
 
-      /**
+    /**
      * @brief List all logs for a given topic.
      * @param topicID ID of the message.
      * @param queries Optional query filters.
      * @return JSON response.
-    */
+     */
     std::string listTopicLogs(const std::string &topicId,
                               const std::vector<std::string> &queries = {});
-  
+
   private:
     std::string projectId; ///< Project ID
     std::string apiKey;    ///< API Key
