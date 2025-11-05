@@ -1,9 +1,9 @@
 [requires]
-libcurl/8.10.1
+libcurl/7.87.0
 
 [generators]
 CMakeDeps
 CMakeToolchain
 
-[layout]
-cmake_layout
+[options]
+libcurl/*:shared=False
